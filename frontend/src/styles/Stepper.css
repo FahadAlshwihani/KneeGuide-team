@@ -1,0 +1,126 @@
+/* Restyled to sit directly on AuthCard's own glass surface (AuthCard.css)
+   rather than as a second nested box — the old #141414 boxed container
+   read as a "card inside a card" once Register moved into the shared
+   AuthCard. Colors driven by Stepper.jsx's own inline motion values
+   (CSS-variable references, not literal hex) are NOT duplicated here —
+   see that file for why a stylesheet rule targeting the same properties
+   would just be dead weight, always losing to the inline style.
+
+   `.step-circle-container` is `display:flex; flex-direction:column; gap`
+   — ONE spacing source between the indicator row, the step content, and
+   the footer controls, instead of each of those three carrying its own
+   independently-tuned margin. That consolidation is also the fix for the
+   double-margin stacking that made the gap before the footer buttons
+   read as an oversized empty area: previously the LAST field inside a
+   step contributed its own trailing margin AND `.footer-container`
+   contributed a separate leading margin, so the two summed to noticeably
+   more space than either value alone suggested. Neither exists anymore —
+   `.auth-field` (AuthForm.css) carries no margin of its own now, and this
+   file's own gap is the only source of space around the footer. */
+.outer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.step-circle-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--auth-space-lg);
+}
+
+/* ============================
+   STEP INDICATORS HEADER
+============================ */
+.step-indicator-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--auth-space-2xs);
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 28px — compact, not the "giant numbered circle" the previous 32px
+   version was already trending toward. */
+.step-indicator-inner {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.step-indicator-inner svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================
+   CONNECTOR
+============================ */
+.step-connector {
+  flex: 1;
+  max-width: 40px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.step-connector-inner {
+  height: 100%;
+  width: 0;
+}
+
+/* ============================
+   CONTENT AREA
+============================ */
+.step-content-default {
+  overflow: hidden;
+  position: relative;
+}
+
+/* The Step wrapper Stepper.jsx renders around every step's own content
+   (role picker, fields, review box, etc. — see Register.jsx). One rhythm
+   here too: the step heading and whatever follows it (fields, a role
+   picker, a review box) share the same gap, so a step introduces its
+   content with clear, consistent separation regardless of what that
+   content actually is. */
+.step-default {
+  display: flex;
+  flex-direction: column;
+  gap: var(--auth-space-md);
+}
+
+/* ============================
+   FOOTER BUTTONS
+============================ */
+.footer-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--auth-space-xs);
+}
+
+/* Continue/Complete always sits at the trailing edge, whether or not Back
+   is present (step 1 has no Back at all — Stepper.jsx doesn't render it,
+   rather than hiding it) — an auto inline-start margin on the button
+   itself achieves that in both cases without a `:has()` selector or any
+   knowledge of whether Back exists. Logical property, correct in RTL. */
+.stepper-next-button {
+  margin-inline-start: auto;
+}
+
+/* .stepper-back-button / .stepper-next-button are otherwise SecondaryButton/
+   PrimaryButton (components/ui/*.css) — same border/background/hover/
+   focus-visible/radius as every other auth button, unmodified. */

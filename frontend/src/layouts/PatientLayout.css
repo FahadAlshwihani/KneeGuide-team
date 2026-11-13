@@ -1,0 +1,16 @@
+/* Positioning only — surface/color/typography for `.patient-shell` itself
+   live in patientTokens.css (the single source of truth this layout
+   imports once). */
+
+.patient-shell {
+  position: relative;
+  min-height: 100svh;
+}
+
+/* Structural fix for the "content hidden behind the nav" bug: owned once,
+   here, instead of each patient page guessing its own bottom padding for
+   a Dock it no longer even renders. See --patient-dock-clearance
+   (patientTokens.css) for the reasoning behind the value itself. */
+.patient-shell-content {
+  padding-bottom: calc(var(--patient-dock-clearance) + env(safe-area-inset-bottom, 0px));
+}

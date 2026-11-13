@@ -1,0 +1,465 @@
+/* Uses global design tokens from src/index.css. Which cards exist in the
+   DOM at all is decided in JS (HeroKpiGrid.jsx, useHeroResponsiveMode) —
+   desktop renders six, tablet two, mobile one; this file only lays out
+   whatever was actually rendered, it never hides cards with `display:
+   none`. Logical properties throughout (no hardcoded left/right) so the
+   grid mirrors correctly under RTL for free, the same way every other
+   grid on this site already does. */
+
+.hero-kpi-grid {
+  width: 100%;
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(10px, 1.4vw, 16px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Desktop (>=1200px, see useHeroResponsiveMode.js) — all six cards,
+   3 columns x 2 rows via named areas. DOM order already matches the
+   intended row order (row 1: exercises/patients/progress, row 2:
+   completion/appointment/adherence), so the areas below are purely a
+   grid-placement mechanism, not a reordering. */
+.hero-kpi-grid-desktop {
+  max-width: 1140px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "s1 s2 s3"
+    "s4 s5 s6";
+}
+
+.hero-kpi-grid-desktop .hero-kpi-slot-1 { grid-area: s1; }
+.hero-kpi-grid-desktop .hero-kpi-slot-2 { grid-area: s2; }
+.hero-kpi-grid-desktop .hero-kpi-slot-3 { grid-area: s3; }
+.hero-kpi-grid-desktop .hero-kpi-slot-4 { grid-area: s4; }
+.hero-kpi-grid-desktop .hero-kpi-slot-5 { grid-area: s5; }
+.hero-kpi-grid-desktop .hero-kpi-slot-6 { grid-area: s6; }
+
+/* ------------------------------------------------------------------ */
+/* Tablet (768px-1199px) — exactly two cards, selected product
+   highlights rather than a compressed six-card dashboard. Slightly
+   larger than the desktop cards (see .hero-kpi-grid-tablet .hero-kpi-card
+   below) since there are only two of them. 2 columns when there's room
+   for both to stay comfortably readable; narrower tablets (portrait)
+   fall back to stacking. */
+.hero-kpi-grid-tablet {
+  max-width: 640px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.hero-kpi-grid-tablet .hero-kpi-card {
+  padding: clamp(18px, 2.4vw, 26px);
+  gap: 12px;
+}
+
+.hero-kpi-grid-tablet .hero-kpi-value {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+}
+
+@media (max-width: 620px) {
+  .hero-kpi-grid-tablet {
+    max-width: 420px;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile (<768px) — exactly one, permanent card (Rehabilitation
+   Progress). Given the whole KPI preview, give it real presence rather
+   than treating it as a leftover compact tile. */
+.hero-kpi-grid-mobile {
+  max-width: 380px;
+  grid-template-columns: 1fr;
+}
+
+.hero-kpi-grid-mobile .hero-kpi-card {
+  padding: 22px 20px;
+  gap: 14px;
+}
+
+.hero-kpi-grid-mobile .hero-kpi-icon {
+  width: 42px;
+  height: 42px;
+  font-size: 1.05rem;
+}
+
+.hero-kpi-grid-mobile .hero-kpi-label {
+  font-size: 0.85rem;
+}
+
+.hero-kpi-grid-mobile .hero-kpi-value {
+  font-size: 2.4rem;
+}
+
+.hero-kpi-grid-mobile .hero-kpi-progress-track {
+  height: 7px;
+}
+
+.hero-kpi-grid-mobile .hero-kpi-trend {
+  font-size: 0.8rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Entrance: small staggered fade + translateY, same character as every
+   other reveal on the site — never a fly-in from a screen edge. */
+.hero-kpi-card-slot {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.hero-kpi-grid-visible .hero-kpi-card-slot {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-kpi-card-slot:nth-child(1) { transition-delay: 0ms; }
+.hero-kpi-card-slot:nth-child(2) { transition-delay: 70ms; }
+.hero-kpi-card-slot:nth-child(3) { transition-delay: 140ms; }
+.hero-kpi-card-slot:nth-child(4) { transition-delay: 210ms; }
+.hero-kpi-card-slot:nth-child(5) { transition-delay: 280ms; }
+.hero-kpi-card-slot:nth-child(6) { transition-delay: 350ms; }
+
+.hero-kpi-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: clamp(12px, 1.6vw, 20px);
+  background: radial-gradient(140% 120% at 18% 0%, rgba(255, 255, 255, 0.04), transparent 60%), var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-align: start;
+}
+
+/* Accent tokens — reused from the approved palette (index.css), never new
+   colors. "info" (indigo) reads closest to the reference's purple. */
+.hero-kpi-card-info {
+  --kpi-accent: var(--color-info);
+  --kpi-accent-soft: rgba(99, 102, 241, 0.14);
+}
+
+.hero-kpi-card-success {
+  --kpi-accent: var(--color-secondary);
+  --kpi-accent-soft: var(--color-secondary-soft);
+}
+
+.hero-kpi-card-blue {
+  --kpi-accent: var(--color-primary);
+  --kpi-accent-soft: var(--color-primary-soft);
+}
+
+.hero-kpi-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(30px, 2.6vw, 38px);
+  height: clamp(30px, 2.6vw, 38px);
+  border-radius: var(--radius-md);
+  background: var(--kpi-accent-soft);
+  color: var(--kpi-accent);
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  flex-shrink: 0;
+}
+
+/* Staggered ambient micro-interaction: a tiny indicator dot, invisible at
+   rest, that briefly appears on whichever single card is "active" this
+   tick (see CARD_ORDER/activeCard in HeroKpiGrid.jsx) — opacity + scale
+   only, no box-shadow animation, no rotation, no bounce. Never more than
+   one card at a time. */
+.hero-kpi-icon-dot {
+  position: absolute;
+  inset-inline-end: -2px;
+  top: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--kpi-accent);
+  opacity: 0;
+}
+
+.hero-kpi-icon-active .hero-kpi-icon-dot {
+  animation: heroKpiIconPulse 1900ms ease-out;
+}
+
+@keyframes heroKpiIconPulse {
+  0% { opacity: 0; transform: scale(0.5); }
+  30% { opacity: 1; transform: scale(1.1); }
+  65% { opacity: 0.85; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+.hero-kpi-label {
+  font-size: clamp(0.68rem, 0.85vw, 0.78rem);
+  line-height: 1.35;
+  color: var(--color-muted);
+}
+
+.hero-kpi-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+.hero-kpi-value {
+  font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--kpi-accent);
+  animation: heroKpiValueIn 400ms ease;
+  flex-shrink: 0;
+}
+
+@keyframes heroKpiValueIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* The chart: wide enough to read as an actual trend, not an icon-sized
+   squiggle — flexes to fill whatever room is left beside the value
+   (roughly 45-55% of the row on desktop cards), capped so it never
+   crowds the number, and keeps its own 180:56 proportions (the SVG's
+   viewBox) rather than being stretched. */
+.hero-kpi-sparkline {
+  flex: 1 1 auto;
+  min-width: 70px;
+  max-width: 150px;
+  aspect-ratio: 180 / 56;
+  height: auto;
+  overflow: visible;
+}
+
+/* Draws in once per mount — which happens on the Hero's first reveal and
+   again each time this card's `key` changes (its value advancing), so
+   the same one-shot animation covers both "reveal when Hero becomes
+   visible" and "chart subtly responds to data changes" without a
+   continuously running loop. `stroke-dasharray` is a safe overestimate of
+   these paths' real length, not an exact measurement — it only needs to
+   be >= the true length for the reveal to complete cleanly. */
+.hero-kpi-sparkline-line {
+  stroke: var(--kpi-accent);
+  opacity: 0.95;
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  animation: heroKpiChartDraw 750ms ease forwards;
+}
+
+@keyframes heroKpiChartDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+.hero-kpi-sparkline-dot {
+  fill: var(--kpi-accent);
+  transform-origin: center;
+  transform-box: fill-box;
+  opacity: 0;
+  animation: heroKpiDotIn 400ms ease 600ms forwards;
+}
+
+.hero-kpi-sparkline-glow {
+  fill: var(--kpi-accent);
+  transform-origin: center;
+  transform-box: fill-box;
+  opacity: 0;
+  animation: heroKpiGlowIn 400ms ease 600ms forwards;
+}
+
+@keyframes heroKpiDotIn {
+  from { opacity: 0; transform: scale(0.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heroKpiGlowIn {
+  from { opacity: 0; transform: scale(0.4); }
+  to { opacity: 0.3; transform: scale(1); }
+}
+
+.hero-kpi-progress-track {
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.hero-kpi-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--kpi-accent);
+  transition: width 600ms ease;
+}
+
+.hero-kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: clamp(0.66rem, 0.8vw, 0.74rem);
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.hero-kpi-trend svg {
+  width: 0.85em;
+  height: 0.85em;
+  flex-shrink: 0;
+}
+
+/* Appointment card: a deliberately different internal structure (date
+   block + time/type + tag + a real link) inside the same card shell —
+   no spanning, no special sizing on desktop; it's sized like the other
+   cards on tablet too (its own layout content, same card footprint). */
+.hero-kpi-card-appointment {
+  gap: 10px;
+}
+
+.hero-kpi-appointment-body {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.hero-kpi-appointment-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: clamp(34px, 3.4vw, 42px);
+  height: clamp(34px, 3.4vw, 42px);
+  border-radius: var(--radius-md);
+  background: var(--kpi-accent-soft);
+  animation: heroKpiValueIn 400ms ease;
+}
+
+.hero-kpi-appointment-day {
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-heading);
+}
+
+.hero-kpi-appointment-month {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--kpi-accent);
+}
+
+.hero-kpi-appointment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.hero-kpi-appointment-time {
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  font-weight: 700;
+  color: var(--color-heading);
+  animation: heroKpiValueIn 400ms ease;
+}
+
+.hero-kpi-appointment-type {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-kpi-appointment-tag {
+  align-self: flex-start;
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--color-secondary-soft);
+  color: var(--color-secondary);
+}
+
+.hero-kpi-appointment-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: stretch;
+  justify-content: center;
+  margin-top: auto;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 200ms ease;
+}
+
+.hero-kpi-appointment-action:hover {
+  background: var(--color-primary-hover);
+}
+
+.hero-kpi-appointment-action svg {
+  width: 0.8em;
+  height: 0.8em;
+}
+
+/* Diagonal trend/action arrows are physically drawn, not text — logical
+   properties can't mirror a drawn diagonal, so this follows the exact
+   established convention already used by PrimaryButton/SecondaryButton
+   for their own arrow icons (see SecondaryButton.css). */
+[dir="rtl"] .hero-kpi-trend svg,
+[dir="rtl"] .hero-kpi-appointment-action svg {
+  transform: scaleX(-1);
+}
+
+/* Reduced motion: the demo ticker itself never starts (see the `active`
+   gate in useKpiTicker, HeroKpiGrid.jsx), so every value/chart/appointment
+   state freezes at its first entry — this section only needs to make sure
+   nothing is left stuck in an animation's *starting* (invisible) frame.
+   Plain `animation: none` alone isn't enough for the chart draw-in and
+   icon-pulse dot specifically: without `forwards`, they already revert to
+   their un-animated base rule (dashoffset/opacity 0, i.e. hidden) the
+   instant the one-shot play finishes, so those need their real end values
+   set explicitly here too. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-kpi-card-slot {
+    transition: opacity 250ms ease;
+    transform: none;
+  }
+
+  .hero-kpi-value,
+  .hero-kpi-appointment-date,
+  .hero-kpi-appointment-time {
+    animation: none;
+  }
+
+  .hero-kpi-sparkline-line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .hero-kpi-sparkline-dot {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-kpi-sparkline-glow {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  .hero-kpi-icon-active .hero-kpi-icon-dot {
+    animation: none;
+    opacity: 0;
+  }
+
+  .hero-kpi-progress-fill {
+    transition: none;
+  }
+}

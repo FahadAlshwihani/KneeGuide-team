@@ -1,0 +1,2062 @@
+{
+  "rehabDomain": {
+    "diagnosis": {
+      "aclPartialTear": "قطع جزئي بالرباط الصليبي الأمامي",
+      "meniscusTearPostOp": "تمزق الغضروف الهلالي (بعد الجراحة)",
+      "patellarTendinopathy": "اعتلال وتر الرضفة",
+      "aclReconstruction": "إعادة بناء الرباط الصليبي الأمامي"
+    },
+    "goal": {
+      "romStrength": "تحسين مدى الحركة والقوة",
+      "restoreMobility": "استعادة الحركة",
+      "returnToSport": "العودة لممارسة الرياضة"
+    },
+    "phase": {
+      "phase1": "المرحلة 1",
+      "phase2": "المرحلة 2",
+      "phase3": "المرحلة 3"
+    },
+    "noteTypes": {
+      "sessionProgress": "تقدم الجلسة",
+      "initialAssessment": "التقييم الأولي",
+      "general": "ملاحظة سريرية"
+    },
+    "notes": {
+      "ahmedSessionProgress": "أظهرت آخر جلسة ارتفاعًا في الألم وانخفاضًا طفيفًا في مدى الحركة مقارنة بالجلسة السابقة — يستحق المراجعة قبل تطوير البرنامج.",
+      "ahmedInitialAssessment": "تم تأكيد قطع جزئي بالرباط الصليبي الأمامي. بدء برنامج تأهيل المرحلة 2: تمارين الفخذ الرباعي، رفع الساق، وانزلاق الكعب."
+    },
+    "fileTypes": {
+      "imaging": "تصوير طبي",
+      "assessment": "تقرير تقييم"
+    },
+    "reports": {
+      "seedNotes": {
+        "ahmedWeek5": "تحسّن ثابت خلال الأسبوع. الاستمرار في البرنامج الحالي.",
+        "saraWeek1": "الالتزام أقل من المستهدف — تمت مناقشة معوقات الجدول مع المريضة."
+      }
+    },
+    "attentionLevel": {
+      "needsAttention": "يحتاج متابعة",
+      "reviewRecommended": "يوصى بالمراجعة",
+      "stable": "مستقر",
+      "improving": "في تحسّن"
+    },
+    "attentionReason": {
+      "painIncreased": "ارتفاع الألم",
+      "romRegression": "تراجع مدى الحركة",
+      "missedSessions": "جلسات فائتة",
+      "lowAdherence": "الالتزام أقل من المستهدف",
+      "reportAwaitingReview": "تقرير بانتظار المراجعة",
+      "appointmentPending": "طلب موعد قيد الانتظار"
+    },
+    "trend": {
+      "improving": "في تحسّن",
+      "stable": "مستقر",
+      "requiresReview": "يتطلب مراجعة"
+    },
+    "exerciseMode": {
+      "reps": "تكرارات",
+      "duration": "مدة"
+    }
+  },
+  "login": {
+    "title": "مرحبًا بعودتك",
+    "subtitle": "سجّل دخولك للمتابعة في KneeGuide.",
+    "email": "البريد الإلكتروني",
+    "email_placeholder": "example@mail.com",
+    "password": "كلمة المرور",
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "button": "تسجيل الدخول",
+    "no_account": "ليس لديك حساب؟",
+    "signup": "إنشاء حساب",
+    "error_required": "يرجى إدخال البريد الإلكتروني وكلمة المرور.",
+    "error_invalid": "بيانات الدخول غير صحيحة."
+  },
+  "register": {
+    "title": "إنشاء حساب جديد",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "loginLink": "تسجيل الدخول",
+    "step1Title": "اختر دورك",
+    "step2Title": "المعلومات الأساسية",
+    "step3Title": "معلومات التواصل",
+    "step4Title": "تعيين كلمة المرور",
+    "step5Title": "مراجعة بياناتك",
+    "rolePatient": "مريض",
+    "roleDoctor": "طبيب",
+    "rolePatientDesc": "مستخدم عادي",
+    "roleDoctorDesc": "يتطلب موافقة الإدارة",
+    "labels": {
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الجوال",
+      "dob": "تاريخ الميلاد",
+      "password": "كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور"
+    },
+    "placeholders": {
+      "firstName": "أحمد",
+      "lastName": "الشمري",
+      "email": "example@mail.com",
+      "phone": "0555555555"
+    },
+    "emailExists": "هذا البريد الإلكتروني مسجّل بالفعل.",
+    "goToLogin": "الذهاب لتسجيل الدخول",
+    "passwordChecklist": {
+      "minLength": "8 أحرف على الأقل",
+      "uppercase": "حرف كبير",
+      "lowercase": "حرف صغير",
+      "number": "رقم واحد",
+      "special": "رمز خاص",
+      "metStatus": "مستوفى",
+      "unmetStatus": "غير مستوفى",
+      "match": "كلمتا المرور متطابقتان",
+      "mismatch": "كلمتا المرور غير متطابقتين"
+    },
+    "review": {
+      "role": "الدور",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الجوال",
+      "dob": "تاريخ الميلاد"
+    },
+    "errors": {
+      "selectRole": "من فضلك اختر دورك.",
+      "fullName": "من فضلك أدخل اسمك الأول واسم العائلة.",
+      "contactRequired": "من فضلك أكمِل معلومات التواصل.",
+      "emailExists": "هذا البريد الإلكتروني مسجّل بالفعل.",
+      "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا.",
+      "emailCheckFailed": "تعذّر التحقق من البريد الإلكتروني الآن. حاول مرة أخرى.",
+      "passwordRequired": "من فضلك أدخل كلمة المرور وتأكيدها.",
+      "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+      "passwordWeak": "يجب أن تحتوي كلمة المرور على حرف كبير وصغير ورقم ورمز، وأن تكون 8 أحرف على الأقل.",
+      "genericFail": "فشل إنشاء الحساب، حاول مرة أخرى."
+    }
+  },
+  "auth": {
+    "demo": {
+      "trigger": "معاينة الحسابات التجريبية",
+      "patient": {
+        "title": "مريض",
+        "description": "استكشف لوحة تحكم المريض وتجربة إعادة التأهيل الكاملة."
+      },
+      "doctor": {
+        "title": "طبيب",
+        "description": "استكشف واجهة العمل السريرية الخاصة بالطبيب."
+      },
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "copyEmailFor": "نسخ بريد حساب {{role}} التجريبي",
+      "copyPasswordFor": "نسخ كلمة مرور حساب {{role}} التجريبي",
+      "copied": "تم النسخ",
+      "usePatient": "استخدام حساب المريض التجريبي",
+      "useDoctor": "استخدام حساب الطبيب التجريبي",
+      "patientRegisterHint": "يمكنك أيضًا إنشاء حساب مريض ببياناتك الخاصة، وستظهر لك بيانات تجريبية تساعدك على استكشاف كامل خصائص المنصة.",
+      "doctorApprovalHint": "حسابات الأطباء تتطلب موافقة المسؤول قبل تفعيلها. للمعاينة الفورية، استخدم حساب الطبيب التجريبي."
+    }
+  },
+  "buttons": {
+    "back": "رجوع",
+    "continue": "استمرار",
+    "complete": "إنشاء الحساب"
+  },
+  "doctorAppointments": {
+    "title": "المواعيد",
+    "subtitle": "جدول واحد مشترك — طلبات المرضى، مواعيدك التي حددتها، وكل إجراءات المراجعة، في مكان واحد.",
+    "totalPill": "{{count}} موعد إجمالاً",
+    "newAppointment": "موعد جديد",
+    "prevMonth": "الشهر السابق",
+    "nextMonth": "الشهر التالي",
+    "viewToggleLabel": "عرض التقويم",
+    "viewMonth": "الشهر",
+    "viewAgenda": "القائمة",
+    "weekdaysShort": ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"],
+    "moreCount": "+{{count}} أخرى",
+    "agenda": {
+      "today": "اليوم",
+      "tomorrow": "غدًا",
+      "upcoming": "قادمة",
+      "empty": "لا توجد مواعيد قادمة مجدولة."
+    },
+    "requests": {
+      "title": "طلبات المواعيد",
+      "count": "{{count}} بالانتظار",
+      "propose": "اقترح وقتًا آخر",
+      "decline": "رفض"
+    },
+    "selectedDay": {
+      "title": "اليوم المختار",
+      "empty": "لا توجد مواعيد لهذا اليوم.",
+      "addAppointment": "إضافة موعد لهذا اليوم"
+    },
+    "summary": {
+      "title": "الملخص — {{month}}"
+    },
+    "status": {
+      "REQUESTED": "مطلوب",
+      "CONFIRMED": "مؤكّد",
+      "ALTERNATIVE_PROPOSED": "تم اقتراح وقت جديد",
+      "DECLINED": "مرفوض",
+      "COMPLETED": "مكتمل",
+      "CANCELLED": "ملغى"
+    },
+    "details": {
+      "title": "تفاصيل الموعد",
+      "sourceDoctor": "حدده الطبيب",
+      "sourcePatient": "طلبه المريض",
+      "dateTime": "التاريخ والوقت",
+      "type": "النوع",
+      "reason": "السبب",
+      "location": "الموقع",
+      "note": "ملاحظة",
+      "yourProposal": "الوقت الذي اقترحته",
+      "awaitingPatient": "بانتظار رد المريض على هذا الوقت المقترح."
+    },
+    "decline": {
+      "title": "رفض طلب الموعد",
+      "confirm": "رفض الطلب",
+      "reasonLabel": "سبب الرفض",
+      "noteLabel": "ملاحظة إضافية (اختياري)"
+    },
+    "declineReasons": {
+      "schedule_conflict": "تعارض في الجدول",
+      "no_clinical_need_yet": "لا حاجة سريرية بعد",
+      "requested_time_unavailable": "الوقت المطلوب غير متاح",
+      "continue_current_plan": "الاستمرار بالبرنامج الحالي لفترة أطول",
+      "other": "أخرى"
+    },
+    "composer": {
+      "title": "موعد جديد",
+      "fields": {
+        "patient": "المريض",
+        "duration": "المدة",
+        "durationMinutes": "{{count}} دقيقة"
+      },
+      "errors": {
+        "patient": "الرجاء اختيار مريض.",
+        "conflict": "لديك موعد مؤكد بالفعل مع {{name}} الساعة {{time}} — اختر وقتًا آخر."
+      },
+      "patientPicker": {
+        "placeholder": "ابحث بالاسم أو رقم المريض أو التشخيص...",
+        "noResults": "لا يوجد مرضى مطابقون لبحثك.",
+        "change": "تغيير المريض"
+      },
+      "existingPending": "لدى {{name}} طلب موعد بانتظار المراجعة بالفعل لـ {{time}}.",
+      "reviewExisting": "مراجعة الطلب الحالي",
+      "availabilityWarnings": {
+        "status": "حالة {{name}} حاليًا \"{{status}}\" وقد لا يكون متاحًا لمواعيد جديدة.",
+        "closed": "لا يعمل {{name}} عادةً يوم {{day}}.",
+        "outsideHours": "هذا الوقت خارج ساعات عمل {{name}} المعتادة ({{start}}–{{end}})."
+      }
+    },
+    "assistant": {
+      "actions": {
+        "reviewRequest": "مراجعة الطلب",
+        "viewToday": "عرض اليوم"
+      }
+    }
+  },
+  "doctorAssistantInsights": {
+    "cardTitle": "مساعد KneeGuide",
+    "actions": {
+      "reviewSession": "مراجعة آخر جلسة",
+      "reviewReport": "مراجعة آخر تقرير",
+      "reviewPlan": "مراجعة برنامج التأهيل",
+      "reviewAppointment": "مراجعة طلب الموعد",
+      "openPatient": "فتح ملف المريض"
+    },
+    "appointmentsPage": {
+      "pendingRequest": "لدى {{name}} طلب موعد بانتظار ردك لـ {{dateTime}}.",
+      "clinicalContext": {
+        "pain": "كما أظهر {{name}} ارتفاعًا حديثًا في الألم.",
+        "rom": "كما انخفض آخر قياس لمدى حركة {{name}}.",
+        "missedSessions": "كما فوّت {{name}} مؤخرًا بعض جلسات التأهيل."
+      },
+      "alsoToday": "لديك أيضًا {{count}} موعد اليوم.",
+      "noneToday": "لا يوجد شيء مجدول اليوم. لا توجد طلبات مواعيد بانتظار المراجعة.",
+      "todaySummary": "لديك {{count}} موعد اليوم. موعدك القادم هو {{nextName}} الساعة {{time}}."
+    },
+    "clinical": {
+      "painRomCombo": "أكمل {{name}} جميع الجلسات الموصوفة خلال هذه الفترة، لكن آخر جلسة أظهرت ارتفاعًا في الألم (من {{painFrom}}/10 إلى {{painTo}}/10) وتراجعًا طفيفًا في مدى الحركة (من {{romFrom}}° إلى {{romTo}}°). قد يستحق الأمر مراجعة الجلسة قبل تطوير البرنامج.",
+      "painOnly": "أظهرت آخر جلسة لـ{{name}} ارتفاعًا ملحوظًا في الألم، من {{painFrom}}/10 إلى {{painTo}}/10. يُنصح بمراجعة آخر جلسة.",
+      "romOnly": "انخفض آخر قياس لمدى ثني الركبة لدى {{name}} من {{romFrom}}° إلى {{romTo}}° مقارنة بالجلسة السابقة.",
+      "lowAdherence": "أكمل {{name}} {{completed}} من أصل {{expected}} جلسات موصوفة خلال هذه الفترة.",
+      "goodProgress": "يتقدم {{name}} بشكل ثابت: الألم في تراجع ومدى الحركة تحسّن خلال الجلسات الأخيرة.",
+      "stable": "الالتزام واتجاه مدى الحركة مستقران حاليًا. لا حاجة لتغيير فوري في البرنامج بناءً على البيانات المتاحة."
+    },
+    "report": {
+      "awaitingReview": "لدى {{name}} تقرير تأهيل بانتظار المراجعة.",
+      "awaitingReviewFlagged": "لدى {{name}} تقرير تأهيل بانتظار المراجعة، ويتضمن تغييرات لافتة خلال هذه الفترة.",
+      "compactSummary": "التزام {{percent}}% · الألم {{painFrom}} ← {{painTo}}",
+      "compactSummaryNoTrend": "التزام {{percent}}%",
+      "improvedSummary": "الألم {{painFrom}} ← {{painTo}} · مدى الحركة {{romFrom}}° ← {{romTo}}°",
+      "flagsSummary": "بسبب: {{flags}}"
+    },
+    "reportsPage": {
+      "needsAttentionLead": "تقرير {{name}} يُظهر تغيّرًا لافتًا وينتظر مراجعتك.",
+      "awaitingReviewLead": "تقرير {{name}} بانتظار مراجعتك.",
+      "flagSummary": "بسبب: {{flag}}.",
+      "alsoAwaiting": "يوجد {{count}} تقرير آخر بانتظار المراجعة أيضًا.",
+      "noUpcomingAppointment": "لا يوجد موعد KneeGuide قادم مجدول حاليًا.",
+      "noneAwaiting": "لا توجد تقارير بانتظار المراجعة حاليًا."
+    },
+    "appointment": {
+      "requested": "طلب {{name}} تحديد موعد.",
+      "alternativeProposed": "اقترحت وقتًا جديدًا لموعد {{name}} — بانتظار رده.",
+      "clinicalContext": "قد تكون التغيرات في الجلسة الأخيرة ذات صلة عند مراجعة هذا الطلب."
+    },
+    "clinicalRecord": {
+      "latestNote": "توجد ملاحظة سريرية حديثة خاصة بالطبيب لدى {{name}}."
+    },
+    "worklist": {
+      "allStable": "جميع المرضى مستقرون حاليًا — لا توجد تقارير أو طلبات مواعيد تحتاج انتباهًا الآن.",
+      "summary": "{{attentionCount}} مريض يحتاج متابعة، {{reportCount}} تقرير بانتظار المراجعة، و{{appointmentCount}} طلب موعد قيد الانتظار.",
+      "showAttention": "عرض المرضى الذين يحتاجون متابعة",
+      "showReports": "عرض التقارير قيد الانتظار",
+      "showAppointments": "عرض طلبات المواعيد"
+    }
+  },
+  "doctorDashboard": {
+    "greeting": {
+      "morning": "صباح الخير، {{name}}.",
+      "afternoon": "مساء الخير، {{name}}.",
+      "evening": "مساء الخير، {{name}}.",
+      "fallbackName": "دكتور"
+    },
+    "assistant": {
+      "orbLabel": "مساعد KneeGuide السريري",
+      "regionLabel": "مساعد KneeGuide السريري",
+      "inputLabel": "اسأل مساعد KneeGuide السريري",
+      "inputPlaceholder": "اسأل عن مريض، أو المواعيد، أو التقارير...",
+      "sendLabel": "إرسال",
+      "suggestionsLabel": "اقتراحات",
+      "followUpLabel": "اقتراحات متابعة",
+      "historyLabel": "المحادثة",
+      "youLabel": "أنت",
+      "brief": "لديك {{appointments}} مواعيد اليوم و{{reports}} تقارير تأهيل جديدة للمراجعة. بناءً على نشاط التأهيل الأخير، قد يحتاج {{attention}} من المرضى إلى مراجعتك.",
+      "briefPrompt": "وش تحب تراجع؟",
+      "today": {
+        "title": "اليوم",
+        "appointments": "المواعيد",
+        "newReports": "تقارير جديدة",
+        "needAttention": "تحتاج مراجعة"
+      },
+      "history": {
+        "title": "سجل المحادثات",
+        "newChat": "محادثة جديدة",
+        "openHistory": "فتح سجل المحادثات",
+        "closeHistory": "إغلاق سجل المحادثات",
+        "collapse": "طي القائمة",
+        "expand": "توسيع القائمة",
+        "today": "اليوم",
+        "previous": "محادثات سابقة",
+        "untitled": "محادثة جديدة",
+        "mockBadge": "تجريبي",
+        "empty": "لا توجد محادثات بعد"
+      },
+      "actions": {
+        "attentionPatients": "مين يحتاج مراجعتي اليوم؟",
+        "todayAppointments": "وش مواعيدي اليوم؟",
+        "reportSummary": "لخص تقارير اليوم",
+        "ahmedProgress": "كيف تقدم أحمد علي؟",
+        "adherenceRisk": "مين متأخر في التأهيل؟",
+        "pendingRequests": "فيه طلبات مواعيد بالانتظار؟",
+        "scheduleAppointment": "احجز موعد",
+        "checkConflicts": "تحقق من تعارض المواعيد",
+        "ahmedAppointments": "عرض مواعيد أحمد",
+        "whoImproved": "مين تحسن؟",
+        "whoRegressed": "مين وضعه يسوء؟",
+        "highestPriorityReport": "أي تقرير أراجع أولاً؟",
+        "ahmedLatestReport": "عرض آخر تقرير لأحمد",
+        "compareLatestReports": "قارن آخر تقريرين لأحمد"
+      },
+      "responses": {
+        "attentionIntro": "في {{count}} مرضى يبرزون في بيانات التأهيل اليوم:",
+        "attentionNone": "ما فيه مرضى يظهرون اتجاه مقلق حالياً بناءً على بيانات هذا الأسبوع التجريبية.",
+        "noAppointmentsToday": "ما عندك مواعيد مجدولة اليوم.",
+        "todayAppointmentsIntroWithNext": "عندك {{count}} مواعيد اليوم. موعدك القادم هو {{nextName}} الساعة {{nextTime}}، يليه {{followingName}} الساعة {{followingTime}}.",
+        "todayAppointmentsIntroLast": "عندك {{count}} مواعيد اليوم. موعدك القادم (والأخير) هو {{nextName}} الساعة {{nextTime}}.",
+        "todayAppointmentsIntroDone": "كان عندك {{count}} مواعيد اليوم — كلها خلصت.",
+        "noNewReports": "ما فيه تقارير تأهيل جديدة للمراجعة حالياً.",
+        "reportSummaryIntro": "عندك {{count}} تقارير تأهيل جديدة للمراجعة:",
+        "viewAllReports": "عرض كل التقارير",
+        "ahmedProgressSummary": "أحمد أكمل {{completed}} من أصل {{prescribed}} جلسات مقررة هالأسبوع (نسبة التزام {{percent}}%). مدى حركة الركبة تحسن من {{flexionOldest}}° إلى {{flexionLatest}}°، والألم بشكل عام يتجه للانخفاض نحو {{painRecentAverage}}/10 — بس تسجيل اليوم جا أعلى عند {{painLatest}}/10. جودة الحركة ظلت مستقرة. آخر جلسة له أظهرت انخفاض بسيط {{sessionDelta}}° بمدى الحركة مقارنة بالجلسة اللي قبلها.",
+        "openPatient": "فتح ملف المريض",
+        "viewLatestReport": "عرض آخر تقرير",
+        "reviewRehabProgram": "مراجعة برنامج التأهيل",
+        "adherenceRiskNone": "ما فيه مرضى يظهرون التزام ضعيف حالياً بناءً على بيانات هذا الأسبوع.",
+        "adherenceRiskIntro": "فيه {{count}} من المرضى ممكن يكونون متأخرين في برنامج التأهيل هالأسبوع:",
+        "unsupported": "أقدر أساعدك في مراجعة مرضاك، المواعيد، تقارير التأهيل، الألم، الالتزام وتقدم الحركة. جرّب تسألني عن مريض أو عن الحالات التي تحتاج مراجعة اليوم.",
+        "capabilityReschedule": "تغيير المواعيد مو متصل بنظام حجز حقيقي بعد في هذا العرض التجريبي — أقدر أعرض لك جدول اليوم، بس تغييره هنا مجرد عرض توضيحي، مو تحديث حقيقي.",
+        "noPendingRequests": "لا توجد طلبات مواعيد بالانتظار حالياً.",
+        "pendingRequestsIntro": "فيه {{count}} طلب موعد بانتظار مراجعتك:",
+        "requestAccepted": "تم القبول",
+        "reviewRequest": "مراجعة",
+        "scheduleAppointmentIntro": "لمين تحب تحجز موعد؟",
+        "noScheduleConflicts": "ما فيه تعارض بالمواعيد المؤكدة القادمة.",
+        "scheduleConflictsIntro": "فيه {{count}} زوج من مواعيدك المؤكدة القادمة متعارضة بالوقت — تستحق المراجعة:",
+        "viewAppointments": "عرض المواعيد",
+        "patientAppointmentsNone": "لا توجد مواعيد مسجلة لـ {{name}}.",
+        "patientAppointmentsIntro": "لدى {{name}} {{count}} موعد:",
+        "noImprovedPatients": "لا يوجد مرضى يظهرون تغيّرًا إيجابيًا واضحًا بين تقارير قابلة للمقارنة حاليًا.",
+        "whoImprovedIntro": "{{count}} مريض يُظهرون تغيّرًا إيجابيًا في آخر تقرير قابل للمقارنة:",
+        "noRegressedPatients": "لا يوجد مرضى يظهرون تغيّرًا سلبيًا بين تقارير قابلة للمقارنة حاليًا.",
+        "whoRegressedIntro": "{{count}} مريض يُظهرون تغيّرًا سلبيًا في آخر تقرير لهم:",
+        "highestPriorityReportIntro": "يجب مراجعة تقرير {{name}} أولاً.",
+        "patientNoReports": "لا توجد تقارير مسجلة لـ {{name}}.",
+        "patientLatestReportIntro": "آخر تقرير لـ {{name}} مصنّف كـ {{trend}}.",
+        "noComparableReports": "لا يوجد تقرير سابق قابل للمقارنة لـ {{name}} بعد.",
+        "compareLatestReportsIntro": "آخر تقريرين لـ {{name}}: {{comparison}}"
+      },
+      "metrics": {
+        "pain": "الألم",
+        "flexion": "مدى الحركة",
+        "adherence": "الالتزام",
+        "missedSessions": "جلسات فائتة"
+      },
+      "attention": {
+        "severity": {
+          "high": "أولوية عالية",
+          "followUp": "متابعة",
+          "positive": "اتجاه إيجابي"
+        }
+      },
+      "reasons": {
+        "painIncreased": "زيادة في الألم",
+        "reviewProgress": "مراجعة التقدم",
+        "generalFollowUp": "متابعة عامة"
+      },
+      "mock": {
+        "ahmed": {
+          "diagnosis": "تمزق جزئي في الرباط الصليبي الأمامي"
+        },
+        "reports": {
+          "ahmed": "تقرير تقدم أسبوعي — الالتزام ومدى الحركة في تحسن، وتسجيل ألم اليوم ارتفع فجأة.",
+          "sara": "تقرير التزام — فاتها جلستين هالأسبوع، ونسبة إكمال الأسبوع أقل من المستهدف.",
+          "mohammed": "تقرير تقدم — تحسن ملحوظ بمدى الحركة وانخفاض بالألم المسجل.",
+          "lama": "تقرير متابعة روتيني — لا توجد تغييرات ملحوظة."
+        }
+      },
+      "demo": {
+        "ahmedProgress": {
+          "title": "مراجعة تقدم أحمد علي",
+          "q1": "كيف كان أداء أحمد هذا الأسبوع؟",
+          "a1": "أكمل أحمد {{completed}} من أصل {{prescribed}} جلسات مقررة هذا الأسبوع (نسبة التزام {{percent}}%). تحسّن مدى حركة الركبة من {{flexionOldest}}° إلى {{flexionLatest}}°، بينما اتجه الألم بشكل عام للانخفاض نحو {{painRecentAverage}}/10 قبل اليوم. بقيت جودة الحركة مستقرة. أظهرت آخر جلسة له انخفاضًا بسيطًا قدره {{sessionDelta}}° في مدى الحركة مقارنة بالجلسة السابقة.",
+          "q2": "برأيك هل الوقت مناسب لتطوير برنامج تمارينه؟",
+          "a2": "اتجاهه الأخير إيجابي بشكل عام، لكن انخفاض مدى الحركة في آخر جلسة يستحق المراجعة قبل تعديل البرنامج. كما أن تسجيل الألم اليوم جاء أعلى من متوسطه الأخير، فمن الأفضل مراجعة ذلك قبل زيادة شدة التمارين."
+        },
+        "todayAppointments": {
+          "title": "مواعيد اليوم",
+          "q1": "وش مواعيدي اليوم؟",
+          "a1": "لديك {{count}} مواعيد مجدولة اليوم. موعدك القادم هو {{nextName}} الساعة {{nextTime}}، يليه {{followingName}} الساعة {{followingTime}}.",
+          "q2": "ليش أحمد طلب هذا الموعد؟",
+          "a2": "طلب أحمد موعد متابعة بعد أن أبلغ عن زيادة في الألم بعد جلسات التأهيل الأخيرة. كان آخر تسجيل للألم لديه {{painLatest}}/10 مقارنة بمتوسط حديث يبلغ نحو {{painRecentAverage}}/10.",
+          "q3": "انقله إلى أقرب موعد متاح.",
+          "a3": "تم تحديث الجدول التجريبي — يظهر أحمد الآن في أقرب موعد تجريبي متاح. بما أن هذا عرض تجريبي في الواجهة فقط، لم يتم تغيير أي نظام مواعيد حقيقي."
+        },
+        "attention": {
+          "title": "مرضى يحتاجون إلى متابعة",
+          "q1": "من الذي يجب أن أراجعه اليوم؟",
+          "a1": "يبرز {{count}} مرضى في بيانات التأهيل اليوم:",
+          "q2": "وماذا عن سارة تحديدًا — هل الوضع مقلق؟",
+          "a2": "ليست حالة طارئة، لكنها تستحق متابعة — انخفض التزامها الأسبوعي إلى {{adherence}}% بعد تفويت عدة جلسات، وهذا نمط يستحق الفهم أكثر من كونه مؤشرًا سريريًا خطيرًا بحد ذاته.",
+          "q3": "تمام، سأتواصل معها قبل زيارتها القادمة.",
+          "a3": "ممتاز. خبرني إذا تحتاج ملخصًا لاتجاه التزامها لمشاركته معها."
+        }
+      }
+    }
+  },
+  "doctorExercises": {
+    "header": {
+      "title": "برنامج التمارين",
+      "subtitle": "التمارين المخصصة للمريض رقم:"
+    },
+    "table": {
+      "title": "التمارين النشطة",
+      "subtitle": "متابعة التزام المريض ومستوى الصعوبة."
+    },
+    "columns": {
+      "exercise": "التمرين",
+      "progress": "التقدم",
+      "difficulty": "الصعوبة"
+    }
+  },
+  "doctorPatientProfile": {
+    "header": {
+      "patientIdLabel": "رقم المريض:",
+      "buttons": {
+        "newReport": "تقرير جديد",
+        "assignExercises": "تعيين تمارين",
+        "newAppointment": "موعد جديد"
+      }
+    },
+    "cards": {
+      "basicInfo": {
+        "title": "المعلومات الأساسية",
+        "age": "العمر",
+        "gender": "الجنس",
+        "phone": "رقم الجوال",
+        "email": "البريد الإلكتروني",
+        "male": "ذكر",
+        "female": "أنثى"
+      },
+      "clinicalStatus": {
+        "title": "الحالة السريرية",
+        "diagnosis": "التشخيص",
+        "stage": "مرحلة التأهيل",
+        "riskLevel": "مستوى الخطورة",
+        "lastVisit": "آخر زيارة",
+        "risk": {
+          "low": "منخفض",
+          "medium": "متوسط",
+          "high": "مرتفع"
+        }
+      },
+      "pain": {
+        "title": "مستوى الألم",
+        "low": "منخفض",
+        "medium": "متوسط",
+        "high": "مرتفع",
+        "timelineTitle": "تطور مستوى الألم",
+        "chartLabel": "مستوى الألم"
+      }
+    },
+    "kneeModel": {
+      "title": "نموذج الركبة ثلاثي الأبعاد (تجريبي)",
+      "description": "انقر على البطاقة لإظهار تفاصيل مدى الحركة. قم بتدوير النموذج لشرح الحركة للمريض.",
+      "info": {
+        "currentAngle": "الزاوية الحالية",
+        "exercise": "التمرين",
+        "flexionRange": "مدى الثني",
+        "phase": "المرحلة"
+      },
+      "legend": {
+        "safe": "نطاق آمن",
+        "caution": "بحذر",
+        "highRisk": "مخاطر عالية"
+      }
+    },
+    "sections": {
+      "notes": "ملاحظات سريرية",
+      "files": "ملفات طبية",
+      "exerciseProgram": "برنامج التمارين",
+      "exerciseFeedback": "تقييم التمارين",
+      "visits": "سجل الزيارات"
+    },
+    "feedback": {
+      "labels": {
+        "exercise": "التمرين",
+        "rating": "التقييم (1–10)",
+        "current": "الحالي:",
+        "note": "ملاحظة (اختياري)"
+      },
+      "placeholder": "ملاحظة سريرية حول أداء المريض لهذا التمرين...",
+      "button": "حفظ التقييم (تجريبي)",
+      "saved": "تم حفظ التقييم (تجريبي) – راجع وحدة التحكم في المتصفح."
+    },
+    "visits": {
+      "table": {
+        "date": "التاريخ",
+        "type": "النوع",
+        "status": "الحالة"
+      }
+    },
+    "modal": {
+      "close": "إغلاق"
+    }
+  },
+  "doctorReports": {
+    "title": "التقارير السريرية",
+    "subtitle": "راجع تقارير التأهيل المُولَّدة والاتجاهات السريرية عبر مرضاك.",
+    "meta": {
+      "total": "{{count}} إجمالاً",
+      "awaitingReview": "{{count}} بانتظار المراجعة"
+    },
+    "overview": {
+      "label": "فلاتر نظرة عامة على التقارير",
+      "awaitingReview": "بانتظار المراجعة"
+    },
+    "filters": {
+      "searchPlaceholder": "ابحث باسم المريض، رقم التقرير، أو رقم المريض...",
+      "statusLabel": "حالة المراجعة",
+      "statusAll": "جميع الحالات",
+      "trendLabel": "الاتجاه السريري",
+      "trendAll": "كل الاتجاهات"
+    },
+    "table": {
+      "columns": {
+        "report": "التقرير",
+        "patient": "المريض",
+        "period": "الفترة",
+        "pain": "الألم",
+        "status": "الحالة",
+        "trend": "الاتجاه السريري",
+        "updated": "آخر تحديث"
+      },
+      "noResults": "لا توجد تقارير مطابقة لخيارات البحث.",
+      "reviewAction": "مراجعة",
+      "viewAction": "عرض"
+    },
+    "assistant": {
+      "actions": {
+        "reviewReport": "مراجعة التقرير",
+        "compareWithPrevious": "قارن بالتقرير السابق"
+      }
+    },
+    "detail": {
+      "title": "تقرير {{id}}",
+      "measurements": "القياسات الرئيسية",
+      "comparison": "مقارنة بالتقرير السابق",
+      "noComparison": "لا يوجد تقرير سابق قابل للمقارنة.",
+      "metric": "المقياس",
+      "previous": "السابق",
+      "current": "الحالي",
+      "change": "التغيّر",
+      "noChange": "لا تغيّر",
+      "metrics": {
+        "pain": "الألم",
+        "rom": "مدى ثني الركبة",
+        "adherence": "الالتزام"
+      },
+      "viewSessions": "عرض جلسات هذه الفترة",
+      "clinicianNote": "ملاحظة الطبيب",
+      "noClinicianNote": "لم تتم إضافة ملاحظة طبيب لهذا التقرير.",
+      "addNote": "أضف ملاحظة (اختياري)",
+      "markReviewed": "تأكيد المراجعة"
+    }
+  },
+  "doctorPatients": {
+    "title": "المرضى",
+    "subtitle": "تابع قائمة مرضاك، وحدد من يحتاج الأولوية، وافتح السجل التأهيلي لأي مريض.",
+    "search": "ابحث بالاسم أو رقم المريض",
+    "empty": "لا يوجد مرضى مطابقون لهذه الفلاتر.",
+    "summary": {
+      "active": "المرضى النشطون",
+      "needAttention": "يحتاجون متابعة",
+      "pendingAppointments": "طلبات مواعيد قيد الانتظار",
+      "reportsAwaitingReview": "تقارير بانتظار المراجعة"
+    },
+    "filters": {
+      "label": "تصفية",
+      "all": "الكل",
+      "needsAttention": "يحتاج متابعة",
+      "stable": "مستقر",
+      "pendingAppointment": "موعد قيد الانتظار",
+      "reportAwaitingReview": "تقرير بانتظار المراجعة"
+    },
+    "sort": {
+      "label": "ترتيب حسب",
+      "priority": "الأولوية",
+      "activity": "آخر نشاط",
+      "name": "الاسم"
+    },
+    "metrics": {
+      "adherence": "الالتزام",
+      "latestPain": "آخر ألم",
+      "latestRom": "آخر مدى حركة"
+    },
+    "tags": {
+      "appointmentPending": "موعد قيد الانتظار",
+      "reportPending": "تقرير قيد الانتظار"
+    },
+    "activity": {
+      "none": "لا توجد جلسات بعد"
+    },
+    "actions": {
+      "view": "عرض المريض"
+    },
+    "appointmentTypes": {
+      "rehabSession": "جلسة تأهيل"
+    }
+  },
+  "doctorPatientWorkspace": {
+    "tabsLabel": "أقسام مساحة عمل المريض",
+    "close": "إغلاق",
+    "done": "تم",
+    "cancel": "إلغاء",
+    "pendingAppointmentBanner": "لدى هذا المريض طلب موعد قيد الانتظار — راجعه في تبويب المواعيد.",
+    "tabs": {
+      "overview": "نظرة عامة",
+      "rehabilitation": "التأهيل",
+      "sessions": "الجلسات",
+      "reports": "التقارير",
+      "appointments": "المواعيد",
+      "clinicalRecord": "السجل السريري"
+    },
+    "header": {
+      "adherence": "التزام {{value}}%",
+      "editPlan": "تعديل برنامج التأهيل",
+      "scheduleAppointment": "جدولة موعد"
+    },
+    "overview": {
+      "clinicalStatus": "الحالة السريرية",
+      "diagnosis": "التشخيص",
+      "phase": "مرحلة التأهيل",
+      "week": "الأسبوع الحالي",
+      "weekValue": "الأسبوع {{number}}",
+      "clinician": "الطبيب المعالج",
+      "rehabProgress": "تقدم التأهيل",
+      "adherence": "الالتزام",
+      "sessionsThisWeek": "جلسات هذا الأسبوع",
+      "trend": "الاتجاه",
+      "latestMeasurements": "آخر القياسات",
+      "pain": "الألم",
+      "flexionRom": "مدى حركة الثني",
+      "movementQuality": "جودة الحركة",
+      "romVisualizationNote": "تصور مدى حركة الركبة — يعكس قياس آخر جلسة، وليس قراءة حية من مستشعر.",
+      "whyFlagged": "سبب تنبيه المتابعة",
+      "recentActivity": "النشاط الأخير",
+      "noActivity": "لا يوجد نشاط حديث بعد.",
+      "activity": {
+        "sessionCompleted": "اكتملت جلسة تأهيل",
+        "reportGenerated": "تم إنشاء تقرير تقدم",
+        "appointmentRequested": "تم طلب موعد"
+      }
+    },
+    "rehab": {
+      "currentPlan": "برنامج التأهيل الحالي",
+      "editPlan": "تعديل برنامج التأهيل",
+      "startDate": "بدأ في {{date}}",
+      "noExercises": "لا توجد تمارين موصوفة حاليًا.",
+      "remove": "إزالة التمرين",
+      "repsLine": "{{sets}} مجموعات × {{reps}} تكرار",
+      "durationLine": "{{sets}} مجموعات × {{seconds}} ثانية",
+      "holdLine": "ثبات {{seconds}} ثانية",
+      "frequencyLine": "{{count}} مرات/أسبوع",
+      "targetRomLine": "مدى الحركة المستهدف {{min}}°–{{max}}°",
+      "lastCompleted": "آخر إنجاز {{date}}",
+      "neverCompleted": "لم يُنجز بعد",
+      "activeExercises": "التمارين النشطة",
+      "addExercise": "إضافة تمرين",
+      "addToProgram": "إضافة للبرنامج",
+      "fields": {
+        "exercise": "التمرين",
+        "sets": "المجموعات",
+        "reps": "التكرارات",
+        "durationSeconds": "المدة (ثواني)",
+        "frequency": "التكرار (مرات/أسبوع)",
+        "holdSeconds": "الثبات (ثواني، اختياري)",
+        "targetRomMin": "أدنى مدى حركة مستهدف (اختياري)",
+        "targetRomMax": "أقصى مدى حركة مستهدف (اختياري)",
+        "instructions": "تعليمات (اختياري)"
+      },
+      "errors": {
+        "sets": "يجب أن تكون المجموعات رقمًا موجبًا.",
+        "reps": "يجب أن تكون التكرارات رقمًا موجبًا.",
+        "duration": "يجب أن تكون المدة رقمًا موجبًا بالثواني.",
+        "frequency": "يجب أن يكون التكرار بين 1 و7 جلسات أسبوعيًا."
+      }
+    },
+    "sessions": {
+      "empty": "لا توجد جلسات تأهيل مكتملة بعد.",
+      "markReviewed": "تمييز كمُراجَع",
+      "addNote": "إضافة ملاحظة سريرية (اختياري)",
+      "exerciseBreakdown": "تفصيل التمارين",
+      "source": "المصدر",
+      "sourceLive": "جلسة مريض حية",
+      "sourceHistorical": "سجل تاريخي",
+      "reviewed": "تمت المراجعة",
+      "awaitingReview": "بانتظار المراجعة",
+      "table": {
+        "date": "التاريخ",
+        "completion": "الإنجاز",
+        "pain": "الألم (قبل ← بعد)",
+        "rom": "مدى الحركة",
+        "review": "المراجعة"
+      }
+    },
+    "reports": {
+      "empty": "لم يتم إنشاء تقارير تأهيل لهذا المريض بعد.",
+      "generateNew": "إنشاء تقرير للفترة الحالية",
+      "markReviewed": "تمييز كمُراجَع",
+      "addNote": "إضافة ملاحظة الطبيب (اختياري)",
+      "reportTitle": "تقرير التأهيل",
+      "sessions": "الجلسات",
+      "adherence": "الالتزام",
+      "pain": "اتجاه الألم",
+      "rom": "اتجاه مدى الحركة",
+      "status": {
+        "awaiting_review": "بانتظار المراجعة",
+        "reviewed": "تمت المراجعة"
+      },
+      "flags": {
+        "painSpike": "ارتفاع الألم في آخر جلسة",
+        "romRegression": "تراجع طفيف في آخر مدى حركة"
+      }
+    },
+    "appointments": {
+      "empty": "لا توجد مواعيد بعد.",
+      "scheduleNew": "جدولة موعد",
+      "schedule": "جدولة",
+      "accept": "قبول",
+      "reject": "رفض",
+      "cancel": "إلغاء",
+      "proposeNewTime": "اقتراح وقت جديد",
+      "sendProposal": "إرسال الاقتراح",
+      "proposedTime": "الوقت المقترح",
+      "source": "المصدر: {{source}}",
+      "sourceValue": {
+        "patient": "طلبه المريض",
+        "doctor": "جدولة الطبيب",
+        "assistant": "طُلب عبر المساعد"
+      },
+      "status": {
+        "requested": "مطلوب",
+        "confirmed": "مؤكد",
+        "alternative_proposed": "تم اقتراح وقت جديد",
+        "declined": "مرفوض",
+        "completed": "مكتمل",
+        "cancelled": "ملغى"
+      },
+      "fields": {
+        "date": "التاريخ",
+        "time": "الوقت",
+        "type": "النوع",
+        "note": "ملاحظة (اختياري)"
+      },
+      "errors": {
+        "dateTime": "اختر تاريخًا ووقتًا.",
+        "invalidDate": "اختر تاريخًا ووقتًا قادمًا صالحًا."
+      }
+    },
+    "clinicalRecord": {
+      "notes": "الملاحظات السريرية",
+      "addNote": "إضافة ملاحظة سريرية",
+      "saveNote": "حفظ الملاحظة",
+      "noNotes": "لا توجد ملاحظات سريرية بعد.",
+      "clinicianOnly": "للطبيب فقط",
+      "files": "المستندات الطبية",
+      "noFiles": "لا توجد مستندات.",
+      "demoOnly": "تجريبي فقط",
+      "visitHistory": "سجل الزيارات",
+      "noVisits": "لا توجد زيارات سريرية مسجلة بعد.",
+      "visitTable": {
+        "date": "التاريخ",
+        "type": "النوع",
+        "status": "الحالة"
+      },
+      "errors": {
+        "emptyNote": "أدخل ملاحظة قبل الحفظ."
+      }
+    }
+  },
+  "doctorProfile": {
+    "title": "ملف الطبيب",
+    "subtitle": "إدارة معلوماتك المهنية وبيانات التواصل ومواعيد تواجدك.",
+    "saveSuccess": "تم تحديث الملف الشخصي.",
+    "professionalInfo": "المعلومات المهنية",
+    "visibleToAdmins": "مرئي لمسؤولي العيادة",
+    "contactAvailability": "التواصل والتواجد",
+    "labels": {
+      "fullName": "الاسم الكامل",
+      "specialty": "التخصص",
+      "yearsExperience": "سنوات الخبرة",
+      "licenseNumber": "رقم الترخيص الطبي",
+      "clinicName": "اسم العيادة / المستشفى",
+      "bio": "نبذة مختصرة",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الجوال",
+      "location": "الموقع / المدينة",
+      "availabilityStatus": "حالة التواجد"
+    },
+    "errors": {
+      "required": "هذا الحقل مطلوب.",
+      "yearsExperience": "أدخل رقمًا صحيحًا بين 0 و70.",
+      "licenseNumber": "أدخل رقم ترخيص صالح (3 أحرف على الأقل).",
+      "email": "أدخل بريدًا إلكترونيًا صالحًا.",
+      "phone": "أدخل رقم جوال صالح.",
+      "bioLength": "اجعل نبذتك أقل من {{max}} حرفًا.",
+      "workingHours": "يجب أن يكون وقت الانتهاء لكل يوم مفتوح بعد وقت البداية."
+    },
+    "status": {
+      "available": "متاح للمواعيد",
+      "busy": "مشغول / في جلسات",
+      "away": "غير متواجد"
+    },
+    "avatar": {
+      "change": "تغيير الصورة",
+      "remove": "إزالة الصورة",
+      "errors": {
+        "type": "الرجاء اختيار صورة بصيغة JPG أو PNG أو WEBP.",
+        "size": "الرجاء اختيار صورة أصغر من 1.5 ميجابايت."
+      }
+    },
+    "workingHours": {
+      "title": "ساعات العمل",
+      "copySunday": "نسخ ساعات الأحد لبقية الأيام المفتوحة",
+      "closed": "مغلق",
+      "startLabel": "وقت بداية {{day}}",
+      "endLabel": "وقت نهاية {{day}}",
+      "conflictWarning": "يوجد {{count}} موعد قائم يقع خارج ساعات العمل المحدثة.",
+      "reviewAppointments": "مراجعة المواعيد",
+      "saveAnyway": "حفظ على أي حال",
+      "days": {
+        "sunday": "الأحد",
+        "monday": "الاثنين",
+        "tuesday": "الثلاثاء",
+        "wednesday": "الأربعاء",
+        "thursday": "الخميس",
+        "friday": "الجمعة",
+        "saturday": "السبت"
+      }
+    },
+    "cancel": "إلغاء",
+    "saveChanges": "حفظ التغييرات"
+  },
+  "patientDashboard": {
+    "greeting": {
+      "morning": "صباح الخير، {{name}}.",
+      "afternoon": "مساء الخير، {{name}}.",
+      "evening": "مساء الخير، {{name}}.",
+      "fallbackName": "صديقي"
+    },
+    "assistant": {
+      "regionLabel": "مساعد KneeGuide",
+      "orbLabel": "مساعد KneeGuide",
+      "intro": "كيف يمكنني مساعدتك في رحلة تعافيك اليوم؟",
+      "inputLabel": "اسأل KneeGuide عن رحلة تعافيك",
+      "inputPlaceholder": "اسأل KneeGuide عن رحلة تعافيك...",
+      "sendLabel": "إرسال",
+      "suggestionsLabel": "اقتراحات سريعة",
+      "followUpLabel": "اقتراحات للمتابعة",
+      "historyLabel": "المحادثة",
+      "youLabel": "أنت",
+      "history": {
+        "title": "سجل المحادثات",
+        "newChat": "محادثة جديدة",
+        "openHistory": "فتح سجل المحادثات",
+        "closeHistory": "إغلاق سجل المحادثات",
+        "collapse": "طي الشريط الجانبي",
+        "expand": "توسيع الشريط الجانبي",
+        "today": "اليوم",
+        "previous": "محادثات سابقة",
+        "untitled": "محادثة جديدة",
+        "mockBadge": "تجريبي",
+        "empty": "لا توجد محادثات بعد"
+      },
+      "painLogger": {
+        "rangeLabel": "مستوى الألم، من 0 إلى 10",
+        "valueText": "{{value}} من 10، {{severity}}",
+        "submit": "إرسال مستوى الألم",
+        "logged": "تم التسجيل"
+      },
+      "actions": {
+        "showExercises": "عرض تمارين اليوم",
+        "nextAppointment": "متى موعدي القادم؟",
+        "latestReport": "عرض آخر تقرير لي",
+        "logPain": "تسجيل ألم اليوم",
+        "rehabProgress": "كيف يسير تقدّم برنامجي العلاجي؟",
+        "connectDevice": "كيف أربط جهازي؟",
+        "requestAppointment": "أبي أحجز موعد",
+        "chooseAppointmentTime": "اختيار موعد",
+        "changePain": "نعم، أريد تغييره",
+        "keepPain": "لا، أبقِه كما هو"
+      },
+      "responses": {
+        "noAppointment": "ليس لديك موعد قادم مجدول حالياً.",
+        "nextAppointment": "موعدك القادم في {{date}} الساعة {{time}} مع {{doctor}}.",
+        "openAppointments": "عرض المواعيد",
+        "requestAppointmentIntro": "أكيد. أقدر أساعدك بطلب موعد متابعة مع {{doctorName}}.",
+        "appointmentRequestSubmitted": "تم تسجيل طلبك ليوم {{date}} الساعة {{time}}. الحالة: {{status}}.",
+        "noReport": "لا توجد تقارير سريرية لك بعد.",
+        "latestReport": "آخر تقرير لك بتاريخ {{date}} مُصنَّف بحالة {{status}}، بمستوى ألم مسجَّل {{pain}}.",
+        "noProgress": "لا تتوفر بيانات التزام حتى الآن.",
+        "rehabProgress": "أنت في سلسلة التزام مدتها {{days}} يوم، مع إنجاز {{percent}}% من تمارين هذا الأسبوع.",
+        "viewReports": "عرض التقارير",
+        "logPainPrompt": "كيف تقيّم مستوى ألمك اليوم؟",
+        "painRecentExists": "سجّلت مستوى الألم عندك مؤخراً بـ {{value}} من 10. هل تحب تغييره؟",
+        "painChangePrompt": "تمام. كم مستوى الألم عندك الآن؟",
+        "painKept": "تمام، بخلي مستوى الألم المسجَّل عندك {{value}} من 10 زي ما هو.",
+        "painLogged": "تمام، سجلت مستوى الألم عندك {{value}} من 10.",
+        "painUpdated": "تم، حدّثت مستوى الألم المسجَّل إلى {{value}} من 10.",
+        "unsupported": "حالياً ما أقدر أجاوب على الأسئلة المفتوحة، لكن أقدر أساعدك في تمارينك، مواعيدك، تقاريرك، تسجيل الألم، أو متابعة تقدم التأهيل.",
+        "capabilityReportAnalysis": "أقدر أعرض لك تقريرك الحالي، لكن التحليل التفصيلي والمقارنة الذكية بين التقارير ما زالت غير متصلة حالياً.",
+        "capabilityExerciseAnalysis": "أقدر أعرض لك قائمة تمارينك، لكن تحليل الأداء التفصيلي ما زال غير متصل حالياً.",
+        "exercisesIntro": "عندك {{count}} تمارين مجدولة اليوم:",
+        "noExercisesToday": "ما عندك أي تمارين مخصصة لليوم.",
+        "openExerciseProgram": "فتح برنامج التمارين",
+        "deviceIntro": "تقدر تربط جهاز KneeGuide من الملف الشخصي ← الأجهزة، أو تبحث عنه وتربطه مباشرة من هنا.",
+        "deviceScan": "البحث عن جهاز",
+        "openDeviceSettings": "فتح إعدادات الأجهزة",
+        "deviceScanning": "جارٍ البحث عن الأجهزة القريبة...",
+        "deviceFound": "لقيت {{count}} جهاز قريب:",
+        "deviceSignal": "قوة الإشارة: {{value}} dBm",
+        "deviceConnect": "ربط",
+        "deviceConnecting": "جارٍ الربط...",
+        "deviceConnectAriaLabel": "ربط جهاز {{name}}",
+        "deviceConnected": "تم الاتصال بجهاز {{name}}."
+      }
+    },
+    "logout": "تسجيل الخروج",
+    "mock": {
+      "lastReport": {
+        "statusLabel": "تمت المراجعة"
+      }
+    }
+  },
+  "patientExercises": {
+    "header": {
+      "title": "برنامج التمارين الخاص بك",
+      "subtitle": "اتّبع الروتين اليومي لدعم تعافي الركبة وتحسين الوظيفة الحركية."
+    },
+    "mock": {
+      "quadSets": {
+        "name": "تمرين شدّ العضلة الأمامية (Quad Sets)",
+        "description": "يعزز قوة العضلة الرباعية لتحسين ثبات مفصل الركبة.",
+        "target": "التحكم في بسط الركبة",
+        "instructions": [
+          "اجلس أو استلقِ مع دعم الساق والركبة ممدودة.",
+          "شدّ عضلة الفخذ الأمامية كأنك تضغط الركبة للأسفل.",
+          "حافظ على الشد لثوانٍ قليلة.",
+          "استرخِ ببطء وكرر التمرين."
+        ],
+        "cues": [
+          "خلّ الحركة متحكم بها، مو بقوة زايدة.",
+          "تنفّس بشكل طبيعي طول التمرين.",
+          "توقف إذا حسيت ألم حاد."
+        ],
+        "mistakes": [
+          "الاستعجال في كل تكرار.",
+          "حبس النفس.",
+          "إجبار الحركة رغم الألم."
+        ]
+      },
+      "legRaises": {
+        "name": "رفع الساق المستقيمة",
+        "description": "يساعد على تحسين التحكم في عضلات الفخذ وتقليل الضغط على الركبة.",
+        "target": "التحكم في الورك والفخذ",
+        "instructions": [
+          "استلقِ على ظهرك مع ثني ركبة وتمديد الساق الثانية.",
+          "شدّ عضلة الفخذ للساق الممدودة.",
+          "ارفعها ببطء لمستوى الركبة المثنية.",
+          "أنزلها بتحكم للوضع الأصلي."
+        ],
+        "cues": [
+          "حافظ على استقامة الركبة طوال الرفع.",
+          "حرك الساق ببطء بدل تأرجحها.",
+          "خلّ أسفل ظهرك مرتاح على السطح."
+        ],
+        "mistakes": [
+          "ثني الركبة أثناء الرفع.",
+          "الرفع بسرعة أو لارتفاع زايد.",
+          "تقويس أسفل الظهر."
+        ]
+      },
+      "heelSlides": {
+        "name": "انزلاقات الكعب (Heel Slides)",
+        "description": "يزيد من مدى ثني الركبة ويحسن الحركة بأمان.",
+        "target": "مدى ثني الركبة",
+        "instructions": [
+          "استلقِ على ظهرك والساقين ممدودتين.",
+          "حرّك كعبك ببطء نحو جسمك مع ثني الركبة.",
+          "وصّل لأبعد نقطة مريحة ثم توقف لحظة.",
+          "رجّع الكعب للوضع الأصلي."
+        ],
+        "cues": [
+          "خلّ الحركة سلسة وبطيئة.",
+          "توقف عند أول إحساس بألم حاد.",
+          "تقدر تساعد الحركة بيدك إذا احتجت."
+        ],
+        "mistakes": [
+          "إجبار الركبة أكثر من المريح.",
+          "تحريك الكعب بسرعة زايدة.",
+          "رفع القدم عن السطح."
+        ]
+      },
+      "hamstring": {
+        "name": "إطالة عضلة الخلفية (Hamstring Stretch)",
+        "description": "يساعد على تقليل الشدّ خلف الركبة وتعزيز المرونة.",
+        "target": "مرونة عضلة أوتار الركبة",
+        "instructions": [
+          "اجلس مع تمديد الساق أمامك.",
+          "حافظ على استقامة ظهرك وانحنِ للأمام بلطف من الورك.",
+          "حافظ على الإطالة بدون ارتداد.",
+          "ارجع ببطء."
+        ],
+        "cues": [
+          "مدّ العضلة لحد الشد الخفيف مو الألم.",
+          "خلّ الحركة بطيئة ومتحكم بها.",
+          "تنفّس بشكل طبيعي أثناء الثبات."
+        ],
+        "mistakes": [
+          "الارتداد أثناء الإطالة.",
+          "تقويس الظهر للوصول أبعد.",
+          "الاستمرار رغم الألم الحاد."
+        ]
+      },
+      "calfRaises": {
+        "name": "رفع الساق الخلفية (Calf Raises)",
+        "description": "يقوّي عضلات أسفل الساق لتحسين التوازن والثبات.",
+        "target": "قوة أسفل الساق",
+        "instructions": [
+          "قف بثبات على قدميك، وامسك بشيء للدعم إذا احتجت.",
+          "ارتفع ببطء على أطراف أصابعك.",
+          "اثبت للحظة في الأعلى.",
+          "انزل بتحكم للوضع الأصلي."
+        ],
+        "cues": [
+          "خلّ الحركة بطيئة ومتحكم بها.",
+          "وزّع الثقل بالتساوي على القدمين.",
+          "استخدم دعم للتوازن إذا احتجت."
+        ],
+        "mistakes": [
+          "الارتفاع بسرعة زايدة.",
+          "ميلان الكاحلين للخارج.",
+          "تخطي مرحلة النزول المتحكم بها."
+        ]
+      }
+    },
+    "session": {
+      "weekNav": "أسبوع البرنامج العلاجي",
+      "weekLabel": "الأسبوع {{number}}",
+      "todaysSessionTab": "جلسة اليوم",
+      "exerciseLibrary": "مكتبة التمارين",
+      "dayStatus": {
+        "completed": "مكتملة",
+        "today": "اليوم",
+        "upcoming": "قادمة"
+      },
+      "todaysRehab": "برنامج تأهيل اليوم",
+      "sessionNumber": "الجلسة {{number}}",
+      "exercisesCount": "{{count}} تمارين",
+      "setsCount": "{{count}} مجموعات إجمالاً",
+      "estimatedDuration": "المدة المتوقعة: {{minutes}} دقيقة",
+      "exercisesProgress": "{{completed}} / {{total}} تمارين",
+      "setsProgress": "{{completed}} / {{total}} مجموعات",
+      "startSession": "ابدأ جلسة اليوم",
+      "sessionTime": "وقت الجلسة",
+      "elapsed": "مرّ {{time}}",
+      "setsReps": "{{sets}} مجموعات × {{reps}} تكرار",
+      "setsDuration": "{{sets}} مجموعات × {{seconds}} ثانية",
+      "target": "الهدف",
+      "estimated": "المدة المتوقعة: {{minutes}} دقيقة",
+      "previousSession": "الجلسة السابقة",
+      "previousRom": "مدى الحركة {{value}}°",
+      "setLabel": "المجموعة {{current}} من {{total}}",
+      "repsLabel": "{{count}} تكرار",
+      "exerciseTime": "وقت التمرين",
+      "movementQuality": "جودة الحركة",
+      "range": "مدى الحركة",
+      "completeSet": "إنهاء المجموعة",
+      "sensorNotConnected": "الحساس غير متصل — المتابعة مستمرة يدويًا.",
+      "setStatus": {
+        "done": "منتهية",
+        "active": "الحالية",
+        "pending": "—"
+      },
+      "quality": {
+        "fair": "مقبولة",
+        "good": "جيدة",
+        "excellent": "ممتازة"
+      },
+      "insightTitle": "تحليل KneeGuide",
+      "continueTo": "المتابعة إلى {{name}}",
+      "finishSession": "إنهاء الجلسة",
+      "completedIn": "اكتمل خلال {{time}}",
+      "painCheckPrompt": "كيف تحس ركبتك بعد جلسة اليوم؟",
+      "skipPainCheck": "تخطي",
+      "sessionCompleteTitle": "اكتملت الجلسة",
+      "greatWork": "أحسنت، {{name}}.",
+      "todaysRehabDuration": "مدة تأهيل اليوم",
+      "exercisesSummary": "التمارين",
+      "setsSummary": "المجموعات",
+      "avgQuality": "متوسط جودة الحركة",
+      "painChange": "الألم",
+      "romTrend": "اتجاه مدى الحركة",
+      "recoveryInsightTitle": "تحليل KneeGuide للتعافي",
+      "recommendationTitle": "الخطوة التالية",
+      "recommendations": {
+        "followPlan": "اتّبع خطة التعافي الموصى بها من طبيبك.",
+        "lightActivity": "الألم زاد شوي اليوم — خفف من نشاطك لبقية اليوم.",
+        "monitor": "استمر بمتابعة مستوى الألم والحركة.",
+        "contactClinician": "إذا ساءت الأعراض، تواصل مع طبيبك."
+      },
+      "viewReport": "عرض تقرير الجلسة الكامل",
+      "reportReady": "تقرير الجلسة جاهز",
+      "reportFutureNote": "في نسخة KneeGuide المتصلة، يمكن مشاركة تقارير الجلسات المكتملة مع فريقك الطبي.",
+      "reportTitle": "تقرير الجلسة",
+      "reportDuration": "المدة",
+      "reportExercise": "التمرين",
+      "reportSets": "المجموعات",
+      "close": "إغلاق",
+      "upcomingHeading": "يوم تأهيل قادم",
+      "upcomingSub": "{{count}} تمارين مخططة · حوالي {{minutes}} دقيقة",
+      "dayLockedReason": "هذه الجلسة غير متاحة بعد — تُفتح في يومها المحدد.",
+      "insights": {
+        "exerciseImproved": "مدى حركتك كان أعلى بـ {{delta}}° مقارنة بجلستك السابقة — تقدّم ثابت وجيد.",
+        "exerciseReduced": "مدى حركتك كان أقل شوي من جلستك السابقة. هذا وارد أحيانًا — حافظ على حركة متحكم بها بدل ما تكابر عليها.",
+        "exerciseMaintained": "حركتك كانت ثابتة مقارنة بجلستك السابقة — الثبات نفسه تقدّم.",
+        "sessionPainIncreased": "حركتك كانت ثابتة طوال الجلسة. الألم زاد شوي، فخفف من نشاطك لبقية اليوم واتّبع خطة التعافي الموصى بها.",
+        "sessionPainDecreased": "الألم خف مقارنة بقبل الجلسة، وحركتك كانت ثابتة طوالها. استمر باتّباع خطة التعافي الموصى بها.",
+        "sessionConsistent": "حركتك كانت ثابتة طوال جلسة اليوم. استمر باتّباع خطة التعافي الموصى بها."
+      },
+      "devReset": "إعادة تعيين الجلسة التجريبية (للتطوير فقط)",
+      "libraryIntro": "تمارين مرجعية مستخدمة في برنامج التأهيل الخاص بك.",
+      "details": {
+        "title": "تفاصيل التمرين",
+        "viewInstructionsFor": "عرض إرشادات {{name}}",
+        "todaysPrescription": "وصفة اليوم",
+        "purpose": "الهدف",
+        "howToPerform": "طريقة الأداء",
+        "keyCues": "نصائح أساسية",
+        "watchFor": "تنبّه لـ",
+        "kneeGuideTip": "نصيحة KneeGuide",
+        "kneeGuideTipMessage": "مدى الحركة المستهدف اليوم {{min}}–{{max}}°. ركّز على الثبات بدل زيادة المدى بسرعة.",
+        "mediaUnavailable": "الوسائط التعليمية غير متاحة لهذا التمرين حاليًا."
+      }
+    }
+  },
+  "patientReports": {
+    "header": {
+      "title": "تقارير التعافي الخاصة بك",
+      "subtitle": "ملخص بصري شامل لتقدم برنامج إعادة تأهيل الركبة."
+    },
+    "filters": {
+      "range": "المدة الزمنية",
+      "sortBy": "الفرز حسب"
+    },
+    "range": {
+      "last7": "آخر 7 أيام",
+      "last30": "آخر 30 يومًا",
+      "last90": "آخر 3 أشهر"
+    },
+    "sort": {
+      "newest": "الأحدث أولاً",
+      "oldest": "الأقدم أولاً",
+      "painHigh": "الألم (من الأعلى إلى الأقل)",
+      "painLow": "الألم (من الأقل إلى الأعلى)"
+    },
+    "summary": {
+      "avgPain": "متوسط الألم",
+      "hintSessions": "حسب آخر الجلسات",
+      "flexion": "تحسن مدى الثني",
+      "hintImprovement": "معدل التحسن الكلي",
+      "completion": "معدل الإنجاز",
+      "hintCompletionCount": "{{completed}} من {{total}} جلسات",
+      "painComparison": "{{direction}} {{value}} مقارنة بآخر 5 جلسات",
+      "down": "↓",
+      "up": "↑",
+      "improving": "في تحسّن",
+      "declining": "في تراجع"
+    },
+    "table": {
+      "title": "سجل الجلسات",
+      "subtitle": "السجل الكامل لتتبع تقدم التأهيل.",
+      "headers": {
+        "date": "التاريخ",
+        "pain": "الألم",
+        "flexion": "الثني",
+        "extension": "المدّ",
+        "status": "الحالة",
+        "review": "المراجعة"
+      },
+      "view": "عرض"
+    },
+    "status": {
+      "session": {
+        "completed": "مكتملة",
+        "incomplete": "غير مكتملة"
+      },
+      "review": {
+        "reviewed": "تمت المراجعة",
+        "awaiting_review": "بانتظار المراجعة",
+        "not_shared": "لم تُشارك"
+      }
+    },
+    "empty": {
+      "noReportsYet": "لا توجد تقارير تعافي بعد. أكمل جلسة تأهيل لتبدأ بمتابعة تقدمك.",
+      "noReportsInRange": "لا توجد تقارير ضمن هذه المدة الزمنية. جرّب مدة أوسع.",
+      "noResultsForFilter": "لا توجد جلسات مطابقة لهذا العرض.",
+      "singleReportTrend": "نحتاج جلسات أكثر قبل ما يقدر KneeGuide يحدد اتجاه واضح للتعافي."
+    },
+    "insight": {
+      "title": "تحليل KneeGuide للتعافي",
+      "viewTrends": "عرض التقدم التفصيلي",
+      "painImproving": "الألم في تحسّن",
+      "painChanging": "اتجاه الألم",
+      "flexionImproving": "مدى الثني في تحسّن",
+      "flexionChanging": "اتجاه مدى الثني",
+      "adherence": "الالتزام",
+      "recentTrend": "الاتجاه الأخير",
+      "trendDirection": {
+        "improving": "في تحسّن",
+        "stable": "مستقر",
+        "declining": "في تراجع",
+        "insufficient_data": "بيانات غير كافية"
+      }
+    },
+    "milestones": {
+      "title": "أبرز مؤشرات التعافي",
+      "bestFlexion": "أفضل مدى ثني: {{value}}°",
+      "lowestPain": "أقل مستوى ألم: {{value}}/10",
+      "sessionsTracked": "{{completed}} من {{total}} جلسات مكتملة"
+    },
+    "trends": {
+      "title": "نظرة على الاتجاه العام",
+      "subtitle": "الألم ومدى الثني عبر جلساتك الأخيرة.",
+      "painLabel": "اتجاه الألم",
+      "flexionLabel": "اتجاه مدى الثني"
+    },
+    "insights": {
+      "recovery": {
+        "insufficientHistory": "نحتاج جلسات أكثر قبل ما يقدر KneeGuide يحدد اتجاه واضح للتعافي.",
+        "improvingFull": "تعافيك تحسّن خلال آخر {{count}} جلسات. الألم نزل من {{oldPain}}/10 إلى {{newPain}}/10، بينما تحسّن مدى ثني الركبة من {{oldFlexion}}° إلى {{newFlexion}}°.",
+        "improvingPartial": "تعافيك يُظهر اتجاهًا إيجابيًا خلال آخر {{count}} جلسات.",
+        "declining": "آخر {{count}} جلسات تُظهر ارتفاعًا بالألم أو انخفاضًا بمدى الحركة. يُفضّل مناقشة ذلك مع طبيبك.",
+        "stable": "مستوى الألم ومدى الحركة عندك ثابتين خلال آخر {{count}} جلسات."
+      },
+      "trend": {
+        "painDownRomUp": "الألم انخفض بشكل عام بينما تحسّن مدى ثني الركبة خلال جلساتك الأخيرة.",
+        "romUpPainStable": "مدى حركتك مستمر بالتحسن، بينما بقي الألم مستقرًا خلال جلساتك الأخيرة.",
+        "reviewWithClinician": "جلساتك الأخيرة تُظهر تحسنًا أقل من السابق — يُفضّل مراجعة ذلك مع طبيبك إذا استمر.",
+        "bothStable": "مستوى الألم ومدى الحركة عندك ثابتين خلال جلساتك الأخيرة.",
+        "mixed": "مدى حركتك يتجه بشكل جيد، لكن الألم تغيّر شوي — يستاهل المتابعة."
+      },
+      "session": {
+        "improvedBoth": "مدى ثني ركبتك زاد {{flexionDelta}}° مقارنة بجلستك السابقة، وتحسّن الألم أيضًا.",
+        "flexionImproved": "مدى ثني ركبتك زاد {{flexionDelta}}° مقارنة بجلستك السابقة.",
+        "painImproved": "الألم نزل {{painDelta}} نقاط مقارنة بجلستك السابقة.",
+        "mixed": "بعض المؤشرات تحسّنت وأخرى تراجعت مقارنة بجلستك السابقة — يستاهل المتابعة.",
+        "stable": "هذه الجلسة كانت متماشية مع جلستك السابقة."
+      }
+    },
+    "doctorFeedback": {
+      "title": "ملاحظات الطبيب",
+      "awaitingReview": "هذه الجلسة ما راجعها طبيبك بعد.",
+      "notShared": "هذا التقرير ما تمت مشاركته مع فريقك الطبي.",
+      "followUpRecommended": "يُنصح بموعد متابعة",
+      "fixtures": {
+        "detailed1": "تقدم ممتاز — بسط وثني ركبتك يتحسنان بثبات. استمر على البرنامج الحالي وواصل متابعة الألم بعد التمارين.",
+        "detailed2": "مدى حركتك مستمر بالتحسن بشكل جيد. لاحظت زيادة بسيطة بالألم بعد جلستك الأخيرة — خلنا نتابعها. خفف الشدة شوي إذا استمر الانزعاج، وبنرتب موعد متابعة لمراجعة تقدمك."
+      }
+    },
+    "reportModal": {
+      "eyebrow": "تقرير التعافي",
+      "close": "إغلاق",
+      "duration": "المدة",
+      "sessionInsightTitle": "تحليل KneeGuide",
+      "exercises": "التمارين",
+      "sets": "مجموعات"
+    }
+  },
+  "patientAppointments": {
+    "header": {
+      "title": "المواعيد",
+      "subtitle": "تابع مواعيد المتابعة العلاجية واطلب موعدًا مع فريقك الطبي."
+    },
+    "close": "إغلاق",
+    "viewDetails": "عرض التفاصيل",
+    "clinician": {
+      "label": "الطبيب المعالج",
+      "name": "د. سارة أحمد",
+      "specialty": "العلاج الطبيعي"
+    },
+    "location": {
+      "clinicName": "عيادة KneeGuide",
+      "room": "الغرفة {{room}}"
+    },
+    "types": {
+      "followUp": "جلسة متابعة علاج طبيعي",
+      "initial": "التقييم الأولي"
+    },
+    "hero": {
+      "title": "الموعد القادم",
+      "today": "اليوم",
+      "daysAway": "بعد {{count}} أيام",
+      "addToCalendar": "إضافة إلى التقويم",
+      "emptyText": "ما عندك موعد قادم مجدول حاليًا. تقدر تطلب موعد مع فريقك الطبي من الأسفل."
+    },
+    "insight": {
+      "title": "تحليل KneeGuide للمواعيد",
+      "clinicianFollowUp": "{{doctorName}} اقترحت الاستمرار على برنامجك الحالي قبل المتابعة القادمة. موعد المراجعة المقترح: {{followUp}}.",
+      "alternativeProposed": "اقترحت {{doctorName}} موعدًا جديدًا لطلبك — راجعه بالأسفل.",
+      "upcomingSoon": "موعدك القادم مع {{doctorName}} بعد {{count}} أيام.",
+      "pendingRequest": "طلب موعدك بانتظار مراجعة طبيبك.",
+      "noUpcoming": "ما عندك متابعة مجدولة حاليًا. إذا حاب تتواصل مع فريقك الطبي، تقدر تطلب موعد.",
+      "neutral": "موعدك القادم مع {{doctorName}} مسجل. خبّر طبيبك إذا تغيّر أي شي قبله."
+    },
+    "sections": {
+      "requests": "طلبات المواعيد",
+      "requestsEmpty": "ما عندك طلبات معلّقة أو حديثة.",
+      "upcoming": "المواعيد القادمة",
+      "upcomingEmpty": "لا توجد مواعيد قادمة.",
+      "past": "المواعيد السابقة",
+      "pastEmpty": "لا توجد مواعيد سابقة بعد."
+    },
+    "status": {
+      "REQUESTED": "بانتظار المراجعة",
+      "CONFIRMED": "مؤكد",
+      "ALTERNATIVE_PROPOSED": "تم اقتراح موعد جديد",
+      "DECLINED": "تم رفض الطلب",
+      "COMPLETED": "مكتمل",
+      "CANCELLED": "ملغى"
+    },
+    "reasons": {
+      "painIncreased": "زيادة في الألم",
+      "reviewProgress": "مراجعة تقدم التأهيل",
+      "romConcern": "قلق بشأن الحركة / مدى الحركة",
+      "exerciseDifficulty": "صعوبة في أداء التمارين",
+      "deviceIssue": "مشكلة في الجهاز / الحساس",
+      "generalFollowUp": "متابعة عامة",
+      "other": "أخرى"
+    },
+    "declineReasons": {
+      "schedule_conflict": "يوجد تعارض في جدول طبيبك بهذا الوقت.",
+      "no_clinical_need_yet": "لا يرى طبيبك حاجة سريرية لهذه الزيارة بعد.",
+      "requested_time_unavailable": "الوقت المطلوب غير متاح.",
+      "continue_current_plan": "يقترح طبيبك الاستمرار على برنامجك الحالي لفترة أطول أولاً.",
+      "other": "رفض طبيبك هذا الطلب."
+    },
+    "request": {
+      "cta": "طلب موعد",
+      "title": "طلب موعد جديد",
+      "chooseAnotherTimeTitle": "اختيار موعد آخر",
+      "reasonLabel": "سبب الموعد",
+      "noteLabel": "في شي حاب تخبر طبيبك فيه؟",
+      "notePlaceholder": "ملاحظة اختيارية...",
+      "chooseDate": "اختيار التاريخ",
+      "chooseTime": "اختيار الوقت",
+      "available": "متاح",
+      "unavailable": "غير متاح",
+      "selected": "محدد",
+      "reviewTitle": "مراجعة طلبك",
+      "back": "رجوع",
+      "next": "التالي",
+      "submit": "إرسال الطلب",
+      "submittedTitle": "تم إرسال طلب الموعد",
+      "submittedBody": "تم إرسال طلبك ليوم {{date}} الساعة {{time}} إلى فريقك الطبي.",
+      "slotNoLongerAvailable": "هذا الوقت لم يعد متاحًا — الرجاء اختيار وقت آخر.",
+      "errorConflict": "لديك موعد مؤكد بالفعل في هذا الوقت.",
+      "errorDuplicate": "لديك طلب بالفعل لهذا الوقت."
+    },
+    "details": {
+      "eyebrow": "الموعد",
+      "time": "الوقت",
+      "location": "المكان",
+      "doctorResponse": "رد الطبيب",
+      "youRequested": "طلبت:",
+      "doctorSuggested": "اقترحت {{doctorName}}:",
+      "acceptAlternative": "قبول الموعد الجديد",
+      "chooseAnotherTime": "اختيار موعد آخر",
+      "suggestedNextReview": "موعد المراجعة المقترح",
+      "timeline": "مسار الطلب"
+    },
+    "timeline": {
+      "submitted": "تم إرسال الطلب",
+      "reviewed": "راجعته {{doctorName}}",
+      "alternativeProposed": "تم اقتراح موعد بديل",
+      "declined": "تم رفض الطلب",
+      "confirmed": "تم التأكيد"
+    },
+    "followUp": {
+      "nextWeek": "الأسبوع القادم"
+    },
+    "doctorResponses": {
+      "alternative1": "حاب تكمل برنامجك يوم إضافي قبل موعد المتابعة — تقدر نأجل الموعد لأول فترة صباحية باليوم اللي بعده؟",
+      "declined1": "تقاريرك الأخيرة تُظهر تحسن ثابت. استمر على البرنامج الحالي لأسبوع إضافي، وبعدها نراجع تقدمك."
+    }
+  },
+  "verifyOtp": {
+    "title": "تأكيد البريد الإلكتروني",
+    "subtitle": "أدخل رمز التحقق المكوّن من 6 أرقام المُرسل إلى بريدك.",
+    "digitLabel": "الرقم {{position}} من 6",
+    "errors": {
+      "codeRequired": "يرجى إدخال رمز التحقق الكامل المكوّن من 6 أرقام.",
+      "invalid": "رمز التحقق غير صالح أو منتهٍ.",
+      "failedResend": "تعذّر إرسال رمز جديد."
+    },
+    "success": {
+      "verified": "تم التحقق من البريد الإلكتروني",
+      "resent": "تم إرسال رمز تحقق جديد إلى بريدك."
+    },
+    "buttons": {
+      "verify": "تأكيد"
+    },
+    "resend": {
+      "in": "إعادة الإرسال متاحة خلال {{count}}ث",
+      "button": "إعادة إرسال الرمز",
+      "sending": "جارٍ الإرسال..."
+    },
+    "backToLogin": "العودة لتسجيل الدخول"
+  },
+  "doctorShell": {
+    "sidebar": {
+      "navLabel": "تنقل الطبيب",
+      "workspace": "مساحة عمل الطبيب",
+      "nav": {
+        "home": "الرئيسية",
+        "patients": "المرضى",
+        "appointments": "المواعيد",
+        "reports": "التقارير"
+      },
+      "collapse": "طي القائمة الجانبية",
+      "expand": "توسيع القائمة الجانبية",
+      "openNav": "فتح قائمة التنقل"
+    },
+    "topbar": {
+      "pageTitles": {
+        "patients": "المرضى",
+        "appointments": "المواعيد",
+        "reports": "التقارير",
+        "profile": "الملف الشخصي"
+      }
+    },
+    "assistantLauncher": {
+      "label": "مساعد KneeGuide"
+    },
+    "assistantDrawer": {
+      "close": "إغلاق المساعد",
+      "openFull": "فتح المساعد بالكامل"
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "markAllRead": "تحديد الكل كمقروء",
+      "empty": "لا توجد إشعارات حاليًا.",
+      "bellLabel": "الإشعارات، {{count}} غير مقروءة",
+      "readState": {
+        "read": "مقروء",
+        "unread": "غير مقروء"
+      },
+      "relative": {
+        "justNow": "الآن",
+        "minutesAgo": "قبل {{count}} دقيقة",
+        "hoursAgo": "قبل {{count}} ساعة",
+        "daysAgo": "قبل {{count}} يوم"
+      },
+      "items": {
+        "painSpike": {
+          "title": "Ahmed Ali",
+          "message": "ارتفع مستوى الألم إلى {{pain}}/10 في آخر جلسة."
+        },
+        "missedSessions": {
+          "title": "Sara Almutairi",
+          "message": "فاتته {{count}} جلسات مقررة هذا الأسبوع."
+        },
+        "reportReady": {
+          "title": "Mohammed Aziz",
+          "message": "تقرير تأهيل جديد جاهز للمراجعة."
+        },
+        "appointmentRequest": {
+          "title": "Lama Khaled",
+          "message": "تم استلام طلب موعد جديد."
+        }
+      }
+    },
+    "account": {
+      "menuLabel": "قائمة الحساب",
+      "profile": "الملف الشخصي",
+      "language": "اللغة",
+      "languageEnglish": "English",
+      "languageArabic": "العربية",
+      "logout": "تسجيل الخروج"
+    }
+  },
+  "patientProfile": {
+    "tabsLabel": "علامات تبويب الملف الشخصي",
+    "tabs": {
+      "overview": "نظرة عامة",
+      "medical": "المعلومات الطبية",
+      "rehab": "التأهيل",
+      "devices": "الأجهزة",
+      "preferences": "التفضيلات",
+      "security": "الأمان"
+    },
+    "hero": {
+      "role": "مريض تأهيل",
+      "context": "{{phase}} · {{week}}"
+    },
+    "rehabPhase": {
+      "phase2": "المرحلة الثانية"
+    },
+    "mock": {
+      "goal": "تحسين مدى الحركة والقوة",
+      "diagnosis": "تمزق جزئي في الرباط الصليبي الأمامي",
+      "clinicalNote": "الاستمرار في تمارين مدى الحركة، والتحسن ملحوظ."
+    },
+    "insight": {
+      "title": "رؤية KneeGuide",
+      "overview": "أنت ملتزم بـ {{percent}}% من برنامج هذا الأسبوع خلال {{phase}} — استمرارية جيدة.",
+      "medical": "مرحلتك التأهيلية الحالية ({{phase}}) تتوافق مع آخر ملاحظة طبية — استمر في اتباع برنامجك الموصوف.",
+      "rehab": "لقد أكملت {{percent}}% من برنامج التأهيل لهذا الأسبوع. حافظ على الاستمرارية للبقاء على المسار الصحيح.",
+      "rehabWithLeader": "لقد أكملت {{percent}}% من برنامج التأهيل لهذا الأسبوع، وقد أظهر تمرين {{exerciseName}} أفضل جودة حركة مؤخرًا.",
+      "deviceConnected": "تم توصيل مستشعر KneeGuide الخاص بك ({{name}}). أنت جاهز لبدء جلسة التأهيل لهذا اليوم."
+    },
+    "overview": {
+      "recoveryProfile": {
+        "title": "الملف التأهيلي",
+        "diagnosis": "التشخيص",
+        "phase": "المرحلة التأهيلية",
+        "week": "أسبوع التعافي",
+        "surgeryDate": "تاريخ الجراحة"
+      },
+      "personal": {
+        "title": "المعلومات الشخصية",
+        "age": "العمر",
+        "ageValue": "{{count}} سنة",
+        "height": "الطول",
+        "heightValue": "{{value}} سم",
+        "weight": "الوزن",
+        "weightValue": "{{value}} كجم",
+        "goal": "هدف التعافي"
+      },
+      "careTeam": {
+        "title": "الفريق الطبي",
+        "nextAppointment": "الموعد القادم: {{date}} الساعة {{time}}",
+        "noAppointment": "لا يوجد موعد قادم مجدول",
+        "viewAppointments": "عرض المواعيد"
+      }
+    },
+    "medical": {
+      "title": "المعلومات الطبية",
+      "diagnosis": "التشخيص",
+      "phase": "التأهيل",
+      "surgeryDate": "الجراحة",
+      "note": "آخر ملاحظة طبية",
+      "viewReports": "عرض تقارير التعافي"
+    },
+    "rehab": {
+      "title": "برنامج التأهيل",
+      "exercises": "التمارين",
+      "sets": "إجمالي المجموعات",
+      "duration": "المدة",
+      "durationValue": "~{{count}} دقيقة",
+      "phase": "المرحلة",
+      "setsByReps": "{{sets}} × {{reps}}",
+      "openSession": "فتح جلسة التأهيل لهذا اليوم"
+    },
+    "devices": {
+      "title": "مستشعر الركبة",
+      "subtitle": "قم بتوصيل مستشعر KneeGuide عبر البلوتوث لمزامنة بيانات حركتك.",
+      "connected": "متصل",
+      "primarySensor": "مستشعر الركبة الأساسي",
+      "disconnect": "قطع الاتصال",
+      "emptyTitle": "لا يوجد مستشعر ركبة متصل",
+      "emptyCopy": "ابحث عن الأجهزة القريبة لتوصيل مستشعر KneeGuide وبدء مزامنة بيانات الحركة.",
+      "scan": "البحث عن الأجهزة",
+      "scanning": "جارٍ البحث عن أجهزة قريبة...",
+      "signal": "الإشارة: {{value}} dBm",
+      "connect": "اتصال",
+      "connecting": "جارٍ الاتصال..."
+    },
+    "preferences": {
+      "language": {
+        "title": "اللغة",
+        "subtitle": "اختر اللغة التي تظهر بها لوحة تحكم المريض في KneeGuide.",
+        "en": "English",
+        "ar": "العربية"
+      },
+      "theme": {
+        "title": "المظهر",
+        "subtitle": "اختر شكل لوحة تحكم المريض. يتبع خيار «النظام» إعداد جهازك.",
+        "system": "النظام",
+        "light": "فاتح",
+        "dark": "داكن"
+      }
+    },
+    "security": {
+      "password": {
+        "title": "كلمة المرور",
+        "account": "البريد الإلكتروني للحساب",
+        "change": "تغيير كلمة المرور",
+        "unavailable": "تغيير كلمة المرور غير متاح حاليًا."
+      },
+      "session": {
+        "title": "الجلسة الحالية",
+        "device": "هذا الجهاز",
+        "current": "نشطة الآن",
+        "signOut": "تسجيل الخروج"
+      }
+    }
+  },
+  "patientBottomNav": {
+    "navLabel": "التنقل بين صفحات المريض",
+    "home": "الرئيسية",
+    "exercises": "التمارين",
+    "appointments": "المواعيد",
+    "reports": "التقارير",
+    "profile": "الملف الشخصي"
+  },
+  "painWheel": {
+    "noPain": "بدون ألم",
+    "mild": "ألم خفيف",
+    "moderate": "ألم متوسط",
+    "severe": "ألم شديد",
+    "label": "ألم {{label}}",
+    "low": "منخفض",
+    "high": "مرتفع"
+  },
+  "kneeModel": {
+    "title": "عارض مدى حركة الركبة (ROM)",
+    "currentFlexion": "درجة الثني الحالية",
+    "footerNote": "عرض ثلاثي الأبعاد تجريبي — في التطبيق الحقيقي سيتم ربطه ببيانات مدى الحركة المقاسة من التقارير أو الحساسات.",
+    "exercises": {
+      "heelSlides": "تمرين سحب الكعب",
+      "quadSets": "تنشيط العضلة الأمامية (Quad Sets)",
+      "straightLegRaise": "رفع الساق المستقيمة"
+    }
+  },
+  "doctorReportsPage": {
+    "title": "تقارير المريض",
+    "subtitle": "تقارير المريض رقم:",
+    "summary": {
+      "total": "إجمالي التقارير",
+      "reviewed": "تمت المراجعة",
+      "pending": "قيد المراجعة"
+    },
+    "table": {
+      "title": "قائمة التقارير",
+      "subtitle": "جميع التقارير السريرية لهذا المريض.",
+      "headers": {
+        "id": "رقم التقرير",
+        "date": "التاريخ",
+        "type": "النوع",
+        "pain": "الألم",
+        "status": "الحالة",
+        "severity": "الشدة",
+        "updated": "آخر تحديث"
+      }
+    },
+    "status": {
+      "reviewed": "تمت المراجعة",
+      "pending": "قيد المراجعة"
+    },
+    "severity": {
+      "low": "منخفضة",
+      "medium": "متوسطة",
+      "high": "مرتفعة"
+    },
+    "view": "عرض",
+    "modal": {
+      "report": "التقرير",
+      "close": "إغلاق"
+    }
+  },
+  "publicHero": {
+    "badge": "تقنية تأهيل ذكية ومتصلة",
+    "headingLine1": "تأهيل أكثر دقة.",
+    "headingLine2": "استقلالية أكبر.",
+    "description": "منصة رقمية تربط المريض بالمختص، وتحوّل بيانات الحركة إلى متابعة واضحة وتنبيهات لحظية تساعد على تحسين جودة التأهيل المنزلي.",
+    "ctaPrimary": "ابدأ الآن",
+    "ctaSecondary": "تسجيل الدخول",
+    "kpi": {
+      "ariaLabel": "معاينة مباشرة للوحة تحكم التأهيل",
+      "exercisesAssigned": {
+        "label": "التمارين المخصصة اليوم",
+        "trend": "+20% مقارنة بالأمس"
+      },
+      "activePatients": {
+        "label": "المرضى النشطون",
+        "trend": "+12% مقارنة بالأسبوع الماضي"
+      },
+      "rehabProgress": {
+        "label": "تقدّم التأهيل",
+        "trend": "+8% مقارنة بالأسبوع الماضي"
+      },
+      "sessionCompletion": {
+        "label": "نسبة إتمام الجلسات",
+        "trend": "+10% مقارنة بالأسبوع الماضي"
+      },
+      "weeklyAdherence": {
+        "label": "الالتزام الأسبوعي",
+        "trend": "+6% مقارنة بالأسبوع الماضي"
+      },
+      "appointment": {
+        "label": "الموعد القادم",
+        "month": "مايو",
+        "sessionType": "جلسة متابعة",
+        "patientTag": "مريض",
+        "viewDetails": "عرض التفاصيل"
+      }
+    }
+  },
+  "publicProblem": {
+    "badge": "التحدي",
+    "title": "التعافي يتعثر بين المواعيد.",
+    "description": "لا يزال تأهيل الركبة يعتمد في الغالب على الذاكرة والتخمين، ما يترك المريض والطبيب أمام صورة غير مكتملة عن التعافي الحقيقي.",
+    "stats": {
+      "eyebrow": "الأثر المتوقع",
+      "adherenceValue": "95%",
+      "adherenceLabel": "الالتزام بالتمارين المنزلية",
+      "dropoutValue": "40%",
+      "dropoutLabel": "خفض الانقطاع عن التأهيل",
+      "followupValue": "3×",
+      "followupLabel": "متابعة أسرع من المختص"
+    },
+    "audience": {
+      "lead": "مصمم",
+      "patients": "للمرضى",
+      "clinicians": "للمختصين",
+      "teams": "للفرق الصحية"
+    },
+    "cards": {
+      "exercisesTitle": "تمارين منزلية غير منتظمة",
+      "exercisesDescription": "يغادر المريض العيادة بورقة تمارين مطبوعة، دون أي طريقة لمعرفة ما إذا كان قد التزم بها فعلاً.",
+      "painTitle": "ألم لا يُسجَّل",
+      "painDescription": "زيارة لا تتجاوز خمس دقائق نادرًا ما تلتقط التغيّر الحقيقي في الألم والحركة أسبوعًا بعد أسبوع.",
+      "decisionsTitle": "قرارات تُتخذ بلا رؤية بين الزيارات",
+      "decisionsDescription": "دون بيانات يومية، يُعدّل الأطباء خطط العلاج اعتمادًا على الذاكرة بدلاً من الأدلة."
+    }
+  },
+  "publicSolution": {
+    "badge": "نهج KneeGuide",
+    "title": "منصّة واحدة، تواكب كل يوم من رحلة التعافي.",
+    "description": "تُغلق KneeGuide الفجوة بين الزيارات، وتحوّل الملاحظات المتفرقة والذاكرة إلى صورة تعاون مستمرة وواضحة للتقدم.",
+    "center": "KneeGuide",
+    "nodes": {
+      "patient": "المريض",
+      "clinician": "المختص",
+      "ai": "الذكاء الاصطناعي",
+      "exercises": "التمارين",
+      "progress": "التقدم",
+      "reports": "التقارير",
+      "notifications": "الإشعارات",
+      "wearables": "الأجهزة القابلة للارتداء",
+      "family": "العائلة"
+    }
+  },
+  "publicTechnology": {
+    "badge": "مبنيّة على",
+    "title": "تقنية حديثة، مصمّمة خصيصًا للتأهيل.",
+    "description": "تجمع KneeGuide بين النمذجة ثلاثية الأبعاد التفاعلية وتعلّم الآلة التطبيقي لجعل التعافي قابلاً للقياس.",
+    "items": {
+      "modeling": {
+        "title": "نمذجة تفاعلية ثلاثية الأبعاد للركبة",
+        "description": "تصوّر مدى الحركة وآلية التمارين بشكل ثلاثي الأبعاد، بدلاً من الرسوم الثابتة."
+      },
+      "aiAnalysis": {
+        "title": "تحليل أنماط الألم بالذكاء الاصطناعي",
+        "description": "يكشف تعلّم الآلة عن الاتجاهات عبر أسابيع من سجلّات الألم والحركة."
+      },
+      "security": {
+        "title": "بيانات آمنة بمعايير طبية",
+        "description": "تُشفَّر بيانات المريض من طرف إلى طرف، وتُدار وفق معايير الخصوصية الطبية."
+      },
+      "sync": {
+        "title": "مزامنة فورية",
+        "description": "يصل كل تسجيل يُدخله المريض إلى فريقه الطبي فورًا."
+      }
+    }
+  },
+  "publicHowItWorks": {
+    "badge": "خطوات البداية",
+    "title": "من أول تسجيل دخول إلى التعافي الكامل.",
+    "description": "حلقة بسيطة، تتكرر كل يوم من رحلة تعافيك.",
+    "steps": {
+      "profile": {
+        "title": "أنشئ ملفك الشخصي",
+        "description": "سجّل وتواصل مع طبيبك أو عيادتك خلال دقائق."
+      },
+      "log": {
+        "title": "سجّل تقدّمك يوميًا",
+        "description": "سجّل مستوى الألم والحركة والتمارين المُنجزة مباشرة من هاتفك."
+      },
+      "review": {
+        "title": "طبيبك يراجع المؤشرات",
+        "description": "يبرز الذكاء الاصطناعي التغيّرات المهمة ليراجع طبيبك ما يستحق الاهتمام."
+      },
+      "adjust": {
+        "title": "خطتك تتكيّف مع تقدّمك",
+        "description": "تتحدّث التمارين والمواعيد بناءً على المسار الفعلي لتعافيك."
+      }
+    }
+  },
+  "publicPlatform": {
+    "badge": "المنصّة",
+    "title": "كل ما يحتاجه التعافي، في مكان واحد.",
+    "description": "منصّة واحدة متصلة لتفاصيل التأهيل اليومية، مصمّمة حول ما يستخدمه المرضى والمختصون فعليًا.",
+    "capabilities": {
+      "painTracking": {
+        "title": "تتبّع الألم اليومي",
+        "description": "تسجيل سريع بعجلة الألم يحدّد الموقع والشدة خلال ثوانٍ."
+      },
+      "exerciseLibrary": {
+        "title": "مكتبة تمارين موجّهة",
+        "description": "تمارين موصوفة بتعليمات واضحة يمكن للمرضى اتّباعها في المنزل."
+      },
+      "scheduling": {
+        "title": "جدولة المواعيد",
+        "description": "احجز وأعد الجدولة وتابع الزيارات القادمة دون الحاجة لمكالمة هاتفية."
+      },
+      "reports": {
+        "title": "تقارير التقدّم",
+        "description": "سجلّ مستمر للألم والحركة وإنجاز التمارين عبر الوقت."
+      }
+    }
+  },
+  "publicDoctorDashboard": {
+    "badge": "للمختصين",
+    "title": "اطّلع على تقدّم كل مريض بنظرة واحدة.",
+    "description": "قائمة مرضاك وتقويمك وتقاريرك في لوحة واحدة، تُراجَع خلال دقائق لا ساعات.",
+    "points": {
+      "roster": "قائمة مرضى تعرض الحالة بنظرة واحدة",
+      "calendar": "تقويم للمواعيد القادمة والسابقة",
+      "flagged": "تقارير يرصدها الذكاء الاصطناعي وتستحق مراجعة أولوية"
+    },
+    "mock": {
+      "title": "المرضى",
+      "tag": "اليوم"
+    }
+  },
+  "publicPatientDashboard": {
+    "badge": "للمرضى",
+    "title": "تعافٍ يمكنك رؤيته بنفسك.",
+    "description": "سجّل شعورك، تابع تمارينك، وشاهد تقدّمك يتراكم — كل ذلك من هاتفك.",
+    "points": {
+      "checkIn": "تسجيل حالة الألم بلمسة واحدة يوميًا",
+      "checklist": "قائمة واضحة بتمارين اليوم",
+      "appointment": "موعدك القادم على بُعد لمسة واحدة دائمًا"
+    },
+    "mock": {
+      "title": "تسجيل اليوم",
+      "ringUnit": "من 10",
+      "exercises": {
+        "heelSlides": "انزلاق الكعب",
+        "quadSets": "تمارين الفخذ الرباعي",
+        "straightLegRaises": "رفع الساق مستقيمة"
+      },
+      "timestamps": {
+        "step1": "7:42 ص",
+        "step2": "7:45 ص",
+        "step3": "7:48 ص"
+      }
+    }
+  },
+  "publicAI": {
+    "badge": "تحليل بالذكاء الاصطناعي",
+    "title": "أنماط لا تلاحظها زيارة مدتها خمس دقائق.",
+    "description": "تراقب نماذج KneeGuide بيانات الألم والحركة والتمارين يوميًا، ليركّز فريقك الطبي على ما يستحق الاهتمام فعلًا.",
+    "highlights": {
+      "trendDetection": {
+        "title": "رصد الاتجاهات",
+        "description": "يرصد تدهورًا تدريجيًا أو ركودًا في الألم والحركة قبل أن يتحوّل إلى انتكاسة."
+      },
+      "adherenceSignals": {
+        "title": "مؤشرات الالتزام",
+        "description": "ينتبه عند توقّف تسجيل التمارين، فتحدث المتابعة قبل أن يتعثّر التعافي."
+      },
+      "clinicianSummaries": {
+        "title": "ملخّصات جاهزة للطبيب",
+        "description": "يختصر أسابيع من السجلات اليومية في ملخّص قصير يستحق نظرة فعلية."
+      }
+    }
+  },
+  "publicRoadmap": {
+    "badge": "ما القادم",
+    "title": "لا نزال في البداية.",
+    "description": "تُبنى KneeGuide بالتعاون مع العيادات، إصدارًا تلو الآخر.",
+    "stageLabel": "المرحلة {{number}}",
+    "status": {
+      "completed": "مكتمل",
+      "inProgress": "قيد التنفيذ",
+      "future": "مستقبلي"
+    },
+    "stages": {
+      "stage1": {
+        "heading": "المنصة الأساسية",
+        "description": "اكتمل الأساس الذي تقوم عليه منصة التأهيل.",
+        "items": {
+          "authentication": "تسجيل الدخول والتحقق",
+          "dashboard": "لوحة المعلومات",
+          "patientManagement": "إدارة المرضى",
+          "exerciseTracking": "تتبع التمارين"
+        }
+      },
+      "stage2": {
+        "heading": "النموذج الأولي للجهاز",
+        "description": "تم تصميم جهاز إعادة التأهيل وإنتاج نموذجه الأولي فعليًا، وتجري حاليًا أعمال دمج البرمجيات مع المنصة.",
+        "items": {
+          "industrialDesign": "التصميم الصناعي",
+          "hardwarePrototype": "نموذج الجهاز الأولي",
+          "sensorIntegration": "دمج الحساسات",
+          "deviceCommunication": "التواصل بين الأجهزة",
+          "softwareIntegration": "دمج البرمجيات"
+        }
+      },
+      "stage3": {
+        "heading": "أساسيات الذكاء الاصطناعي",
+        "description": "بناء طبقة الذكاء الاصطناعي التي تفهم تقدّم التأهيل وتساعد الأطباء.",
+        "items": {
+          "patternDetection": "رصد الأنماط",
+          "clinicalSummaries": "ملخّصات سريرية",
+          "recoveryInsights": "رؤى التعافي"
+        }
+      },
+      "stage4": {
+        "heading": "أبعد من الركبة",
+        "description": "توسيع نطاق المنصة إلى ما هو أبعد من تأهيل الركبة ليشمل برامج تعافٍ إضافية.",
+        "items": {
+          "appleWatch": "ساعة Apple Watch",
+          "healthKit": "HealthKit",
+          "wearables": "الأجهزة القابلة للارتداء",
+          "multiConditionRehab": "تأهيل متعدد الحالات"
+        }
+      }
+    }
+  },
+  "publicFaq": {
+    "badge": "أسئلة شائعة",
+    "title": "الأسئلة الأكثر شيوعًا.",
+    "items": {
+      "physicalTherapy": {
+        "question": "هل يُغني KneeGuide عن العلاج الطبيعي؟",
+        "answer": "لا. صُمم KneeGuide ليكمّل خطة العلاج التي يضعها فريقك الطبي، من خلال إبقائه على اطلاع بين الزيارات، لا ليحل محل التوجيه السريري."
+      },
+      "doctorVisibility": {
+        "question": "كيف يطّلع طبيبي على سجلاتي اليومية؟",
+        "answer": "كل ما تسجّله — من مستويات الألم والحركة والتمارين — يُزامَن مباشرة مع لوحة متابعة فريقك الطبي فور تسجيله."
+      },
+      "dataSecurity": {
+        "question": "هل بياناتي الصحية آمنة؟",
+        "answer": "نعم. جميع البيانات مشفّرة تشفيرًا تامًا من طرف إلى طرف، وتُدار وفق معايير خصوصية سريرية صارمة."
+      },
+      "equipment": {
+        "question": "هل أحتاج إلى معدّات خاصة لاستخدام KneeGuide؟",
+        "answer": "لا. يكفي هاتفك أو متصفح الويب. يعمل النموذج ثلاثي الأبعاد وأدوات التتبع مباشرة دون الحاجة إلى أي أجهزة إضافية."
+      },
+      "noReferral": {
+        "question": "هل يمكنني استخدام KneeGuide دون إحالة من طبيب؟",
+        "answer": "نعم. يمكنك إنشاء حساب مريض مباشرة. التواصل مع طبيب اختياري، لكنه موصى به للحصول على التجربة الكاملة."
+      }
+    }
+  },
+  "publicCta": {
+    "badge": "انضم إلى KneeGuide",
+    "title": "جاهز لبدء رحلة تعافيك؟",
+    "description": "انضم إلى المرضى والأطباء الذين يعتمدون على KneeGuide بالفعل، ليكون كل يوم في رحلة التعافي محسوبًا.",
+    "patientAction": "ابدأ رحلة تعافيك",
+    "clinicianAction": "أنا طبيب"
+  },
+  "publicFooter": {
+    "brand": "KneeGuide",
+    "description": "تأهيل ركبة موجّه بالذكاء الاصطناعي، يربط بين المريض وطبيبه بين كل زيارة وأخرى.",
+    "copyright": "© {{year}} KneeGuide. جميع الحقوق محفوظة."
+  },
+  "publicNavigation": {
+    "groups": {
+      "product": "المنتج",
+      "explore": "استكشف",
+      "account": "الحساب"
+    },
+    "items": {
+      "challenge": "التحدي",
+      "approach": "نهج KneeGuide",
+      "platform": "المنصّة",
+      "technology": "التقنية",
+      "howItWorks": "كيف يعمل",
+      "ai": "المساعد الذكي",
+      "roadmap": "خارطة الطريق",
+      "faq": "الأسئلة الشائعة"
+    }
+  },
+  "publicHeader": {
+    "menuToggleOpen": "فتح القائمة",
+    "menuToggleClose": "إغلاق القائمة",
+    "login": "تسجيل الدخول",
+    "patientLogin": "دخول المرضى",
+    "clinicianLogin": "دخول المختصين",
+    "createAccount": "إنشاء حساب",
+    "languageSwitchLabel": "تغيير اللغة",
+    "languageSwitchTo": "EN"
+  }
+}

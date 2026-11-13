@@ -1,0 +1,335 @@
+/* Uses global design tokens from src/index.css */
+
+/* Lets the browser smoothly interpolate --ring-deg (used inside the
+   dial's conic-gradient below) instead of jumping between values —
+   without this, animating a value baked into a gradient function has no
+   native transition. Unsupported browsers (older Firefox) just ignore
+   the registration and the ring updates instantly instead — a graceful
+   fallback, not a break. */
+@property --ring-deg {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 108deg;
+}
+
+/* No background of its own anymore — see ScrollStackFeature.css's
+   comment. The single shared Grainient canvas (PublicLayout.jsx) shows
+   through wherever transparent lets it. */
+.patient-preview-root {
+  padding: var(--section-padding) 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+}
+
+.patient-preview-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 64px);
+}
+
+.patient-preview-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.patient-preview-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+.patient-preview-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  font-weight: 600;
+  color: var(--color-heading);
+  text-wrap: balance;
+}
+
+.patient-preview-description {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.patient-preview-points {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.patient-preview-points li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.patient-preview-points svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* Occasional "confirming" pop for a single point icon — see index.jsx,
+   where each of the three is scheduled independently on its own
+   randomized timer so they never animate together. Single small
+   overshoot then settle, no repeated bounce. drop-shadow uses the same
+   --color-primary blue, not a new color. */
+@keyframes patientPointIconConfirm {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(37, 99, 235, 0));
+  }
+  35% {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.55));
+  }
+  65% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(37, 99, 235, 0));
+  }
+}
+
+.patient-preview-point-icon-pulse {
+  animation: patientPointIconConfirm 650ms ease-out;
+}
+
+.patient-preview-mock {
+  display: flex;
+  justify-content: center;
+}
+
+.patient-preview-mock-card {
+  width: 100%;
+  max-width: 340px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.patient-preview-mock-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.patient-preview-mock-title {
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+/* Updates alongside the checklist below — see index.jsx. Tabular figures
+   so the row doesn't jitter in width as the digits change. */
+.patient-preview-mock-time {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes patientTimeUpdate {
+  0% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.patient-preview-mock-time-update {
+  animation: patientTimeUpdate 500ms ease-out;
+}
+
+.patient-preview-mock-dial {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* --ring-deg is set inline per render (see index.jsx) and registered
+     above via @property so this transition can smoothly sweep between
+     values instead of jumping. 108deg (3/10) is the same starting sweep
+     the static version always used. */
+  background: conic-gradient(var(--color-primary) 0deg var(--ring-deg, 108deg), var(--color-border) var(--ring-deg, 108deg) 360deg);
+  transition: --ring-deg 900ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Soft halo behind the ring, toggled on briefly whenever its value
+   changes (see .patient-preview-mock-dial-glow in index.jsx). Reusing
+   this previously-empty ::before rather than adding a new element;
+   opacity-only transition keeps it compositor-friendly instead of
+   animating box-shadow directly. Same blue as --color-primary
+   (#2563eb), just as a soft low-opacity glow — not a new color. */
+.patient-preview-mock-dial::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.35), transparent 70%);
+  opacity: 0;
+  transition: opacity 700ms ease;
+  pointer-events: none;
+}
+
+.patient-preview-mock-dial-glow::before {
+  opacity: 1;
+}
+
+.patient-preview-mock-dial-value {
+  background: var(--color-surface);
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.patient-preview-mock-dial-value span {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  line-height: 1.1;
+}
+
+.patient-preview-mock-dial-value small {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+}
+
+.patient-preview-mock-checklist {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.patient-preview-mock-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  transition: color 400ms ease;
+}
+
+.patient-preview-mock-item-done {
+  color: var(--color-text);
+}
+
+/* Fade + a few px of slide for whichever row just became done — see
+   index.jsx. transform/opacity only, so this stays compositor-only. */
+@keyframes patientItemActivate {
+  0% {
+    opacity: 0.6;
+    transform: translateY(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.patient-preview-mock-item-activate {
+  animation: patientItemActivate 450ms ease-out;
+}
+
+.patient-preview-mock-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 2px solid var(--color-border);
+  flex-shrink: 0;
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+
+.patient-preview-mock-item-done .patient-preview-mock-check {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+/* Tiny confirmation pulse on the checkbox that just became done. No
+   bounce/overshoot beyond the single 1.05 peak the spec asks for. */
+@keyframes patientCheckPulse {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.patient-preview-mock-check-pulse {
+  animation: patientCheckPulse 300ms ease-out;
+}
+
+@media (max-width: 900px) {
+  .patient-preview-container {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-preview-mock {
+    order: -1;
+  }
+
+  .patient-preview-copy {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* The loop keeps running (the ring/checklist values still update — that's
+   still useful, correct content, not motion), but every visible transition
+   collapses to instant for anyone who's asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .patient-preview-mock-dial {
+    transition: none;
+  }
+
+  .patient-preview-mock-dial::before {
+    transition: none;
+  }
+
+  .patient-preview-mock-item,
+  .patient-preview-mock-check {
+    transition: none;
+  }
+
+  .patient-preview-mock-item-activate,
+  .patient-preview-mock-check-pulse,
+  .patient-preview-mock-time-update,
+  .patient-preview-point-icon-pulse {
+    animation: none;
+  }
+}

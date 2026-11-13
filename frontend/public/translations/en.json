@@ -1,0 +1,2062 @@
+{
+  "rehabDomain": {
+    "diagnosis": {
+      "aclPartialTear": "ACL Partial Tear",
+      "meniscusTearPostOp": "Meniscus Tear (Post-op)",
+      "patellarTendinopathy": "Patellar Tendinopathy",
+      "aclReconstruction": "ACL Reconstruction"
+    },
+    "goal": {
+      "romStrength": "Improve ROM & strength",
+      "restoreMobility": "Restore mobility",
+      "returnToSport": "Return to sport"
+    },
+    "phase": {
+      "phase1": "Phase 1",
+      "phase2": "Phase 2",
+      "phase3": "Phase 3"
+    },
+    "noteTypes": {
+      "sessionProgress": "Session progress",
+      "initialAssessment": "Initial assessment",
+      "general": "Clinical note"
+    },
+    "notes": {
+      "ahmedSessionProgress": "Latest session shows a pain spike and a small ROM dip versus the previous session — worth a closer look before progressing the program.",
+      "ahmedInitialAssessment": "ACL partial tear confirmed. Starting Phase 2 rehabilitation program: Quad Sets, Leg Raises, Heel Slides."
+    },
+    "fileTypes": {
+      "imaging": "Imaging",
+      "assessment": "Assessment report"
+    },
+    "reports": {
+      "seedNotes": {
+        "ahmedWeek5": "Steady improvement across the week. Continue current program.",
+        "saraWeek1": "Adherence below target — discussed schedule barriers with patient."
+      }
+    },
+    "attentionLevel": {
+      "needsAttention": "Needs attention",
+      "reviewRecommended": "Review recommended",
+      "stable": "Stable",
+      "improving": "Improving"
+    },
+    "attentionReason": {
+      "painIncreased": "Pain increased",
+      "romRegression": "ROM regressed",
+      "missedSessions": "Sessions missed",
+      "lowAdherence": "Adherence below target",
+      "reportAwaitingReview": "Report awaiting review",
+      "appointmentPending": "Appointment request pending"
+    },
+    "trend": {
+      "improving": "Improving",
+      "stable": "Stable",
+      "requiresReview": "Requires review"
+    },
+    "exerciseMode": {
+      "reps": "Reps",
+      "duration": "Duration"
+    }
+  },
+  "login": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to continue to KneeGuide.",
+    "email": "Email",
+    "email_placeholder": "example@mail.com",
+    "password": "Password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "button": "Login",
+    "no_account": "Don't have an account?",
+    "signup": "Create one",
+    "error_required": "Please enter your email and password.",
+    "error_invalid": "Invalid email or password."
+  },
+  "register": {
+    "title": "Create Your Account",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Login",
+    "step1Title": "Choose Your Role",
+    "step2Title": "Basic Information",
+    "step3Title": "Contact Details",
+    "step4Title": "Set Your Password",
+    "step5Title": "Review Your Information",
+    "rolePatient": "Patient",
+    "roleDoctor": "Doctor",
+    "rolePatientDesc": "Basic user",
+    "roleDoctorDesc": "Admin approval required",
+    "labels": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "dob": "Date of Birth",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
+    },
+    "placeholders": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "example@mail.com",
+      "phone": "0555555555"
+    },
+    "emailExists": "This email is already registered.",
+    "goToLogin": "Go to login",
+    "passwordChecklist": {
+      "minLength": "8+ characters",
+      "uppercase": "Uppercase",
+      "lowercase": "Lowercase",
+      "number": "Number",
+      "special": "Special character",
+      "metStatus": "Met",
+      "unmetStatus": "Not met yet",
+      "match": "Passwords match",
+      "mismatch": "Passwords do not match"
+    },
+    "review": {
+      "role": "Role",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "dob": "Date of Birth"
+    },
+    "errors": {
+      "selectRole": "Please select your role.",
+      "fullName": "Please enter your full name.",
+      "contactRequired": "Please fill all contact information.",
+      "emailExists": "This email is already registered.",
+      "emailInvalid": "Enter a valid email address.",
+      "emailCheckFailed": "We couldn't verify this email right now. Please try again.",
+      "passwordRequired": "Please enter your password and confirm it.",
+      "passwordMismatch": "Passwords do not match.",
+      "passwordWeak": "Your password must include uppercase, lowercase, number, symbol, and be at least 8 characters.",
+      "genericFail": "Registration failed. Try again."
+    }
+  },
+  "auth": {
+    "demo": {
+      "trigger": "Preview demo accounts",
+      "patient": {
+        "title": "Patient",
+        "description": "Explore the Patient dashboard and the full rehabilitation experience."
+      },
+      "doctor": {
+        "title": "Doctor",
+        "description": "Explore the Doctor clinical workspace."
+      },
+      "email": "Email",
+      "password": "Password",
+      "copyEmailFor": "Copy {{role}} email",
+      "copyPasswordFor": "Copy {{role}} password",
+      "copied": "Copied",
+      "usePatient": "Use Patient demo",
+      "useDoctor": "Use Doctor demo",
+      "patientRegisterHint": "You can also create your own Patient account — sample rehabilitation data will still be available so you can explore the full experience.",
+      "doctorApprovalHint": "Doctor accounts require administrator approval before activation. For immediate preview access, use the Doctor demo account."
+    }
+  },
+  "buttons": {
+    "back": "Back",
+    "continue": "Continue",
+    "complete": "Create Account"
+  },
+  "doctorAppointments": {
+    "title": "Appointments",
+    "subtitle": "One shared schedule — patient requests, your own bookings, and every review action, all in one place.",
+    "totalPill": "{{count}} total appointments",
+    "newAppointment": "New appointment",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "viewToggleLabel": "Calendar view",
+    "viewMonth": "Month",
+    "viewAgenda": "Agenda",
+    "weekdaysShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "moreCount": "+{{count}} more",
+    "agenda": {
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "upcoming": "Upcoming",
+      "empty": "No upcoming appointments scheduled."
+    },
+    "requests": {
+      "title": "Appointment requests",
+      "count": "{{count}} pending",
+      "propose": "Propose new time",
+      "decline": "Decline"
+    },
+    "selectedDay": {
+      "title": "Selected day",
+      "empty": "No appointments for this date.",
+      "addAppointment": "Add appointment on this day"
+    },
+    "summary": {
+      "title": "Summary — {{month}}"
+    },
+    "status": {
+      "REQUESTED": "Requested",
+      "CONFIRMED": "Confirmed",
+      "ALTERNATIVE_PROPOSED": "New time proposed",
+      "DECLINED": "Declined",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "details": {
+      "title": "Appointment details",
+      "sourceDoctor": "Clinician scheduled",
+      "sourcePatient": "Patient requested",
+      "dateTime": "Date & time",
+      "type": "Type",
+      "reason": "Reason",
+      "location": "Location",
+      "note": "Note",
+      "yourProposal": "Your proposed time",
+      "awaitingPatient": "Awaiting the patient's response to this proposed time."
+    },
+    "decline": {
+      "title": "Decline appointment request",
+      "confirm": "Decline request",
+      "reasonLabel": "Reason for declining",
+      "noteLabel": "Additional note (optional)"
+    },
+    "declineReasons": {
+      "schedule_conflict": "Schedule conflict",
+      "no_clinical_need_yet": "No clinical need yet",
+      "requested_time_unavailable": "Requested time unavailable",
+      "continue_current_plan": "Continue current plan a bit longer",
+      "other": "Other"
+    },
+    "composer": {
+      "title": "New appointment",
+      "fields": {
+        "patient": "Patient",
+        "duration": "Duration",
+        "durationMinutes": "{{count}} minutes"
+      },
+      "errors": {
+        "patient": "Please select a patient.",
+        "conflict": "You already have a confirmed appointment with {{name}} at {{time}} — choose a different time."
+      },
+      "patientPicker": {
+        "placeholder": "Search by name, patient ID, or diagnosis...",
+        "noResults": "No patients match your search.",
+        "change": "Change patient"
+      },
+      "existingPending": "{{name}} already has a pending appointment request for {{time}}.",
+      "reviewExisting": "Review existing request",
+      "availabilityWarnings": {
+        "status": "{{name}} is currently marked as \"{{status}}\" and may not be accepting new appointments.",
+        "closed": "{{name}} does not usually work on {{day}}.",
+        "outsideHours": "This time is outside {{name}}'s usual working hours ({{start}}–{{end}})."
+      }
+    },
+    "assistant": {
+      "actions": {
+        "reviewRequest": "Review request",
+        "viewToday": "View today"
+      }
+    }
+  },
+  "doctorAssistantInsights": {
+    "cardTitle": "KneeGuide Assistant",
+    "actions": {
+      "reviewSession": "Review latest session",
+      "reviewReport": "Review latest report",
+      "reviewPlan": "Review rehabilitation plan",
+      "reviewAppointment": "Review appointment request",
+      "openPatient": "Open patient"
+    },
+    "appointmentsPage": {
+      "pendingRequest": "{{name}} has an appointment request waiting for your response for {{dateTime}}.",
+      "clinicalContext": {
+        "pain": "{{name}} has also shown a recent pain increase.",
+        "rom": "{{name}}'s latest movement (ROM) measurement has also decreased.",
+        "missedSessions": "{{name}} has also recently missed rehabilitation sessions."
+      },
+      "alsoToday": "You also have {{count}} appointment(s) today.",
+      "noneToday": "Nothing is scheduled for today. No appointment requests are waiting for review.",
+      "todaySummary": "You have {{count}} appointment(s) today. Your next appointment is {{nextName}} at {{time}}."
+    },
+    "clinical": {
+      "painRomCombo": "{{name}} completed all prescribed sessions this period, but the latest session showed a pain increase (from {{painFrom}}/10 to {{painTo}}/10) and a small ROM regression (from {{romFrom}}° to {{romTo}}°). It may be worth reviewing the session before progressing the program.",
+      "painOnly": "{{name}}'s latest session showed a notable pain increase, from {{painFrom}}/10 to {{painTo}}/10. Consider reviewing the latest session.",
+      "romOnly": "{{name}}'s latest flexion measurement decreased from {{romFrom}}° to {{romTo}}°, compared with the previous session.",
+      "lowAdherence": "{{name}} completed {{completed}} of {{expected}} prescribed sessions this period.",
+      "goodProgress": "{{name}} is progressing consistently: pain is trending down and flexion has improved over the latest sessions.",
+      "stable": "Current adherence and ROM trend are stable. No immediate program change is suggested from the available data."
+    },
+    "report": {
+      "awaitingReview": "{{name}} has a rehabilitation report awaiting review.",
+      "awaitingReviewFlagged": "{{name}} has a rehabilitation report awaiting review, flagged for noteworthy changes this period.",
+      "compactSummary": "{{percent}}% adherence · pain {{painFrom}} → {{painTo}}",
+      "compactSummaryNoTrend": "{{percent}}% adherence",
+      "improvedSummary": "pain {{painFrom}} → {{painTo}} · ROM {{romFrom}}° → {{romTo}}°",
+      "flagsSummary": "Flagged for: {{flags}}"
+    },
+    "reportsPage": {
+      "needsAttentionLead": "{{name}}'s report shows a noteworthy change and is awaiting your review.",
+      "awaitingReviewLead": "{{name}}'s report is awaiting your review.",
+      "flagSummary": "Flagged for: {{flag}}.",
+      "alsoAwaiting": "{{count}} other report(s) are also awaiting review.",
+      "noUpcomingAppointment": "No upcoming KneeGuide appointment is currently scheduled.",
+      "noneAwaiting": "No reports are currently awaiting review."
+    },
+    "appointment": {
+      "requested": "{{name}} has requested an appointment.",
+      "alternativeProposed": "You proposed a new time for {{name}}'s appointment — awaiting their response.",
+      "clinicalContext": "The recent session changes may be relevant when reviewing this request."
+    },
+    "clinicalRecord": {
+      "latestNote": "There is a recent clinician-only note on file for {{name}}."
+    },
+    "worklist": {
+      "allStable": "All patients are currently stable — no reports or appointment requests need attention right now.",
+      "summary": "{{attentionCount}} patient(s) need attention, {{reportCount}} report(s) are awaiting review, and {{appointmentCount}} appointment request(s) are pending.",
+      "showAttention": "Show attention patients",
+      "showReports": "Show pending reports",
+      "showAppointments": "Show appointment requests"
+    }
+  },
+  "doctorDashboard": {
+    "greeting": {
+      "morning": "Good morning, {{name}}.",
+      "afternoon": "Good afternoon, {{name}}.",
+      "evening": "Good evening, {{name}}.",
+      "fallbackName": "Doctor"
+    },
+    "assistant": {
+      "orbLabel": "KneeGuide Clinical Assistant",
+      "regionLabel": "KneeGuide Clinical Assistant",
+      "inputLabel": "Ask the KneeGuide Clinical Assistant",
+      "inputPlaceholder": "Ask about a patient, appointments, or reports...",
+      "sendLabel": "Send",
+      "suggestionsLabel": "Suggested actions",
+      "followUpLabel": "Follow-up suggestions",
+      "historyLabel": "Conversation",
+      "youLabel": "You",
+      "brief": "You have {{appointments}} appointments today and {{reports}} new rehabilitation reports to review. Based on recent rehabilitation activity, {{attention}} patients may need your attention.",
+      "briefPrompt": "What would you like to review?",
+      "today": {
+        "title": "Today",
+        "appointments": "Appointments",
+        "newReports": "New reports",
+        "needAttention": "Need attention"
+      },
+      "history": {
+        "title": "Conversation history",
+        "newChat": "New chat",
+        "openHistory": "Open conversation history",
+        "closeHistory": "Close conversation history",
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar",
+        "today": "Today",
+        "previous": "Previous conversations",
+        "untitled": "New conversation",
+        "mockBadge": "Demo",
+        "empty": "No conversations yet"
+      },
+      "actions": {
+        "attentionPatients": "Who needs my attention today?",
+        "todayAppointments": "What are my appointments today?",
+        "reportSummary": "Summarize today's reports",
+        "ahmedProgress": "How is Ahmed Ali progressing?",
+        "adherenceRisk": "Who is falling behind on rehab?",
+        "pendingRequests": "Any pending appointment requests?",
+        "scheduleAppointment": "Schedule an appointment",
+        "checkConflicts": "Check for scheduling conflicts",
+        "ahmedAppointments": "Show Ahmed's appointments",
+        "whoImproved": "Who improved?",
+        "whoRegressed": "Who is getting worse?",
+        "highestPriorityReport": "Which report should I review first?",
+        "ahmedLatestReport": "Show Ahmed's latest report",
+        "compareLatestReports": "Compare Ahmed's latest two reports"
+      },
+      "responses": {
+        "attentionIntro": "{{count}} patients stand out in today's rehabilitation data:",
+        "attentionNone": "No patients currently show a concerning trend based on this week's mock rehabilitation data.",
+        "noAppointmentsToday": "You don't have any appointments scheduled today.",
+        "todayAppointmentsIntroWithNext": "{{count}} appointments are scheduled today. Your next appointment is {{nextName}} at {{nextTime}}, followed by {{followingName}} at {{followingTime}}.",
+        "todayAppointmentsIntroLast": "{{count}} appointments are scheduled today. Your next (and last) appointment is {{nextName}} at {{nextTime}}.",
+        "todayAppointmentsIntroDone": "{{count}} appointments were scheduled today — all have already passed.",
+        "noNewReports": "There are no new rehabilitation reports to review right now.",
+        "reportSummaryIntro": "You have {{count}} new rehabilitation reports to review:",
+        "viewAllReports": "View all reports",
+        "ahmedProgressSummary": "Ahmed completed {{completed}} of {{prescribed}} prescribed sessions this week ({{percent}}% adherence). Knee flexion improved from {{flexionOldest}}° to {{flexionLatest}}°, while pain has generally trended down toward {{painRecentAverage}}/10 — though today's log came in higher at {{painLatest}}/10. Movement quality has remained stable. His latest session showed a small {{sessionDelta}}° ROM decrease compared with the previous session.",
+        "openPatient": "Open patient",
+        "viewLatestReport": "View latest report",
+        "reviewRehabProgram": "Review rehab program",
+        "adherenceRiskNone": "No patients currently show reduced adherence based on this week's data.",
+        "adherenceRiskIntro": "{{count}} patient(s) may be falling behind on their rehab program this week:",
+        "unsupported": "I can help you review patients, appointments, rehabilitation reports, pain trends, adherence, and movement progress. Ask me about a patient or who may need review today.",
+        "capabilityReschedule": "Rescheduling isn't connected to a real booking system yet in this demo — I can show today's schedule, but changing it here is only a visual demonstration, not a real update.",
+        "noPendingRequests": "There are no pending appointment requests right now.",
+        "pendingRequestsIntro": "{{count}} appointment request(s) are waiting for your review:",
+        "requestAccepted": "Accepted",
+        "reviewRequest": "Review",
+        "scheduleAppointmentIntro": "Who would you like to schedule an appointment for?",
+        "noScheduleConflicts": "No scheduling conflicts found among your upcoming confirmed appointments.",
+        "scheduleConflictsIntro": "{{count}} pair(s) of your upcoming confirmed appointments overlap in time — worth a look:",
+        "viewAppointments": "View appointments",
+        "patientAppointmentsNone": "{{name}} has no appointments on file.",
+        "patientAppointmentsIntro": "{{name}} has {{count}} appointment(s):",
+        "noImprovedPatients": "No patients currently show a clear positive change between comparable reports.",
+        "whoImprovedIntro": "{{count}} patient(s) show a positive change in their latest comparable report:",
+        "noRegressedPatients": "No patients currently show a negative change between comparable reports.",
+        "whoRegressedIntro": "{{count}} patient(s) show a negative change in their latest report:",
+        "highestPriorityReportIntro": "{{name}}'s report should be reviewed first.",
+        "patientNoReports": "{{name}} has no reports on file.",
+        "patientLatestReportIntro": "{{name}}'s latest report is classified as {{trend}}.",
+        "noComparableReports": "There isn't a previous comparable report for {{name}} yet.",
+        "compareLatestReportsIntro": "{{name}}'s latest two reports: {{comparison}}"
+      },
+      "metrics": {
+        "pain": "Pain",
+        "flexion": "Flexion",
+        "adherence": "Adherence",
+        "missedSessions": "Missed sessions"
+      },
+      "attention": {
+        "severity": {
+          "high": "High attention",
+          "followUp": "Follow-up",
+          "positive": "Positive trend"
+        }
+      },
+      "reasons": {
+        "painIncreased": "Pain increased",
+        "reviewProgress": "Progress review",
+        "generalFollowUp": "General follow-up"
+      },
+      "mock": {
+        "ahmed": {
+          "diagnosis": "ACL Partial Tear"
+        },
+        "reports": {
+          "ahmed": "Weekly progress report — adherence and flexion trending up, today's pain log spiked.",
+          "sara": "Adherence report — two sessions missed this week, weekly completion below target.",
+          "mohammed": "Progress report — strong flexion improvement and lower reported pain.",
+          "lama": "Routine follow-up report — no significant changes noted."
+        }
+      },
+      "demo": {
+        "ahmedProgress": {
+          "title": "Ahmed Ali progress review",
+          "q1": "How has Ahmed been doing this week?",
+          "a1": "Ahmed completed {{completed}} of {{prescribed}} prescribed sessions this week ({{percent}}% adherence). Knee flexion improved from {{flexionOldest}}° to {{flexionLatest}}°, while pain has generally trended down toward {{painRecentAverage}}/10 before today. Movement quality remained stable. His latest session showed a small {{sessionDelta}}° ROM decrease compared with the previous session.",
+          "q2": "Do you think I should progress his exercises?",
+          "a2": "His recent trend is generally positive, but the latest ROM decrease is worth reviewing before changing the program. Today's pain log also came in higher than his recent average, so it's worth a look before progressing intensity."
+        },
+        "todayAppointments": {
+          "title": "Today's appointments",
+          "q1": "Who's on my schedule today?",
+          "a1": "{{count}} appointments are scheduled today. Your next appointment is {{nextName}} at {{nextTime}}, followed by {{followingName}} at {{followingTime}}.",
+          "q2": "Why did Ahmed request the appointment?",
+          "a2": "Ahmed requested a follow-up after reporting increased pain following his recent rehabilitation sessions. His latest pain log was {{painLatest}}/10 compared with a recent average of about {{painRecentAverage}}/10.",
+          "q3": "Move him to the first available slot.",
+          "a3": "Demo schedule updated — Ahmed is now shown in the earliest available mock slot. Since this is a frontend demo, no real appointment system was changed."
+        },
+        "attention": {
+          "title": "Patients needing attention",
+          "q1": "Who should I review today?",
+          "a1": "{{count}} patients stand out in today's rehabilitation data:",
+          "q2": "What about Sara specifically — is it serious?",
+          "a2": "Not an emergency, but worth a check-in — her weekly adherence has dropped to {{adherence}}% after missing several sessions, which is a pattern worth understanding rather than a clinical red flag on its own.",
+          "q3": "Got it, I'll message her before her next visit.",
+          "a3": "Sounds good. Let me know if you'd like a summary of her adherence trend to share with her."
+        }
+      }
+    }
+  },
+  "doctorExercises": {
+    "header": {
+      "title": "Exercise Program",
+      "subtitle": "Assigned exercises for patient ID:"
+    },
+    "table": {
+      "title": "Active Exercises",
+      "subtitle": "Track patient adherence & difficulty."
+    },
+    "columns": {
+      "exercise": "Exercise",
+      "progress": "Progress",
+      "difficulty": "Difficulty"
+    }
+  },
+  "doctorPatientProfile": {
+    "header": {
+      "patientIdLabel": "Patient ID:",
+      "buttons": {
+        "newReport": "New Report",
+        "assignExercises": "Assign Exercises",
+        "newAppointment": "New Appointment"
+      }
+    },
+    "cards": {
+      "basicInfo": {
+        "title": "Basic Info",
+        "age": "Age",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "male": "Male",
+        "female": "Female"
+      },
+      "clinicalStatus": {
+        "title": "Clinical Status",
+        "diagnosis": "Diagnosis",
+        "stage": "Rehab Stage",
+        "riskLevel": "Risk Level",
+        "lastVisit": "Last Visit",
+        "risk": {
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High"
+        }
+      },
+      "pain": {
+        "title": "Pain Level",
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High",
+        "timelineTitle": "Pain Timeline",
+        "chartLabel": "Pain level"
+      }
+    },
+    "kneeModel": {
+      "title": "3D Knee Model (Beta)",
+      "description": "Click the card to toggle range-of-motion details. Rotate the model to explain movement.",
+      "info": {
+        "currentAngle": "Current angle",
+        "exercise": "Exercise",
+        "flexionRange": "Flexion range",
+        "phase": "Phase"
+      },
+      "legend": {
+        "safe": "Safe range",
+        "caution": "Caution",
+        "highRisk": "High risk"
+      }
+    },
+    "sections": {
+      "notes": "Clinical Notes",
+      "files": "Medical Files",
+      "exerciseProgram": "Exercise Program",
+      "exerciseFeedback": "Exercise feedback",
+      "visits": "Visits History"
+    },
+    "feedback": {
+      "labels": {
+        "exercise": "Exercise",
+        "rating": "Rating (1–10)",
+        "current": "Current:",
+        "note": "Note (optional)"
+      },
+      "placeholder": "Clinical note about how the patient performs this exercise...",
+      "button": "Save feedback (mock)",
+      "saved": "Mock: exercise feedback saved (console.log)."
+    },
+    "visits": {
+      "table": {
+        "date": "Date",
+        "type": "Type",
+        "status": "Status"
+      }
+    },
+    "modal": {
+      "close": "Close"
+    }
+  },
+  "doctorReports": {
+    "title": "Clinical Reports",
+    "subtitle": "Review generated rehabilitation reports and clinical trends across your caseload.",
+    "meta": {
+      "total": "{{count}} total",
+      "awaitingReview": "{{count}} awaiting review"
+    },
+    "overview": {
+      "label": "Report overview filters",
+      "awaitingReview": "Awaiting review"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by patient, report ID, or patient ID...",
+      "statusLabel": "Review status",
+      "statusAll": "All statuses",
+      "trendLabel": "Clinical trend",
+      "trendAll": "All trends"
+    },
+    "table": {
+      "columns": {
+        "report": "Report",
+        "patient": "Patient",
+        "period": "Period",
+        "pain": "Pain",
+        "status": "Status",
+        "trend": "Clinical trend",
+        "updated": "Last updated"
+      },
+      "noResults": "No reports match your filters.",
+      "reviewAction": "Review",
+      "viewAction": "View"
+    },
+    "assistant": {
+      "actions": {
+        "reviewReport": "Review report",
+        "compareWithPrevious": "Compare with previous"
+      }
+    },
+    "detail": {
+      "title": "Report {{id}}",
+      "measurements": "Key measurements",
+      "comparison": "Comparison with previous report",
+      "noComparison": "No previous comparable report is available.",
+      "metric": "Metric",
+      "previous": "Previous",
+      "current": "Current",
+      "change": "Change",
+      "noChange": "No change",
+      "metrics": {
+        "pain": "Pain",
+        "rom": "Flexion ROM",
+        "adherence": "Adherence"
+      },
+      "viewSessions": "View sessions from this period",
+      "clinicianNote": "Clinician note",
+      "noClinicianNote": "No clinician note has been added for this report.",
+      "addNote": "Add a note (optional)",
+      "markReviewed": "Mark as reviewed"
+    }
+  },
+  "doctorPatients": {
+    "title": "Patients",
+    "subtitle": "Track your caseload, see who needs attention first, and open any patient's rehabilitation record.",
+    "search": "Search by name or patient ID",
+    "empty": "No patients match these filters.",
+    "summary": {
+      "active": "Active patients",
+      "needAttention": "Need attention",
+      "pendingAppointments": "Pending appointment requests",
+      "reportsAwaitingReview": "Reports awaiting review"
+    },
+    "filters": {
+      "label": "Filter",
+      "all": "All",
+      "needsAttention": "Needs attention",
+      "stable": "Stable",
+      "pendingAppointment": "Pending appointment",
+      "reportAwaitingReview": "Report awaiting review"
+    },
+    "sort": {
+      "label": "Sort by",
+      "priority": "Priority",
+      "activity": "Last activity",
+      "name": "Name"
+    },
+    "metrics": {
+      "adherence": "Adherence",
+      "latestPain": "Latest pain",
+      "latestRom": "Latest ROM"
+    },
+    "tags": {
+      "appointmentPending": "Appointment pending",
+      "reportPending": "Report pending"
+    },
+    "activity": {
+      "none": "No sessions yet"
+    },
+    "actions": {
+      "view": "View patient"
+    },
+    "appointmentTypes": {
+      "rehabSession": "Rehabilitation session"
+    }
+  },
+  "doctorPatientWorkspace": {
+    "tabsLabel": "Patient workspace sections",
+    "close": "Close",
+    "done": "Done",
+    "cancel": "Cancel",
+    "pendingAppointmentBanner": "This patient has a pending appointment request — review it in Appointments.",
+    "tabs": {
+      "overview": "Overview",
+      "rehabilitation": "Rehabilitation",
+      "sessions": "Sessions",
+      "reports": "Reports",
+      "appointments": "Appointments",
+      "clinicalRecord": "Clinical Record"
+    },
+    "header": {
+      "adherence": "{{value}}% adherence",
+      "editPlan": "Edit rehabilitation plan",
+      "scheduleAppointment": "Schedule appointment"
+    },
+    "overview": {
+      "clinicalStatus": "Clinical status",
+      "diagnosis": "Diagnosis",
+      "phase": "Rehab phase",
+      "week": "Current week",
+      "weekValue": "Week {{number}}",
+      "clinician": "Treating clinician",
+      "rehabProgress": "Rehabilitation progress",
+      "adherence": "Adherence",
+      "sessionsThisWeek": "Sessions this week",
+      "trend": "Trend",
+      "latestMeasurements": "Latest measurements",
+      "pain": "Pain",
+      "flexionRom": "Flexion ROM",
+      "movementQuality": "Movement quality",
+      "romVisualizationNote": "Knee ROM visualization — reflects the latest session's measurement, not a live sensor reading.",
+      "whyFlagged": "Why this patient was flagged",
+      "recentActivity": "Recent activity",
+      "noActivity": "No recent activity yet.",
+      "activity": {
+        "sessionCompleted": "Rehabilitation session completed",
+        "reportGenerated": "Progress report generated",
+        "appointmentRequested": "Appointment requested"
+      }
+    },
+    "rehab": {
+      "currentPlan": "Current rehabilitation plan",
+      "editPlan": "Edit rehabilitation plan",
+      "startDate": "Started {{date}}",
+      "noExercises": "No exercises are currently prescribed.",
+      "remove": "Remove exercise",
+      "repsLine": "{{sets}} sets × {{reps}} reps",
+      "durationLine": "{{sets}} sets × {{seconds}}s",
+      "holdLine": "{{seconds}}s hold",
+      "frequencyLine": "{{count}}x / week",
+      "targetRomLine": "Target ROM {{min}}°–{{max}}°",
+      "lastCompleted": "Last completed {{date}}",
+      "neverCompleted": "Not completed yet",
+      "activeExercises": "Active exercises",
+      "addExercise": "Add exercise",
+      "addToProgram": "Add to program",
+      "fields": {
+        "exercise": "Exercise",
+        "sets": "Sets",
+        "reps": "Reps",
+        "durationSeconds": "Duration (seconds)",
+        "frequency": "Frequency (per week)",
+        "holdSeconds": "Hold (seconds, optional)",
+        "targetRomMin": "Target ROM min (optional)",
+        "targetRomMax": "Target ROM max (optional)",
+        "instructions": "Instructions (optional)"
+      },
+      "errors": {
+        "sets": "Sets must be a positive number.",
+        "reps": "Reps must be a positive number.",
+        "duration": "Duration must be a positive number of seconds.",
+        "frequency": "Frequency must be between 1 and 7 sessions per week."
+      }
+    },
+    "sessions": {
+      "empty": "No completed rehabilitation sessions yet.",
+      "markReviewed": "Mark reviewed",
+      "addNote": "Add clinical note (optional)",
+      "exerciseBreakdown": "Exercise breakdown",
+      "source": "Source",
+      "sourceLive": "Live patient session",
+      "sourceHistorical": "Historical record",
+      "reviewed": "Reviewed",
+      "awaitingReview": "Awaiting review",
+      "table": {
+        "date": "Date",
+        "completion": "Completion",
+        "pain": "Pain (before → after)",
+        "rom": "ROM",
+        "review": "Review"
+      }
+    },
+    "reports": {
+      "empty": "No rehabilitation reports have been generated for this patient.",
+      "generateNew": "Generate report for current period",
+      "markReviewed": "Mark reviewed",
+      "addNote": "Add clinician note (optional)",
+      "reportTitle": "Rehabilitation report",
+      "sessions": "Sessions",
+      "adherence": "Adherence",
+      "pain": "Pain trend",
+      "rom": "ROM trend",
+      "status": {
+        "awaiting_review": "Awaiting review",
+        "reviewed": "Reviewed"
+      },
+      "flags": {
+        "painSpike": "Latest pain spike",
+        "romRegression": "Small latest ROM regression"
+      }
+    },
+    "appointments": {
+      "empty": "No appointments yet.",
+      "scheduleNew": "Schedule appointment",
+      "schedule": "Schedule",
+      "accept": "Accept",
+      "reject": "Reject",
+      "cancel": "Cancel",
+      "proposeNewTime": "Propose new time",
+      "sendProposal": "Send proposal",
+      "proposedTime": "Proposed time",
+      "source": "Source: {{source}}",
+      "sourceValue": {
+        "patient": "Patient requested",
+        "doctor": "Clinician scheduled",
+        "assistant": "Requested via Assistant"
+      },
+      "status": {
+        "requested": "Requested",
+        "confirmed": "Confirmed",
+        "alternative_proposed": "New time suggested",
+        "declined": "Declined",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "fields": {
+        "date": "Date",
+        "time": "Time",
+        "type": "Type",
+        "note": "Note (optional)"
+      },
+      "errors": {
+        "dateTime": "Choose a date and time.",
+        "invalidDate": "Choose a valid, upcoming date and time."
+      }
+    },
+    "clinicalRecord": {
+      "notes": "Clinical notes",
+      "addNote": "Add a clinical note",
+      "saveNote": "Save note",
+      "noNotes": "No clinical notes yet.",
+      "clinicianOnly": "Clinician-only",
+      "files": "Medical documents",
+      "noFiles": "No documents on file.",
+      "demoOnly": "Demo only",
+      "visitHistory": "Visit history",
+      "noVisits": "No clinical visits recorded yet.",
+      "visitTable": {
+        "date": "Date",
+        "type": "Type",
+        "status": "Status"
+      },
+      "errors": {
+        "emptyNote": "Enter a note before saving."
+      }
+    }
+  },
+  "doctorProfile": {
+    "title": "Doctor Profile",
+    "subtitle": "Manage your professional information, contact details, and appointment availability.",
+    "saveSuccess": "Profile updated.",
+    "professionalInfo": "Professional information",
+    "visibleToAdmins": "Visible to clinic administrators",
+    "contactAvailability": "Contact & availability",
+    "labels": {
+      "fullName": "Full name",
+      "specialty": "Specialty",
+      "yearsExperience": "Years of experience",
+      "licenseNumber": "Medical license number",
+      "clinicName": "Clinic / hospital",
+      "bio": "Short bio",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location / city",
+      "availabilityStatus": "Availability status"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "yearsExperience": "Enter a whole number between 0 and 70.",
+      "licenseNumber": "Enter a valid license number (at least 3 characters).",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a valid phone number.",
+      "bioLength": "Keep your bio under {{max}} characters.",
+      "workingHours": "Each open day's end time must be later than its start time."
+    },
+    "status": {
+      "available": "Available for appointments",
+      "busy": "Busy / in sessions",
+      "away": "Away"
+    },
+    "avatar": {
+      "change": "Change photo",
+      "remove": "Remove photo",
+      "errors": {
+        "type": "Please choose a JPG, PNG, or WEBP image.",
+        "size": "Please choose an image under 1.5MB."
+      }
+    },
+    "workingHours": {
+      "title": "Working hours",
+      "copySunday": "Copy Sunday hours to other open days",
+      "closed": "Closed",
+      "startLabel": "{{day}} start time",
+      "endLabel": "{{day}} end time",
+      "conflictWarning": "{{count}} existing appointment(s) fall outside these updated working hours.",
+      "reviewAppointments": "Review appointments",
+      "saveAnyway": "Save anyway",
+      "days": {
+        "sunday": "Sunday",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday"
+      }
+    },
+    "cancel": "Cancel",
+    "saveChanges": "Save changes"
+  },
+  "patientDashboard": {
+    "greeting": {
+      "morning": "Good morning, {{name}}.",
+      "afternoon": "Good afternoon, {{name}}.",
+      "evening": "Good evening, {{name}}.",
+      "fallbackName": "there"
+    },
+    "assistant": {
+      "regionLabel": "KneeGuide Assistant",
+      "orbLabel": "KneeGuide Assistant",
+      "intro": "How can I help you with your recovery today?",
+      "inputLabel": "Ask KneeGuide about your recovery",
+      "inputPlaceholder": "Ask KneeGuide about your recovery...",
+      "sendLabel": "Send",
+      "suggestionsLabel": "Suggested actions",
+      "followUpLabel": "Follow-up suggestions",
+      "historyLabel": "Conversation",
+      "youLabel": "You",
+      "history": {
+        "title": "Conversation history",
+        "newChat": "New chat",
+        "openHistory": "Open conversation history",
+        "closeHistory": "Close conversation history",
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar",
+        "today": "Today",
+        "previous": "Previous conversations",
+        "untitled": "New conversation",
+        "mockBadge": "Demo",
+        "empty": "No conversations yet"
+      },
+      "painLogger": {
+        "rangeLabel": "Pain level, 0 to 10",
+        "valueText": "{{value}} out of 10, {{severity}}",
+        "submit": "Submit pain level",
+        "logged": "Logged"
+      },
+      "actions": {
+        "showExercises": "Show today's exercises",
+        "nextAppointment": "When is my next appointment?",
+        "latestReport": "Show my latest report",
+        "logPain": "Log today's pain",
+        "rehabProgress": "How is my rehab progress?",
+        "connectDevice": "How do I connect my device?",
+        "requestAppointment": "Request an appointment",
+        "chooseAppointmentTime": "Choose a time",
+        "changePain": "Yes, change it",
+        "keepPain": "No, keep it"
+      },
+      "responses": {
+        "noAppointment": "You don't have an upcoming appointment scheduled.",
+        "nextAppointment": "Your next appointment is {{date}} at {{time}} with {{doctor}}.",
+        "openAppointments": "View appointments",
+        "requestAppointmentIntro": "Sure — I can help you request a follow-up with {{doctorName}}.",
+        "appointmentRequestSubmitted": "Your request for {{date}} at {{time}} has been sent. Status: {{status}}.",
+        "noReport": "You don't have any clinical reports yet.",
+        "latestReport": "Your latest report from {{date}} is marked {{status}}, with a recorded pain level of {{pain}}.",
+        "noProgress": "No adherence data is available yet.",
+        "rehabProgress": "You're on a {{days}}-day streak, with {{percent}}% of this week's exercises completed.",
+        "viewReports": "View reports",
+        "logPainPrompt": "How would you rate your pain today?",
+        "painRecentExists": "You recently logged your pain as {{value}}/10. Would you like to change it?",
+        "painChangePrompt": "Sure. What is your pain level now?",
+        "painKept": "Okay, I'll keep your current pain log at {{value}}/10.",
+        "painLogged": "Got it. I've logged your pain as {{value}}/10.",
+        "painUpdated": "Done. I've updated your pain log to {{value}}/10.",
+        "unsupported": "I'm not able to answer open-ended questions yet. I can help you check your exercises, appointments, reports, pain log, or rehab progress.",
+        "capabilityReportAnalysis": "I can show you your current report, but detailed analysis and smart comparisons between reports aren't connected yet.",
+        "capabilityExerciseAnalysis": "I can show your exercise list, but detailed performance analysis isn't connected yet.",
+        "exercisesIntro": "You have {{count}} exercises scheduled for today:",
+        "noExercisesToday": "You don't have any exercises assigned for today.",
+        "openExerciseProgram": "Open exercise program",
+        "deviceIntro": "You can connect your KneeGuide sensor from Profile → Devices, or scan for it directly here.",
+        "deviceScan": "Scan for devices",
+        "openDeviceSettings": "Open Devices settings",
+        "deviceScanning": "Searching for nearby devices...",
+        "deviceFound": "I found {{count}} nearby devices:",
+        "deviceSignal": "Signal: {{value}} dBm",
+        "deviceConnect": "Connect",
+        "deviceConnecting": "Connecting...",
+        "deviceConnectAriaLabel": "Connect to {{name}}",
+        "deviceConnected": "Connected to {{name}}."
+      }
+    },
+    "logout": "Logout",
+    "mock": {
+      "lastReport": {
+        "statusLabel": "Reviewed"
+      }
+    }
+  },
+  "patientExercises": {
+    "header": {
+      "title": "Your Exercise Program",
+      "subtitle": "Follow your daily routine to support knee recovery."
+    },
+    "mock": {
+      "quadSets": {
+        "name": "Quad Sets",
+        "description": "Strengthens the quadriceps to support knee stability.",
+        "target": "Knee extension control",
+        "instructions": [
+          "Sit or lie down with the leg supported and the knee straight.",
+          "Tighten the front of the thigh, as if pressing the knee down.",
+          "Hold the contraction briefly.",
+          "Relax slowly and repeat."
+        ],
+        "cues": [
+          "Keep the movement controlled, not forceful.",
+          "Breathe normally throughout.",
+          "Stop if you feel sharp pain."
+        ],
+        "mistakes": [
+          "Rushing through each repetition.",
+          "Holding your breath.",
+          "Forcing through painful range."
+        ]
+      },
+      "legRaises": {
+        "name": "Straight Leg Raises",
+        "description": "Improves thigh control and reduces knee pressure.",
+        "target": "Hip and thigh control",
+        "instructions": [
+          "Lie on your back with one knee bent and the other leg straight.",
+          "Tighten the thigh of the straight leg.",
+          "Lift it slowly to the height of the bent knee.",
+          "Lower it back down with control."
+        ],
+        "cues": [
+          "Keep the knee straight throughout the lift.",
+          "Move slowly rather than swinging the leg.",
+          "Keep your lower back relaxed against the surface."
+        ],
+        "mistakes": [
+          "Letting the knee bend during the lift.",
+          "Lifting too high or too fast.",
+          "Arching the lower back."
+        ]
+      },
+      "heelSlides": {
+        "name": "Heel Slides",
+        "description": "Enhances knee flexion and mobility safely.",
+        "target": "Knee flexion range",
+        "instructions": [
+          "Lie on your back with legs straight.",
+          "Slowly slide your heel toward your body, bending the knee.",
+          "Go as far as comfortable, then pause.",
+          "Slide the heel back to the starting position."
+        ],
+        "cues": [
+          "Keep the movement smooth and slow.",
+          "Stop at the first sign of sharp pain.",
+          "Support the movement with your hands if needed."
+        ],
+        "mistakes": [
+          "Forcing the knee further than comfortable.",
+          "Sliding too quickly.",
+          "Letting the foot lift off the surface."
+        ]
+      },
+      "hamstring": {
+        "name": "Hamstring Stretch",
+        "description": "Reduces tightness behind the knee.",
+        "target": "Hamstring flexibility",
+        "instructions": [
+          "Sit with the leg extended in front of you.",
+          "Keep your back straight and gently lean forward from the hips.",
+          "Hold the stretch without bouncing.",
+          "Release slowly."
+        ],
+        "cues": [
+          "Stretch until you feel gentle tension, not pain.",
+          "Keep the movement slow and controlled.",
+          "Breathe normally during the hold."
+        ],
+        "mistakes": [
+          "Bouncing while stretching.",
+          "Rounding the back to reach further.",
+          "Holding through sharp pain."
+        ]
+      },
+      "calfRaises": {
+        "name": "Calf Raises",
+        "description": "Strengthens lower leg muscles for stability.",
+        "target": "Lower leg strength",
+        "instructions": [
+          "Stand with your feet flat, holding support if needed.",
+          "Slowly rise onto your toes.",
+          "Hold briefly at the top.",
+          "Lower back down with control."
+        ],
+        "cues": [
+          "Keep the movement slow and controlled.",
+          "Distribute weight evenly across both feet.",
+          "Use support for balance if needed."
+        ],
+        "mistakes": [
+          "Rising too quickly.",
+          "Letting the ankles roll outward.",
+          "Skipping the controlled lowering phase."
+        ]
+      }
+    },
+    "session": {
+      "weekNav": "Rehab week",
+      "weekLabel": "Week {{number}}",
+      "todaysSessionTab": "Today's Session",
+      "exerciseLibrary": "Exercise Library",
+      "dayStatus": {
+        "completed": "Completed",
+        "today": "Today",
+        "upcoming": "Upcoming"
+      },
+      "todaysRehab": "Today's Rehab",
+      "sessionNumber": "Session {{number}}",
+      "exercisesCount": "{{count}} exercises",
+      "setsCount": "{{count}} total sets",
+      "estimatedDuration": "Estimated duration: {{minutes}} min",
+      "exercisesProgress": "{{completed}} / {{total}} exercises",
+      "setsProgress": "{{completed}} / {{total}} sets",
+      "startSession": "Start today's session",
+      "sessionTime": "Session time",
+      "elapsed": "{{time}} elapsed",
+      "setsReps": "{{sets}} sets × {{reps}} reps",
+      "setsDuration": "{{sets}} sets × {{seconds}}s",
+      "target": "Target",
+      "estimated": "Estimated: {{minutes}} min",
+      "previousSession": "Previous session",
+      "previousRom": "ROM {{value}}°",
+      "setLabel": "Set {{current}} of {{total}}",
+      "repsLabel": "{{count}} reps",
+      "exerciseTime": "Exercise time",
+      "movementQuality": "Movement quality",
+      "range": "Range",
+      "completeSet": "Complete set",
+      "sensorNotConnected": "Sensor not connected — tracking continues manually.",
+      "setStatus": {
+        "done": "Done",
+        "active": "Active",
+        "pending": "—"
+      },
+      "quality": {
+        "fair": "Fair",
+        "good": "Good",
+        "excellent": "Excellent"
+      },
+      "insightTitle": "KneeGuide Insight",
+      "continueTo": "Continue to {{name}}",
+      "finishSession": "Finish session",
+      "completedIn": "Completed in {{time}}",
+      "painCheckPrompt": "How does your knee feel after today's session?",
+      "skipPainCheck": "Skip",
+      "sessionCompleteTitle": "Session complete",
+      "greatWork": "Great work, {{name}}.",
+      "todaysRehabDuration": "Today's rehabilitation",
+      "exercisesSummary": "Exercises",
+      "setsSummary": "Sets",
+      "avgQuality": "Average movement quality",
+      "painChange": "Pain",
+      "romTrend": "Range trend",
+      "recoveryInsightTitle": "KneeGuide Recovery Insight",
+      "recommendationTitle": "What's next",
+      "recommendations": {
+        "followPlan": "Follow your prescribed recovery plan.",
+        "lightActivity": "Pain increased slightly today — keep the rest of today's activity light.",
+        "monitor": "Keep monitoring your pain and mobility.",
+        "contactClinician": "If symptoms become concerning, contact your clinician."
+      },
+      "viewReport": "View full session report",
+      "reportReady": "Session report ready",
+      "reportFutureNote": "In the connected version of KneeGuide, completed session reports can be shared with your care team.",
+      "reportTitle": "Session Report",
+      "reportDuration": "Duration",
+      "reportExercise": "Exercise",
+      "reportSets": "Sets",
+      "close": "Close",
+      "upcomingHeading": "Upcoming rehab day",
+      "upcomingSub": "{{count}} exercises planned · about {{minutes}} min",
+      "dayLockedReason": "This session isn't available yet — it unlocks on its scheduled day.",
+      "insights": {
+        "exerciseImproved": "Your range of motion was {{delta}}° higher than your previous session — nice, consistent progress.",
+        "exerciseReduced": "Your range was a little lower than your previous session. That can happen — keep the movement controlled rather than forcing it.",
+        "exerciseMaintained": "Your movement stayed consistent with your previous session — steady progress is still progress.",
+        "sessionPainIncreased": "Your movement stayed consistent through the session. Your pain increased slightly, so keep the rest of today's activity light and follow your existing recovery plan.",
+        "sessionPainDecreased": "Your pain eased compared to before the session, and your movement stayed consistent throughout. Keep following your existing recovery plan.",
+        "sessionConsistent": "Your movement was consistent throughout today's session. Keep following your existing recovery plan."
+      },
+      "devReset": "Reset demo session (dev only)",
+      "libraryIntro": "Reference exercises used in your rehabilitation program.",
+      "details": {
+        "title": "Exercise details",
+        "viewInstructionsFor": "View instructions for {{name}}",
+        "todaysPrescription": "Today's prescription",
+        "purpose": "Purpose",
+        "howToPerform": "How to perform",
+        "keyCues": "Key cues",
+        "watchFor": "Watch for",
+        "kneeGuideTip": "KneeGuide tip",
+        "kneeGuideTipMessage": "Today's target range is {{min}}–{{max}}°. Focus on consistency rather than increasing range quickly.",
+        "mediaUnavailable": "Instructional media isn't available for this exercise yet."
+      }
+    }
+  },
+  "patientReports": {
+    "header": {
+      "title": "Your Recovery Reports",
+      "subtitle": "A full visual summary of your knee rehab progress."
+    },
+    "filters": {
+      "range": "Time Range",
+      "sortBy": "Sort By"
+    },
+    "range": {
+      "last7": "Last 7 days",
+      "last30": "Last 30 days",
+      "last90": "Last 3 months"
+    },
+    "sort": {
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "painHigh": "Pain (High → Low)",
+      "painLow": "Pain (Low → High)"
+    },
+    "summary": {
+      "avgPain": "Avg Pain",
+      "hintSessions": "Across last sessions",
+      "flexion": "Flexion Gain",
+      "hintImprovement": "Overall improvement",
+      "completion": "Completion Rate",
+      "hintCompletionCount": "{{completed}} of {{total}} sessions",
+      "painComparison": "{{direction}} {{value}} vs previous 5 sessions",
+      "down": "↓",
+      "up": "↑",
+      "improving": "Improving",
+      "declining": "Declining"
+    },
+    "table": {
+      "title": "Sessions Log",
+      "subtitle": "Your complete rehab tracking history.",
+      "headers": {
+        "date": "Date",
+        "pain": "Pain",
+        "flexion": "Flexion",
+        "extension": "Extension",
+        "status": "Status",
+        "review": "Review"
+      },
+      "view": "View"
+    },
+    "status": {
+      "session": {
+        "completed": "Completed",
+        "incomplete": "Incomplete"
+      },
+      "review": {
+        "reviewed": "Reviewed",
+        "awaiting_review": "Awaiting review",
+        "not_shared": "Not shared"
+      }
+    },
+    "empty": {
+      "noReportsYet": "No recovery reports yet. Complete a rehabilitation session to start tracking your progress.",
+      "noReportsInRange": "No reports in this time range. Try a wider range.",
+      "noResultsForFilter": "No sessions match this view.",
+      "singleReportTrend": "More sessions are needed before KneeGuide can identify a recovery trend."
+    },
+    "insight": {
+      "title": "KneeGuide Recovery Insight",
+      "viewTrends": "View detailed progress",
+      "painImproving": "Pain improving",
+      "painChanging": "Pain trend",
+      "flexionImproving": "Flexion improving",
+      "flexionChanging": "Flexion trend",
+      "adherence": "Adherence",
+      "recentTrend": "Recent trend",
+      "trendDirection": {
+        "improving": "Improving",
+        "stable": "Stable",
+        "declining": "Declining",
+        "insufficient_data": "Not enough data"
+      }
+    },
+    "milestones": {
+      "title": "Recovery milestones",
+      "bestFlexion": "Best flexion: {{value}}°",
+      "lowestPain": "Lowest pain: {{value}}/10",
+      "sessionsTracked": "{{completed}} of {{total}} sessions completed"
+    },
+    "trends": {
+      "title": "Trend Overview",
+      "subtitle": "Pain and flexion across your recent sessions.",
+      "painLabel": "Pain Trend",
+      "flexionLabel": "Flexion Trend"
+    },
+    "insights": {
+      "recovery": {
+        "insufficientHistory": "More sessions are needed before KneeGuide can identify a recovery trend.",
+        "improvingFull": "Your recovery has improved over your last {{count}} sessions. Pain decreased from {{oldPain}}/10 to {{newPain}}/10 while knee flexion improved from {{oldFlexion}}° to {{newFlexion}}°.",
+        "improvingPartial": "Your recovery shows an improving trend over your last {{count}} sessions.",
+        "declining": "Your last {{count}} sessions show pain trending higher or reduced range of motion. Consider discussing this with your clinician.",
+        "stable": "Your pain and range of motion have remained stable across your last {{count}} sessions."
+      },
+      "trend": {
+        "painDownRomUp": "Pain has generally decreased while knee flexion has increased across your recent sessions.",
+        "romUpPainStable": "Your range of motion continues to improve, while pain has remained stable during your recent sessions.",
+        "reviewWithClinician": "Recent sessions show less improvement than earlier ones — consider reviewing this with your clinician if it continues.",
+        "bothStable": "Your pain and range of motion have remained steady across your recent sessions.",
+        "mixed": "Your range of motion is trending well, though pain has shifted slightly — worth keeping an eye on."
+      },
+      "session": {
+        "improvedBoth": "Your flexion increased by {{flexionDelta}}° compared with your previous session while pain also improved.",
+        "flexionImproved": "Your flexion increased by {{flexionDelta}}° compared with your previous session.",
+        "painImproved": "Your pain decreased by {{painDelta}} points compared with your previous session.",
+        "mixed": "Some measures improved and others declined compared with your previous session — worth keeping an eye on.",
+        "stable": "This session was consistent with your previous one."
+      }
+    },
+    "doctorFeedback": {
+      "title": "Doctor Feedback",
+      "awaitingReview": "This session hasn't been reviewed by your clinician yet.",
+      "notShared": "This report hasn't been shared with your care team.",
+      "followUpRecommended": "Follow-up recommended",
+      "fixtures": {
+        "detailed1": "Great progress — your knee extension and flexion are both improving steadily. Continue the current program and keep monitoring pain after exercises.",
+        "detailed2": "Your range of motion continues to improve well. I noticed a slight increase in pain after your last session — let's keep an eye on it. Reduce intensity slightly if discomfort continues, and we'll plan a follow-up to review your progress."
+      }
+    },
+    "reportModal": {
+      "eyebrow": "Recovery Report",
+      "close": "Close",
+      "duration": "Duration",
+      "sessionInsightTitle": "KneeGuide Insight",
+      "exercises": "Exercises",
+      "sets": "sets"
+    }
+  },
+  "patientAppointments": {
+    "header": {
+      "title": "Appointments",
+      "subtitle": "Manage your rehabilitation follow-ups and request appointments with your care team."
+    },
+    "close": "Close",
+    "viewDetails": "View details",
+    "clinician": {
+      "label": "Clinician",
+      "name": "Dr. Sarah Ahmed",
+      "specialty": "Physiotherapy"
+    },
+    "location": {
+      "clinicName": "KneeGuide Clinic",
+      "room": "Room {{room}}"
+    },
+    "types": {
+      "followUp": "Physiotherapy follow-up",
+      "initial": "Initial assessment"
+    },
+    "hero": {
+      "title": "Next appointment",
+      "today": "Today",
+      "daysAway": "{{count}} days away",
+      "addToCalendar": "Add to calendar",
+      "emptyText": "You don't have an upcoming appointment scheduled. You can request one with your care team below."
+    },
+    "insight": {
+      "title": "KneeGuide Care Insight",
+      "clinicianFollowUp": "Dr. {{doctorName}} suggested continuing your current program before your next review. Suggested next review: {{followUp}}.",
+      "alternativeProposed": "{{doctorName}} suggested a new time for your appointment request — review it below.",
+      "upcomingSoon": "Your next appointment with {{doctorName}} is coming up in {{count}} days.",
+      "pendingRequest": "Your appointment request is awaiting your clinician's review.",
+      "noUpcoming": "You don't have a follow-up scheduled. If you'd like to check in with your care team, you can request an appointment.",
+      "neutral": "Your next appointment with {{doctorName}} is on the calendar. Let your clinician know if anything changes before then."
+    },
+    "sections": {
+      "requests": "Appointment requests",
+      "requestsEmpty": "You don't have any pending or recent requests.",
+      "upcoming": "Upcoming appointments",
+      "upcomingEmpty": "No upcoming appointments.",
+      "past": "Previous appointments",
+      "pastEmpty": "No previous appointments yet."
+    },
+    "status": {
+      "REQUESTED": "Requested",
+      "CONFIRMED": "Confirmed",
+      "ALTERNATIVE_PROPOSED": "New time suggested",
+      "DECLINED": "Declined",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "reasons": {
+      "painIncreased": "Pain increased",
+      "reviewProgress": "Review rehabilitation progress",
+      "romConcern": "Movement / ROM concern",
+      "exerciseDifficulty": "Exercise difficulty",
+      "deviceIssue": "Device / sensor issue",
+      "generalFollowUp": "General follow-up",
+      "other": "Other"
+    },
+    "declineReasons": {
+      "schedule_conflict": "Your clinician has a scheduling conflict at this time.",
+      "no_clinical_need_yet": "Your clinician doesn't see a clinical need for this visit yet.",
+      "requested_time_unavailable": "The requested time isn't available.",
+      "continue_current_plan": "Your clinician suggests continuing your current program a bit longer first.",
+      "other": "Your clinician declined this request."
+    },
+    "request": {
+      "cta": "Request appointment",
+      "title": "Request an appointment",
+      "chooseAnotherTimeTitle": "Choose another time",
+      "reasonLabel": "Reason for appointment",
+      "noteLabel": "Anything you'd like your clinician to know?",
+      "notePlaceholder": "Optional note...",
+      "chooseDate": "Choose a date",
+      "chooseTime": "Choose a time",
+      "available": "Available",
+      "unavailable": "Unavailable",
+      "selected": "Selected",
+      "reviewTitle": "Review your request",
+      "back": "Back",
+      "next": "Next",
+      "submit": "Submit request",
+      "submittedTitle": "Appointment request submitted",
+      "submittedBody": "Your request for {{date}} at {{time}} has been sent to your care team.",
+      "slotNoLongerAvailable": "That time is no longer available — please choose another.",
+      "errorConflict": "You already have a confirmed appointment at this time.",
+      "errorDuplicate": "You already have a request for this time."
+    },
+    "details": {
+      "eyebrow": "Appointment",
+      "time": "Time",
+      "location": "Location",
+      "doctorResponse": "Doctor response",
+      "youRequested": "You requested:",
+      "doctorSuggested": "{{doctorName}} suggested:",
+      "acceptAlternative": "Accept new time",
+      "chooseAnotherTime": "Choose another time",
+      "suggestedNextReview": "Suggested next review",
+      "timeline": "Request timeline"
+    },
+    "timeline": {
+      "submitted": "Request submitted",
+      "reviewed": "Reviewed by {{doctorName}}",
+      "alternativeProposed": "Alternative time proposed",
+      "declined": "Request declined",
+      "confirmed": "Confirmed"
+    },
+    "followUp": {
+      "nextWeek": "Next week"
+    },
+    "doctorResponses": {
+      "alternative1": "I'd like you to continue your program one more day before the follow-up — could we move this to the next morning slot instead?",
+      "declined1": "Your recent reports show stable improvement. Continue the current program for another week, then let's review your progress."
+    }
+  },
+  "verifyOtp": {
+    "title": "Verify Your Email",
+    "subtitle": "Enter the 6-digit code sent to your email address.",
+    "digitLabel": "Digit {{position}} of 6",
+    "errors": {
+      "codeRequired": "Please enter the full 6-digit code.",
+      "invalid": "Invalid or expired OTP.",
+      "failedResend": "Failed to resend OTP."
+    },
+    "success": {
+      "verified": "Email verified",
+      "resent": "A new OTP has been sent."
+    },
+    "buttons": {
+      "verify": "Verify"
+    },
+    "resend": {
+      "in": "Resend available in {{count}}s",
+      "button": "Resend code",
+      "sending": "Sending..."
+    },
+    "backToLogin": "Back to Login"
+  },
+  "doctorShell": {
+    "sidebar": {
+      "navLabel": "Doctor navigation",
+      "workspace": "Doctor Workspace",
+      "nav": {
+        "home": "Home",
+        "patients": "Patients",
+        "appointments": "Appointments",
+        "reports": "Reports"
+      },
+      "collapse": "Collapse sidebar",
+      "expand": "Expand sidebar",
+      "openNav": "Open navigation menu"
+    },
+    "topbar": {
+      "pageTitles": {
+        "patients": "Patients",
+        "appointments": "Appointments",
+        "reports": "Reports",
+        "profile": "Profile"
+      }
+    },
+    "assistantLauncher": {
+      "label": "KneeGuide Assistant"
+    },
+    "assistantDrawer": {
+      "close": "Close assistant",
+      "openFull": "Open full assistant"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "markAllRead": "Mark all as read",
+      "empty": "No notifications right now.",
+      "bellLabel": "Notifications, {{count}} unread",
+      "readState": {
+        "read": "Read",
+        "unread": "Unread"
+      },
+      "relative": {
+        "justNow": "Just now",
+        "minutesAgo": "{{count}}m ago",
+        "hoursAgo": "{{count}}h ago",
+        "daysAgo": "{{count}}d ago"
+      },
+      "items": {
+        "painSpike": {
+          "title": "Ahmed Ali",
+          "message": "Pain increased to {{pain}}/10 in the latest session."
+        },
+        "missedSessions": {
+          "title": "Sara Almutairi",
+          "message": "Missed {{count}} prescribed sessions this week."
+        },
+        "reportReady": {
+          "title": "Mohammed Aziz",
+          "message": "New rehabilitation report is ready for review."
+        },
+        "appointmentRequest": {
+          "title": "Lama Khaled",
+          "message": "New appointment request received."
+        }
+      }
+    },
+    "account": {
+      "menuLabel": "Account menu",
+      "profile": "Profile",
+      "language": "Language",
+      "languageEnglish": "English",
+      "languageArabic": "العربية",
+      "logout": "Logout"
+    }
+  },
+  "patientProfile": {
+    "tabsLabel": "Profile tabs",
+    "tabs": {
+      "overview": "Overview",
+      "medical": "Medical",
+      "rehab": "Rehab",
+      "devices": "Devices",
+      "preferences": "Preferences",
+      "security": "Security"
+    },
+    "hero": {
+      "role": "Rehabilitation patient",
+      "context": "{{phase}} · {{week}}"
+    },
+    "rehabPhase": {
+      "phase2": "Phase 2"
+    },
+    "mock": {
+      "goal": "Improve ROM & strength",
+      "diagnosis": "ACL Partial Tear",
+      "clinicalNote": "Continue ROM training, improving well."
+    },
+    "insight": {
+      "title": "KneeGuide Insight",
+      "overview": "You're keeping up with {{percent}}% of this week's program during {{phase}} — solid consistency.",
+      "medical": "Your current rehabilitation phase ({{phase}}) matches your latest clinical note — keep following your prescribed program.",
+      "rehab": "You've completed {{percent}}% of this week's rehab program. Keep up the consistency to stay on track.",
+      "rehabWithLeader": "You've completed {{percent}}% of this week's rehab program, and {{exerciseName}} has shown the strongest movement quality recently.",
+      "deviceConnected": "Your KneeGuide sensor ({{name}}) is connected. You're ready to begin today's rehabilitation session."
+    },
+    "overview": {
+      "recoveryProfile": {
+        "title": "Recovery Profile",
+        "diagnosis": "Diagnosis",
+        "phase": "Rehabilitation phase",
+        "week": "Recovery week",
+        "surgeryDate": "Surgery date"
+      },
+      "personal": {
+        "title": "Personal",
+        "age": "Age",
+        "ageValue": "{{count}} years",
+        "height": "Height",
+        "heightValue": "{{value}} cm",
+        "weight": "Weight",
+        "weightValue": "{{value}} kg",
+        "goal": "Recovery goal"
+      },
+      "careTeam": {
+        "title": "Care Team",
+        "nextAppointment": "Next appointment: {{date}} at {{time}}",
+        "noAppointment": "No upcoming appointment scheduled",
+        "viewAppointments": "View appointments"
+      }
+    },
+    "medical": {
+      "title": "Medical Information",
+      "diagnosis": "Diagnosis",
+      "phase": "Rehabilitation",
+      "surgeryDate": "Surgery",
+      "note": "Latest clinical note",
+      "viewReports": "View recovery reports"
+    },
+    "rehab": {
+      "title": "Rehabilitation Program",
+      "exercises": "Exercises",
+      "sets": "Total sets",
+      "duration": "Duration",
+      "durationValue": "~{{count}} min",
+      "phase": "Phase",
+      "setsByReps": "{{sets}} × {{reps}}",
+      "openSession": "Open today's rehabilitation session"
+    },
+    "devices": {
+      "title": "Knee Sensor Device",
+      "subtitle": "Connect your KneeGuide Bluetooth sensor to sync your movement data.",
+      "connected": "Connected",
+      "primarySensor": "Primary knee sensor",
+      "disconnect": "Disconnect",
+      "emptyTitle": "No knee sensor connected",
+      "emptyCopy": "Scan for nearby devices to connect your KneeGuide sensor and start syncing movement data.",
+      "scan": "Scan for devices",
+      "scanning": "Searching for nearby devices...",
+      "signal": "Signal: {{value}} dBm",
+      "connect": "Connect",
+      "connecting": "Connecting..."
+    },
+    "preferences": {
+      "language": {
+        "title": "Language",
+        "subtitle": "Choose the language KneeGuide displays across your Patient Dashboard.",
+        "en": "English",
+        "ar": "العربية"
+      },
+      "theme": {
+        "title": "Appearance",
+        "subtitle": "Choose how the Patient Dashboard looks. System follows your device setting.",
+        "system": "System",
+        "light": "Light",
+        "dark": "Dark"
+      }
+    },
+    "security": {
+      "password": {
+        "title": "Password",
+        "account": "Account email",
+        "change": "Change password",
+        "unavailable": "Password changes aren't available yet."
+      },
+      "session": {
+        "title": "Current Session",
+        "device": "This device",
+        "current": "Active now",
+        "signOut": "Sign out"
+      }
+    }
+  },
+  "patientBottomNav": {
+    "navLabel": "Patient navigation",
+    "home": "Home",
+    "exercises": "Exercises",
+    "appointments": "Appointments",
+    "reports": "Reports",
+    "profile": "Profile"
+  },
+  "painWheel": {
+    "noPain": "No pain",
+    "mild": "Mild",
+    "severe": "Severe",
+    "label": "{{label}} pain",
+    "low": "Low",
+    "moderate": "Moderate",
+    "high": "High"
+  },
+  "kneeModel": {
+    "title": "Knee ROM Visualizer",
+    "currentFlexion": "Current flexion",
+    "footerNote": "3D mock view – in real implementation this will sync with measured ROM values from reports / sensors.",
+    "exercises": {
+      "heelSlides": "Heel Slides",
+      "quadSets": "Quad Sets",
+      "straightLegRaise": "Straight Leg Raises"
+    }
+  },
+  "doctorReportsPage": {
+    "title": "Patient Reports",
+    "subtitle": "Reports for patient ID:",
+    "summary": {
+      "total": "Total Reports",
+      "reviewed": "Reviewed",
+      "pending": "Pending"
+    },
+    "table": {
+      "title": "Reports List",
+      "subtitle": "All clinical reports for this patient.",
+      "headers": {
+        "id": "Report ID",
+        "date": "Date",
+        "type": "Type",
+        "pain": "Pain",
+        "status": "Status",
+        "severity": "Severity",
+        "updated": "Last Updated"
+      }
+    },
+    "status": {
+      "reviewed": "Reviewed",
+      "pending": "Pending"
+    },
+    "severity": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "view": "View",
+    "modal": {
+      "report": "Report",
+      "close": "Close"
+    }
+  },
+  "publicHero": {
+    "badge": "Connected Intelligent Rehabilitation",
+    "headingLine1": "More precise rehabilitation.",
+    "headingLine2": "Greater independence.",
+    "description": "A connected platform that brings patients and clinicians together, turning movement data into clear progress tracking and real-time rehabilitation feedback.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "Login",
+    "kpi": {
+      "ariaLabel": "Live rehabilitation dashboard preview",
+      "exercisesAssigned": {
+        "label": "Exercises Assigned Today",
+        "trend": "+20% vs yesterday"
+      },
+      "activePatients": {
+        "label": "Active Patients",
+        "trend": "+12% vs last week"
+      },
+      "rehabProgress": {
+        "label": "Rehabilitation Progress",
+        "trend": "+8% vs last week"
+      },
+      "sessionCompletion": {
+        "label": "Session Completion",
+        "trend": "+10% vs last week"
+      },
+      "weeklyAdherence": {
+        "label": "Weekly Adherence",
+        "trend": "+6% vs last week"
+      },
+      "appointment": {
+        "label": "Upcoming Appointment",
+        "month": "May",
+        "sessionType": "Follow-up Session",
+        "patientTag": "Patient",
+        "viewDetails": "View Details"
+      }
+    }
+  },
+  "publicProblem": {
+    "badge": "The Challenge",
+    "title": "Recovery breaks down between appointments.",
+    "description": "Most knee rehabilitation still runs on memory and guesswork — leaving both patients and doctors working with an incomplete picture of how recovery is really going.",
+    "stats": {
+      "eyebrow": "Projected impact",
+      "adherenceValue": "95%",
+      "adherenceLabel": "Home exercise adherence",
+      "dropoutValue": "40%",
+      "dropoutLabel": "Lower rehabilitation dropout",
+      "followupValue": "3x",
+      "followupLabel": "Faster clinician follow-up"
+    },
+    "audience": {
+      "lead": "Designed for",
+      "patients": "Patients",
+      "clinicians": "Clinicians",
+      "teams": "Healthcare Teams"
+    },
+    "cards": {
+      "exercisesTitle": "Inconsistent home exercises",
+      "exercisesDescription": "Patients leave the clinic with a printed sheet and no way to track whether they actually followed it.",
+      "painTitle": "Pain that goes unreported",
+      "painDescription": "A five-minute visit rarely captures how pain and mobility really changed week to week.",
+      "decisionsTitle": "Decisions made blind between visits",
+      "decisionsDescription": "Without daily data, clinicians adjust treatment plans on memory instead of evidence."
+    }
+  },
+  "publicSolution": {
+    "badge": "The KneeGuide Approach",
+    "title": "One platform, connecting every day of recovery.",
+    "description": "KneeGuide closes the gap between appointments — turning scattered notes and memory into a continuous, shared view of progress.",
+    "center": "KneeGuide",
+    "nodes": {
+      "patient": "Patient",
+      "clinician": "Clinician",
+      "ai": "AI",
+      "exercises": "Exercises",
+      "progress": "Progress",
+      "reports": "Reports",
+      "notifications": "Notifications",
+      "wearables": "Wearables",
+      "family": "Family"
+    }
+  },
+  "publicTechnology": {
+    "badge": "Built On",
+    "title": "Modern technology, purpose-built for rehabilitation.",
+    "description": "KneeGuide combines interactive 3D modeling with applied machine learning to make recovery measurable.",
+    "items": {
+      "modeling": {
+        "title": "Interactive 3D knee modeling",
+        "description": "Visualize range of motion and exercise mechanics in 3D, not static diagrams."
+      },
+      "aiAnalysis": {
+        "title": "AI pain-pattern analysis",
+        "description": "Machine learning surfaces trends across weeks of pain and mobility logs."
+      },
+      "security": {
+        "title": "Secure, clinical-grade data",
+        "description": "Patient data is encrypted end-to-end and handled to clinical privacy standards."
+      },
+      "sync": {
+        "title": "Real-time sync",
+        "description": "Every log a patient submits reaches their care team instantly."
+      }
+    }
+  },
+  "publicHowItWorks": {
+    "badge": "Getting Started",
+    "title": "From first login to full recovery.",
+    "description": "A simple loop, repeated every day of your recovery.",
+    "steps": {
+      "profile": {
+        "title": "Create your profile",
+        "description": "Sign up and connect with your doctor or clinic in a couple of minutes."
+      },
+      "log": {
+        "title": "Log daily progress",
+        "description": "Record pain levels, mobility and completed exercises right from your phone."
+      },
+      "review": {
+        "title": "Your doctor reviews the trends",
+        "description": "AI highlights meaningful changes so your clinician can review what matters."
+      },
+      "adjust": {
+        "title": "Your plan adjusts as you improve",
+        "description": "Exercises and appointments update based on how recovery is actually going."
+      }
+    }
+  },
+  "publicPlatform": {
+    "badge": "The Platform",
+    "title": "Everything recovery needs, in one place.",
+    "description": "One connected platform for the day-to-day of rehabilitation — built around what patients and clinicians actually use.",
+    "capabilities": {
+      "painTracking": {
+        "title": "Daily pain tracking",
+        "description": "A quick pain wheel check-in captures location and intensity in seconds."
+      },
+      "exerciseLibrary": {
+        "title": "Guided exercise library",
+        "description": "Prescribed exercises with clear instructions patients can follow at home."
+      },
+      "scheduling": {
+        "title": "Appointment scheduling",
+        "description": "Book, reschedule and track upcoming visits without a phone call."
+      },
+      "reports": {
+        "title": "Progress reports",
+        "description": "A running history of pain, mobility and exercise completion over time."
+      }
+    }
+  },
+  "publicDoctorDashboard": {
+    "badge": "For Clinicians",
+    "title": "See every patient's progress at a glance.",
+    "description": "Your patient list, calendar and reports live in one dashboard — reviewed in minutes, not hours.",
+    "points": {
+      "roster": "A patient roster with status at a glance",
+      "calendar": "A calendar for upcoming and past appointments",
+      "flagged": "AI-flagged reports worth a closer look first"
+    },
+    "mock": {
+      "title": "Patients",
+      "tag": "Today"
+    }
+  },
+  "publicPatientDashboard": {
+    "badge": "For Patients",
+    "title": "Recovery you can actually see.",
+    "description": "Log how you feel, follow your exercises, and watch your progress add up — all from your phone.",
+    "points": {
+      "checkIn": "A one-tap pain wheel check-in each day",
+      "checklist": "A clear checklist of today's exercises",
+      "appointment": "Your next appointment, always one tap away"
+    },
+    "mock": {
+      "title": "Today's check-in",
+      "ringUnit": "/ 10",
+      "exercises": {
+        "heelSlides": "Heel slides",
+        "quadSets": "Quad sets",
+        "straightLegRaises": "Straight leg raises"
+      },
+      "timestamps": {
+        "step1": "7:42 AM",
+        "step2": "7:45 AM",
+        "step3": "7:48 AM"
+      }
+    }
+  },
+  "publicAI": {
+    "badge": "AI Analysis",
+    "title": "Patterns no five-minute visit can catch.",
+    "description": "KneeGuide's models watch daily pain, mobility and exercise data so your care team can focus on what actually needs attention.",
+    "highlights": {
+      "trendDetection": {
+        "title": "Trend detection",
+        "description": "Flags a gradual worsening or a stalled plateau in pain and mobility before it becomes a setback."
+      },
+      "adherenceSignals": {
+        "title": "Adherence signals",
+        "description": "Notices when logged exercises drop off, so check-ins happen before recovery stalls."
+      },
+      "clinicianSummaries": {
+        "title": "Clinician-ready summaries",
+        "description": "Condenses weeks of daily logs into a short summary worth an actual look."
+      }
+    }
+  },
+  "publicRoadmap": {
+    "badge": "What's Next",
+    "title": "We're just getting started.",
+    "description": "KneeGuide is being built with clinics, one release at a time.",
+    "stageLabel": "Stage {{number}}",
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "future": "Future"
+    },
+    "stages": {
+      "stage1": {
+        "heading": "Core Platform",
+        "description": "The foundation of the rehabilitation platform is complete.",
+        "items": {
+          "authentication": "Authentication",
+          "dashboard": "Dashboard",
+          "patientManagement": "Patient management",
+          "exerciseTracking": "Exercise tracking"
+        }
+      },
+      "stage2": {
+        "heading": "Hardware Prototype",
+        "description": "The rehabilitation hardware has been designed and physically prototyped. Software integration with the platform is currently underway.",
+        "items": {
+          "industrialDesign": "Industrial design",
+          "hardwarePrototype": "Hardware prototype",
+          "sensorIntegration": "Sensor integration",
+          "deviceCommunication": "Device communication",
+          "softwareIntegration": "Software integration"
+        }
+      },
+      "stage3": {
+        "heading": "AI Foundation",
+        "description": "Building the AI layer that understands rehabilitation progress and assists clinicians.",
+        "items": {
+          "patternDetection": "Pattern detection",
+          "clinicalSummaries": "Clinical summaries",
+          "recoveryInsights": "Recovery insights"
+        }
+      },
+      "stage4": {
+        "heading": "Beyond the Knee",
+        "description": "Expanding the platform beyond knee rehabilitation into additional recovery programs.",
+        "items": {
+          "appleWatch": "Apple Watch",
+          "healthKit": "HealthKit",
+          "wearables": "Wearables",
+          "multiConditionRehab": "Multi-condition rehabilitation"
+        }
+      }
+    }
+  },
+  "publicFaq": {
+    "badge": "Common Questions",
+    "title": "Frequently asked questions.",
+    "items": {
+      "physicalTherapy": {
+        "question": "Is KneeGuide a replacement for physical therapy?",
+        "answer": "No. KneeGuide is designed to complement your care team's treatment plan by keeping them informed between visits, not to replace clinical guidance."
+      },
+      "doctorVisibility": {
+        "question": "How does my doctor see my daily logs?",
+        "answer": "Everything you log — pain levels, mobility and exercises — syncs to your care team's dashboard in real time."
+      },
+      "dataSecurity": {
+        "question": "Is my health data secure?",
+        "answer": "Yes. All data is encrypted end-to-end and handled to clinical-grade privacy standards."
+      },
+      "equipment": {
+        "question": "Do I need special equipment to use KneeGuide?",
+        "answer": "No. Just your phone or a browser. The 3D model and tracking tools run directly, with no extra hardware required."
+      },
+      "noReferral": {
+        "question": "Can I use KneeGuide without a referring doctor?",
+        "answer": "Yes. You can create a patient account directly. Connecting with a clinician is optional, though recommended for the full experience."
+      }
+    }
+  },
+  "publicCta": {
+    "badge": "Join KneeGuide",
+    "title": "Ready to guide your recovery?",
+    "description": "Join patients and clinicians already using KneeGuide to make every day of recovery count.",
+    "patientAction": "Start Your Recovery",
+    "clinicianAction": "I'm a Clinician"
+  },
+  "publicFooter": {
+    "brand": "KneeGuide",
+    "description": "AI-guided knee rehabilitation, connecting patients and clinicians between every appointment.",
+    "copyright": "© {{year}} KneeGuide. All rights reserved."
+  },
+  "publicNavigation": {
+    "groups": {
+      "product": "Product",
+      "explore": "Explore",
+      "account": "Account"
+    },
+    "items": {
+      "challenge": "The Challenge",
+      "approach": "KneeGuide Approach",
+      "platform": "The Platform",
+      "technology": "Technology",
+      "howItWorks": "How It Works",
+      "ai": "AI Assistant",
+      "roadmap": "Roadmap",
+      "faq": "FAQ"
+    }
+  },
+  "publicHeader": {
+    "menuToggleOpen": "Open menu",
+    "menuToggleClose": "Close menu",
+    "login": "Login",
+    "patientLogin": "Patient Login",
+    "clinicianLogin": "Clinician Login",
+    "createAccount": "Create Account",
+    "languageSwitchLabel": "Switch language",
+    "languageSwitchTo": "AR"
+  }
+}

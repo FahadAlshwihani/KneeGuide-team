@@ -1,0 +1,7 @@
+/* Mobile-only: plain normal document flow — no deck, no sticky, no
+   per-card runway. Nothing here is imported by DesktopStack.jsx, so it
+   has zero effect on desktop. */
+
+.mobile-reveal-card {
+  will-change: transform, opacity, filter;
+}

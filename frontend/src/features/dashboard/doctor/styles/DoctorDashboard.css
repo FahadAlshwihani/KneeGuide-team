@@ -1,0 +1,39 @@
+/* Doctor Home — page-level chrome only; DoctorHomeAssistant.css owns the
+   actual Welcome/Conversation layout, chat turns, composer, and
+   suggestions (same split PatientDashboard.css/PatientHomeAssistant.css
+   already established). Every color/spacing value here comes from the
+   EXISTING global tokens (index.css :root), never a new Doctor-only
+   layer. */
+
+.doctor-dashboard {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Conversation Mode only (DoctorDashboard.jsx mirrors DoctorHomeAssistant's
+   own mode via onModeChange) — the page becomes a height-BOUNDED shell so
+   only the transcript inside DoctorHomeAssistant scrolls, never
+   `.doctor-shell-content` (shell/DoctorDashboardShell.css) itself.
+   `.doctor-shell-content` spans `.doctor-shell-main`'s own height (100vh
+   minus the Topbar's `--doctor-topbar-height`, both from
+   shell/DoctorDashboardShell.css) with 24px padding on every side — 48px
+   is that padding. Both amounts are read from the real values/tokens
+   rather than guessed, so this container exactly fills what's actually
+   available and `.doctor-shell-content`'s own `overflow-y: auto` never
+   actually triggers a second scrollbar. Welcome Mode is deliberately
+   untouched (`.doctor-dashboard` alone keeps normal, unbounded flow). */
+.doctor-dashboard--conversation {
+  height: calc(100vh - var(--doctor-topbar-height, 60px) - 48px);
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .doctor-dashboard--conversation {
+    /* `.doctor-shell-content`'s own padding drops to 16px per side (32px
+       total) below 480px — matched here rather than guessed. */
+    height: calc(100vh - var(--doctor-topbar-height, 60px) - 32px);
+  }
+}

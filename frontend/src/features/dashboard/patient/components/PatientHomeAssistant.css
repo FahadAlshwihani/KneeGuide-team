@@ -1,0 +1,498 @@
+/* The primary Patient Home experience — deliberately restrained per the
+   task's own direction: no glass cards, no glowing borders, no gradient
+   noise. The Orb is the one expressive element; everything else here is
+   quiet typography and a couple of flat, low-contrast surfaces.
+
+   Two presentation modes over the same markup family
+   (.patient-assistant--welcome / --conversation) — see
+   PatientHomeAssistant.jsx for why `mode` is derived, never separate
+   state. */
+
+/* ---------- Workspace: history rail/drawer + active conversation ---------- */
+/* The permanent desktop rail (PatientConversationHistory.jsx,
+   variant="rail") sits beside `.patient-assistant` as a flex sibling —
+   below the rail breakpoint it hides itself entirely (see that
+   component's own CSS) and the Drawer variant takes over instead, so this
+   container's own rules stay the same at every width; only the rail's
+   own display toggles. */
+.patient-home-workspace {
+  display: flex;
+  align-items: stretch;
+  gap: var(--patient-space-lg);
+  width: 100%;
+  min-height: 0;
+}
+
+/* Hidden by default — shown only below the same rail breakpoint used in
+   PatientConversationHistory.css, so History/New Chat stay reachable the
+   moment the permanent rail disappears. Always mounted (both Welcome and
+   Conversation mode) rather than conditionally rendered, since it's pure
+   CSS visibility, not extra runtime cost worth guarding against. */
+.patient-mobile-toolbar {
+  display: none;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width: 1023.98px) {
+  .patient-mobile-toolbar {
+    display: flex;
+  }
+}
+
+.patient-assistant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--patient-assistant-gap);
+  /* flex:1 lets this column claim whatever width remains after the
+     history rail (min-width:0 is required for a flex child to be
+     allowed to shrink below its content's natural width at all) — the
+     conversation's own reading column still caps at
+     --patient-assistant-max-width and stays centered via margin-inline:
+     auto, so widening the overall workspace (Section 42's own
+     requirement) never stretches message bubbles wider than before. */
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: var(--patient-assistant-max-width);
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Conversation Mode becomes a bounded header/transcript/footer chat shell
+   instead of a normal-flow block — it fills whatever height
+   .pd-page--conversation (PatientDashboard.css) already bounded via the
+   real --patient-dock-clearance token, and owns its OWN overflow so nothing
+   here can force the document itself to scroll. `.patient-assistant-header`
+   and `.patient-assistant-footer` stay `flex: 0 0 auto` (their natural
+   size); `.patient-chat-history` alone gets `flex: 1; min-height: 0;
+   overflow-y: auto` — the one and only vertical scroller in this mode. */
+.patient-assistant--conversation {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  gap: var(--patient-space-sm);
+}
+
+/* ---------- Welcome: Orb + greeting ---------- */
+.patient-assistant-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Tighter than the top-level rhythm on purpose — title + message read
+     as one connected unit, not two independently spaced blocks. */
+  gap: var(--patient-space-2xs);
+  width: 100%;
+}
+
+.patient-assistant-greeting {
+  margin: 0;
+  font: var(--patient-text-page-heading);
+  color: var(--patient-color-heading);
+}
+
+.patient-assistant-message {
+  margin: 0;
+  font: var(--patient-text-body);
+  color: var(--patient-color-muted);
+  max-width: 46ch;
+}
+
+/* ---------- Conversation: compact identity header ---------- */
+/* Sits OUTSIDE .patient-chat-history entirely (see the JSX) — structurally
+   guaranteed to never scroll with messages, not just visually pinned. */
+.patient-assistant-header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--patient-space-3xs);
+}
+
+.patient-assistant-identity-label {
+  margin: 0;
+  font: var(--patient-text-section-heading);
+  color: var(--patient-color-heading);
+}
+
+/* ---------- Conversation history (the ONE vertical scroller) ---------- */
+.patient-chat-history {
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-md);
+  width: 100%;
+  text-align: start;
+}
+
+/* The one legitimate inner scroll region in Conversation Mode — native
+   browser/OS scrollbar, no custom width/color/thumb styling. */
+.patient-assistant--conversation .patient-chat-history {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Own top/bottom padding instead of relying on the header/footer's
+     margins — keeps the first/last message from touching the header or
+     footer edge-to-edge while scrolled to either extreme. */
+  padding-block: var(--patient-space-2xs);
+}
+
+.patient-chat-turn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-3xs);
+  max-width: 88%;
+}
+
+/* Aligns toward the logical end of the column's cross axis — this
+   already resolves correctly under RTL (flex alignment on a column
+   container follows the inline axis/writing direction natively), so no
+   `[dir="rtl"]` override or hardcoded left/right is needed here. */
+.patient-chat-turn--user {
+  align-self: flex-end;
+}
+
+.patient-chat-bubble {
+  margin: 0;
+  padding: var(--patient-space-2xs) var(--patient-space-sm);
+  border-radius: var(--patient-radius-control);
+  background: var(--patient-surface-elevated);
+  color: var(--patient-color-heading);
+  font: var(--patient-text-body);
+  /* Normal chat text always wraps — long URLs/identifiers break onto a
+     new line rather than forcing horizontal scroll or overflowing the
+     bubble. Only the suggestion rail (below) is ever horizontally
+     scrollable; ordinary message content never is. */
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.patient-chat-turn--assistant {
+  align-self: flex-start;
+  max-width: 100%;
+}
+
+.patient-chat-turn-label {
+  font: var(--patient-text-caption);
+  font-weight: 700;
+  color: var(--patient-color-primary);
+}
+
+.patient-chat-text {
+  margin: 0;
+  font: var(--patient-text-body);
+  color: var(--patient-color-text);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.patient-chat-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--patient-space-2xs);
+  margin-top: var(--patient-space-2xs);
+}
+
+.patient-pain-submit {
+  align-self: stretch;
+  max-width: 280px;
+}
+
+/* ---------- Inline exercise list (SHOW_EXERCISES) ---------- */
+/* Deliberately a restrained list, not ExerciseCard (image/video/progress
+   ring) — this is the Assistant answering inline, not reproducing the
+   Exercises page inside chat. See AssistantExerciseList in
+   PatientHomeAssistant.jsx. */
+.patient-exercise-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  max-width: 320px;
+  border-radius: var(--patient-radius-control);
+  overflow: hidden;
+  border: 1px solid var(--patient-assistant-suggestion-border);
+}
+
+.patient-exercise-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--patient-space-sm);
+  padding: var(--patient-space-2xs) var(--patient-space-sm);
+  background: var(--patient-assistant-suggestion-bg);
+}
+
+.patient-exercise-name {
+  font: var(--patient-text-supporting);
+  font-weight: 600;
+  color: var(--patient-color-text);
+}
+
+.patient-exercise-reps {
+  flex-shrink: 0;
+  font: var(--patient-text-caption);
+  color: var(--patient-color-muted);
+}
+
+/* ---------- Inline device scanner (CONNECT_DEVICE) ---------- */
+/* Same "restrained chat content, not a dashboard card" treatment as the
+   exercise list above. Live state comes from useKneeGuideDevice() — see
+   AssistantDeviceScanner — this file only styles it. */
+.patient-device-scanner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--patient-space-2xs);
+  width: 100%;
+}
+
+.patient-device-status {
+  margin: 0;
+  font: var(--patient-text-supporting);
+  color: var(--patient-color-muted);
+}
+
+.patient-device-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-2xs);
+  width: 100%;
+  max-width: 320px;
+}
+
+.patient-device-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--patient-space-2xs);
+  padding: var(--patient-space-2xs) var(--patient-space-sm);
+  border-radius: var(--patient-radius-control);
+  background: var(--patient-assistant-suggestion-bg);
+  border: 1px solid var(--patient-assistant-suggestion-border);
+  flex-wrap: wrap;
+}
+
+.patient-device-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.patient-device-name {
+  font: var(--patient-text-supporting);
+  font-weight: 600;
+  color: var(--patient-color-text);
+  overflow-wrap: anywhere;
+}
+
+.patient-device-signal {
+  font: var(--patient-text-caption);
+  color: var(--patient-color-faint);
+}
+
+/* Narrow phones: let the row wrap so name/signal stay on their own line
+   and Connect never gets squeezed off — same "stack, don't hide the
+   action" requirement as the rest of the transcript. */
+@media (max-width: 480px) {
+  .patient-device-row {
+    justify-content: flex-start;
+  }
+
+  .patient-device-row-info {
+    flex: 1 1 100%;
+  }
+}
+
+/* Contextual actions (Yes/No, etc.) belong to THIS specific Assistant
+   message — visually distinct from the global suggestion chips below the
+   composer (.patient-assistant-suggestions), never mixed with them. */
+.patient-chat-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--patient-space-2xs);
+  margin-top: var(--patient-space-2xs);
+}
+
+/* ---------- Conversation footer (composer + follow-up suggestions) ---------- */
+/* Never scrolls with the transcript (see the JSX — this is a sibling of
+   .patient-chat-history, not a descendant). Kept visually light per the
+   task's own direction — no card, no heavy border; a hairline top divider
+   is enough to read as a distinct control region against the dark page. */
+.patient-assistant-footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-sm);
+  width: 100%;
+  padding-top: var(--patient-space-sm);
+  border-top: 1px solid var(--patient-divider);
+}
+
+/* ---------- Input ---------- */
+.patient-assistant-form {
+  width: 100%;
+}
+
+.patient-assistant-input-row {
+  display: flex;
+  align-items: center;
+  gap: var(--patient-space-2xs);
+  width: 100%;
+  padding: var(--patient-space-3xs);
+  padding-inline-start: var(--patient-space-md);
+  border-radius: var(--patient-radius-button);
+  background: var(--patient-surface-card);
+  border: 1px solid var(--patient-border);
+  transition: border-color var(--patient-transition-normal);
+}
+
+.patient-assistant-input-row:focus-within {
+  border-color: var(--patient-color-primary);
+}
+
+.patient-assistant-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font: var(--patient-text-body);
+  color: var(--patient-color-text);
+  padding-block: var(--patient-space-2xs);
+}
+
+.patient-assistant-input::placeholder {
+  color: var(--patient-color-faint);
+}
+
+.patient-assistant-send {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--patient-color-primary);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color var(--patient-transition-normal);
+}
+
+.patient-assistant-send:hover {
+  background: var(--patient-color-primary-strong);
+}
+
+.patient-assistant-send:focus-visible {
+  outline: 2px solid var(--patient-color-focus);
+  outline-offset: 2px;
+}
+
+.patient-assistant-send svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Mirrors the arrow so it still points toward the trailing edge in RTL —
+   logical, not a manual `[dir=rtl]` override of position (the button
+   itself never moves, only the icon it contains). */
+[dir="rtl"] .patient-assistant-send svg {
+  transform: scaleX(-1);
+}
+
+/* ---------- Suggestions ---------- */
+.patient-assistant-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--patient-space-2xs);
+  width: 100%;
+}
+
+.patient-assistant-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--patient-space-3xs);
+  padding: 8px var(--patient-space-sm);
+  border-radius: var(--patient-radius-button);
+  border: 1px solid var(--patient-assistant-suggestion-border);
+  background: var(--patient-assistant-suggestion-bg);
+  color: var(--patient-color-text);
+  font: var(--patient-text-caption);
+  cursor: pointer;
+  transition: background-color var(--patient-transition-normal), border-color var(--patient-transition-normal);
+  white-space: nowrap;
+}
+
+.patient-assistant-chip:hover {
+  background: var(--patient-assistant-suggestion-bg-hover);
+}
+
+.patient-assistant-chip:focus-visible {
+  outline: 2px solid var(--patient-color-focus);
+  outline-offset: 2px;
+}
+
+.patient-assistant-chip svg {
+  width: 14px;
+  height: 14px;
+  color: var(--patient-color-primary);
+  flex-shrink: 0;
+}
+
+/* Conversation Mode's follow-up rail never wraps, at any width — a single
+   horizontally-scrollable row, per the task's own explicit "never wrap,
+   scroll instead" requirement. Welcome Mode's starting suggestions keep
+   their existing centered-wrap behavior (unchanged) since it isn't a
+   fixed footer competing for vertical space there. Native scrollbar,
+   no custom hiding — scrolling/keyboard access both still work. */
+.patient-assistant--conversation .patient-assistant-suggestions {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  padding-bottom: 2px;
+  /* Trailing gutter so the last chip never sits flush against the
+     viewport/container edge — without it, a cut-off chip mid-word reads
+     as a broken layout instead of an intentional "more to scroll" row. */
+  padding-inline-end: var(--patient-space-sm);
+}
+
+.patient-assistant--conversation .patient-assistant-chip {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  .patient-assistant-message {
+    max-width: 32ch;
+  }
+
+  .patient-chat-turn {
+    max-width: 94%;
+  }
+
+  .patient-assistant-suggestions {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 2px;
+    padding-inline-end: var(--patient-space-sm);
+  }
+
+  .patient-assistant-chip {
+    flex-shrink: 0;
+  }
+}

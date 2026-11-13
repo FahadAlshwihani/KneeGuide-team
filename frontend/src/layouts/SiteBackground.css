@@ -1,0 +1,62 @@
+/* Plain placement CSS for the one <Grainient> instance rendered in
+   PublicLayout.jsx — no custom effects added on top of it.
+
+   `isolation: isolate` on .public-root keeps the negative-z canvas inside
+   this stacking context, above the root's own background but below every
+   normal child (Header/Outlet/Footer, all default z-index: auto, so they
+   paint over it in plain DOM order — no z-index arithmetic needed against
+   them). `position: relative` isn't required for the canvas's own sizing
+   below (position: fixed sizes against the viewport regardless of any
+   ancestor's position), but is left in place since nothing else depends
+   on removing it. Neither property creates a scroll container, so the
+   sticky header remains unchanged.
+
+   The canvas itself is `position: fixed`, not `absolute` — it no longer
+   spans the scrolling document (previously inset: 0 against .public-root,
+   whose own height is the full homepage's, which meant an equally tall
+   WebGL drawing buffer). Fixed positioning binds it to the actual
+   viewport instead, so its rendered size — and therefore Grainient's own
+   `container.getBoundingClientRect()` read in its resize logic — is
+   bounded to roughly viewportWidth x viewportHeight regardless of how
+   tall the page is.
+
+   `height: 100lvh` (large viewport height — the height mobile browser
+   chrome resolves to once its own address bar/toolbar is scrolled away,
+   i.e. the *largest* the viewport ever gets), not `100svh` (small
+   viewport height — the height while that chrome is still fully shown,
+   i.e. the *smallest* the viewport ever gets). This used to be `100svh`
+   specifically to stay a stable, unchanging reference so mobile scrolling
+   wouldn't repeatedly trigger Grainient's own ResizeObserver — `lvh` is
+   exactly as stable a reference as `svh` (neither tracks the toolbar's
+   live state the way `dvh` does; they're just anchored to opposite fixed
+   ends of its range), so that benefit is unchanged. But sizing to the
+   *small* end meant that once a mobile visitor actually scrolled — Hero
+   is content-driven and can be taller than one viewport there — the
+   browser's toolbar auto-collapses and the *true* visible viewport grows
+   past `100svh`, leaving a gap below the fixed canvas's own (too-short)
+   bottom edge where nothing was painted, exposing the page's plain dark
+   base color underneath: exactly the "Grainient visible, then abruptly
+   plain black partway down" symptom, mobile-only, since desktop/tablet
+   browser chrome doesn't dynamically collapse like this. Sizing to the
+   *large* end guarantees the canvas is always at least as tall as the
+   true visible viewport in any toolbar state — on desktop/tablet/iPad,
+   where there's no such dynamic chrome, `svh`/`lvh`/`vh` already resolve
+   to the same value, so this is a no-op there.
+
+   z-index: -1 puts it behind every other child of .public-root
+   unconditionally; content still scrolls normally above this fixed
+   layer, all the way through Footer, since nothing about the content's
+   own layout changed. */
+.public-root {
+  position: relative;
+  isolation: isolate;
+}
+
+.grainient-container.site-background-canvas {
+  position: fixed;
+  inset: 0;
+  width: auto;
+  height: 100lvh;
+  z-index: -1;
+  pointer-events: none;
+}

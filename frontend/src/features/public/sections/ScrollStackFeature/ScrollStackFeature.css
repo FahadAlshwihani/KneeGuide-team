@@ -1,0 +1,292 @@
+/* Purely a presentation wrapper around four existing, unmodified section
+   components (Technology, HowItWorks, Platform, DoctorDashboard — see
+   index.jsx). Nothing here touches their own content or internal layout;
+   rules below paint the stack background, style the shared card shell,
+   neutralize standalone-section root styling, and let the two list-shaped
+   middle sections use the card's horizontal space more effectively.
+
+   RTL: `padding-inline` (not `padding-left`/`-right`) below, so side
+   padding follows the document's actual direction rather than assuming
+   LTR. Everything else in this file — the gradient (vertical only),
+   the card's border-radius/shadow/blur (uniform on every side), and the
+   card-scale/translate transform ScrollStack itself applies (vertical
+   translateY + uniform scale only, rotationAmount is 0) — has no
+   horizontal/inline component at all, so none of it needs a logical
+   equivalent; it already renders identically in RTL and LTR. The four
+   wrapped sections were audited the same way and needed no changes of
+   their own: each already lays out via flexbox/grid without any
+   hardcoded left/right, so they already re-flow correctly under
+   `dir="rtl"` (see src/utils/dir.js) with zero edits. */
+
+/* No background of its own anymore — the atmosphere is a single
+   Grainient WebGL canvas (see PublicLayout.jsx / SiteAtmosphere.css),
+   mounted once for the whole public layout, not repainted per section.
+   Transparent is what lets that shared canvas show through instead of
+   this section's own box occluding it. */
+.scroll-stack-feature {
+  background: transparent;
+}
+
+/* ScrollStack's own `className` prop only reaches this outer scroller
+   div (see ScrollStack.jsx), not `.scroll-stack-inner` — reached here via
+   a descendant selector instead. `overflow-y`/`height` are reset because
+   the component's base CSS assumes it might be its own internally
+   scrolling container; in `useWindowScroll` mode (used here) the actual
+   page/window scrolls instead, so this element should just take its
+   natural content height rather than carrying a redundant nested
+   scroll-box.
+
+   The *horizontal* padding (tuned per breakpoint below, `.scroll-stack-
+   card`'s own padding further down, and nothing else) is the entire gap
+   between the viewport edge and where each section's own, unchanged
+   `.tech-container`-style wrapper (max-width: var(--container-width);
+   padding: 0 24px) starts doing its own width-capping. Both used to be
+   far larger than they needed to be (a leftover 5rem/clamp(…72px) more
+   suited to content with no gutter of its own) — since every wrapped
+   section already carries its own 24px gutter and 1200px cap, these two
+   only need to add a thin frame around the card, not a second full
+   gutter on top of the section's real one. At 24px each here, measured
+   against the real breakpoints in this file: content width matches the
+   standalone section exactly above ~1300px (both hit the same 1200px
+   cap), and the gap that remains below that — where the wrapper's own
+   padding is structurally unavoidable if the card is to read as a card
+   at all — is a few percent, not the 20-27% these were losing before.
+   The large *vertical* padding on `.scroll-stack-inner` is untouched —
+   it's load-bearing for the library's own pin-release math (see its
+   `.scroll-stack-end` spacer). */
+.scroll-stack-feature-scroller {
+  height: auto;
+  overflow: visible;
+}
+
+.scroll-stack-feature-scroller .scroll-stack-inner {
+  padding-inline: 1.5rem;
+}
+
+/* The card shell. Combined with the library's own `.scroll-stack-card`
+   (see ScrollStack.jsx's `${itemClassName}` construction), this rule's
+   extra class gives it higher specificity so every value here wins over
+   that base rule, without editing the vendored file. Large radius and a
+   soft, wide-diffused shadow rather than a hard drop shadow; the fill is
+   a low-opacity white over the section's own dark gradient background
+   (never a flat opaque panel) with a hairline top-edge highlight,
+   reading as true frosted glass rather than a flat translucent box.
+   `height: auto` replaces the library default's fixed 20rem — these are
+   real, fairly content-heavy sections (a 4-item grid, a 2-column
+   dashboard preview, etc.), not short demo placeholders.
+
+   Padding is deliberately modest (see .scroll-stack-inner's own comment
+   above) — the section inside already supplies its own real 24px gutter,
+   so this only needs to read as a thin frame between the card's rounded
+   edge and that gutter, not a second, larger one stacked on top of it.
+
+   `align-items: stretch` (not `center`) is what actually makes the fill
+   rules below work: it's what makes the wrapped section's own root
+   (`.tech-root` etc., this card's only child) fill the card's full
+   height via ordinary flexbox stretch in the first place, instead of
+   sitting at its own shorter natural height, centered, with dead space
+   above and below it — the exact "wasted space" the fill rules below are
+   about putting to use. */
+.scroll-stack-card.scroll-stack-feature-card {
+  height: auto;
+  min-height: 62vh;
+  width: 100%;
+  padding: clamp(16px, 2vw, 28px);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+.scroll-stack-card.scroll-stack-feature-card > * {
+  width: 100%;
+}
+
+/* Each wrapped section still renders its own real root element (e.g.
+   `.tech-root`) with its original "standalone full-viewport section"
+   styling — `min-height: 100svh`, an opaque background, its own
+   `padding: var(--section-padding) 0`. All three are redundant/wrong once
+   that root is living inside the card above instead of being the whole
+   page section, so they're neutralized here, scoped to only apply inside
+   this specific card wrapper — the section's own CSS file is never
+   touched, so it renders exactly as it always has anywhere else it might
+   ever be used outside the stack. Everything below the root (grids,
+   headers, card content) is intentionally left alone. */
+.scroll-stack-feature-card .tech-root,
+.scroll-stack-feature-card .hiw-root,
+.scroll-stack-feature-card .platform-root,
+.scroll-stack-feature-card .doctor-preview-root {
+  min-height: auto;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+}
+
+/* Content fill. Every wrapped section already has the same shape: a root
+   (`display: flex; flex-direction: column`, unmodified, from the
+   section's own CSS) containing one "container" div, which in turn holds
+   a header block and one main-content block (a grid or a short list — or,
+   for DoctorDashboard, the container *is* the two-column main content,
+   there being no separate header block at this level). None of that
+   original structure changes; these rules only decide how the *existing*
+   boxes share the height the card above now actually has (rather than
+   each section falling back to its own shorter natural height, centered
+   in the remainder — the reason cards previously had to grow taller than
+   any single section actually needed just to avoid clipping the tallest
+   one).
+     - `flex: 1` on the container is what claims the root's full stretched
+       height for it in the first place (a plain flex item otherwise stays
+       at its own intrinsic size, same as the root would without
+       `align-items: stretch` above) — `min-height: 0` alongside it is the
+       standard guard against a flex item's default `min-height: auto`
+       silently refusing to shrink below its content's own minimum.
+     - `flex: 1` again on the header's sibling (the grid/list/2-column
+       block) is what then gives *that* box — not the header, which keeps
+       its own natural size since it has no flex-grow of its own — every
+       bit of space left over inside the now-full-height container.
+     - `justify-content`/`align-content: center` on that same box centers
+       its *existing* content (unchanged spacing, unchanged item sizes)
+       within whatever extra room that leaves, rather than stretching
+       individual grid cells/rows to some arbitrary taller size, or
+       leaving them pinned to the top with dead space beneath. */
+.scroll-stack-feature-card .tech-container,
+.scroll-stack-feature-card .hiw-container,
+.scroll-stack-feature-card .platform-container,
+.scroll-stack-feature-card .doctor-preview-container {
+  flex: 1;
+  min-height: 0;
+}
+
+.scroll-stack-feature-card .tech-container,
+.scroll-stack-feature-card .hiw-container,
+.scroll-stack-feature-card .platform-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* DoctorDashboard has no separate header block at this level — its
+   container *is* the two-column main content — so it only needs the
+   same "center what's there instead of stretching it apart" treatment
+   as the grid/lists above, expressed as `align-content` since it stays a
+   CSS grid (unchanged) rather than becoming a flex column like the other
+   three. Matters on its own <900px single-column layout too (see
+   DoctorDashboard.css) — without it, the copy block and the mock preview
+   would default to stretching apart to fill the extra height instead of
+   sitting together, centered, the way they already do side by side on
+   wider screens. */
+.scroll-stack-feature-card .doctor-preview-container {
+  align-content: center;
+}
+
+.scroll-stack-feature-card .tech-grid {
+  flex: 1;
+  min-height: 0;
+  align-content: center;
+}
+
+.scroll-stack-feature-card .hiw-steps,
+.scroll-stack-feature-card .platform-list {
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+}
+
+/* The two middle sections are naturally list-shaped when rendered as
+   standalone pages. Inside the wide ScrollStack card, distribute the same
+   content across the available inline space instead of spending four full
+   rows on it. Typography, item padding and content gaps remain unchanged. */
+.scroll-stack-feature-card .hiw-steps {
+  max-width: none;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0 24px;
+}
+
+.scroll-stack-feature-card .hiw-step {
+  min-width: 0;
+  flex-direction: column;
+}
+
+/* Platform's own standalone list is 2-up (see Platform.css), which inside
+   the card renders as 2 stacked rows — the one clearly taller card next
+   to Technology/HowItWorks' single-row 4-up grids above. Going 4-across
+   here instead — the same horizontal-distribution move already applied
+   to hiw-steps — brings all four capability items onto one row, so this
+   card's natural height lines up with its neighbors instead of standing
+   out. Each row becomes a small vertical card (icon over text) rather
+   than icon-beside-text, since a quarter-width column doesn't have room
+   for the original horizontal arrangement; the divider line is dropped
+   since it separated stacked rows and has no equivalent meaning between
+   side-by-side columns. No font-size, padding, or content changed. */
+.scroll-stack-feature-card .platform-list {
+  max-width: none;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0 24px;
+}
+
+.scroll-stack-feature-card .platform-row {
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-bottom: none;
+}
+
+@media (max-width: 1023px) {
+  .scroll-stack-feature-scroller .scroll-stack-inner {
+    padding-inline: 1rem;
+  }
+
+  .scroll-stack-card.scroll-stack-feature-card {
+    padding: clamp(14px, 1.5vw, 20px);
+    border-radius: 28px;
+  }
+
+  .scroll-stack-feature-card .hiw-steps,
+  .scroll-stack-feature-card .platform-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* iPad-only (roughly 768-1023px): in English, the last card's own natural
+   height can land shorter than a preceding card's at this width (grids
+   above wrap to fewer columns here, growing taller), letting that card
+   peek out from underneath. Purely a taller floor for the last card —
+   no controller/timing/transform involved. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .scroll-stack-card.scroll-stack-feature-card.scroll-stack-feature-card-last {
+    min-height: 92vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .scroll-stack-feature-scroller .scroll-stack-inner {
+    padding-inline: 0.75rem;
+  }
+
+  .scroll-stack-card.scroll-stack-feature-card {
+    min-height: auto;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .scroll-stack-feature-card .hiw-steps,
+  .scroll-stack-feature-card .platform-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+
+  .scroll-stack-feature-card .platform-row {
+    flex-direction: column;
+  }
+}

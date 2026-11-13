@@ -1,0 +1,477 @@
+/* ============================================================
+   PATIENT PROFILE V2 — Control Center
+   ============================================================
+   Fully token-driven (--patient-*, patientTokens.css) — no raw hex/rgba
+   values below, which is what makes Light/Dark/System theming (Profile V2,
+   Section 18-26) fall out of patientTokens.css's own light-mode block
+   instead of a parallel `.light` ruleset here. Density follows Section 44:
+   compact rows/grids sized to content, not large sparse cards. */
+
+.pfl-page {
+  min-height: 100vh;
+  background: var(--patient-surface-page);
+  color: var(--patient-color-text);
+  padding: var(--patient-page-padding-block) var(--patient-page-padding-inline);
+  display: flex;
+  justify-content: center;
+}
+
+.pfl-inner {
+  width: 100%;
+  max-width: var(--patient-page-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-section-gap);
+}
+
+/* ---------- Tabs ---------- */
+.pfl-tabs {
+  display: flex;
+  gap: var(--patient-space-2xs);
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.pfl-tabs button {
+  flex: 0 0 auto;
+  padding: var(--patient-space-2xs) var(--patient-space-sm);
+  border-radius: var(--patient-radius-button);
+  border: 1px solid var(--patient-border);
+  background: var(--patient-surface-card);
+  font: var(--patient-text-label);
+  color: var(--patient-color-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--patient-transition-normal), border-color var(--patient-transition-normal), color var(--patient-transition-normal);
+}
+
+.pfl-tabs button:hover {
+  color: var(--patient-color-text);
+  border-color: var(--patient-color-border);
+}
+
+.pfl-tabs button:focus-visible {
+  outline: 2px solid var(--patient-color-focus);
+  outline-offset: 2px;
+}
+
+.pfl-tabs button.active {
+  background: var(--patient-surface-selected);
+  border-color: var(--patient-color-primary);
+  color: var(--patient-color-heading);
+}
+
+/* ---------- Tab content ---------- */
+.pfl-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.pfl-tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-card-gap);
+}
+
+.pfl-card {
+  background: var(--patient-surface-card);
+  border: 1px solid var(--patient-border);
+  border-radius: var(--patient-radius-card);
+  padding: var(--patient-card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-sm);
+}
+
+.pfl-card-title {
+  font: var(--patient-text-section-heading);
+  color: var(--patient-color-heading);
+}
+
+.pfl-card-subtext {
+  font: var(--patient-text-supporting);
+  color: var(--patient-color-muted);
+  margin-top: calc(var(--patient-space-2xs) * -1);
+}
+
+.pfl-card-footnote {
+  font: var(--patient-text-caption);
+  color: var(--patient-color-faint);
+}
+
+/* ---------- Info / metric grids (Overview, Rehab summary) ---------- */
+.pfl-info-grid,
+.pfl-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--patient-grid-gap);
+}
+
+.pfl-metric-grid--summary {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pfl-info-item,
+.pfl-metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-field-gap);
+  background: var(--patient-surface-subtle);
+  border: 1px solid var(--patient-divider);
+  border-radius: var(--patient-radius-control);
+  padding: var(--patient-space-xs);
+}
+
+.pfl-info-item span,
+.pfl-metric span {
+  font: var(--patient-text-caption);
+  color: var(--patient-color-muted);
+}
+
+.pfl-info-item p,
+.pfl-metric p {
+  font: var(--patient-text-card-heading);
+  color: var(--patient-color-heading);
+}
+
+/* ---------- Row lists (Medical, Security) ---------- */
+.pfl-row-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-xs);
+}
+
+.pfl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--patient-space-sm);
+  padding-block: var(--patient-space-2xs);
+  border-bottom: 1px solid var(--patient-divider);
+}
+
+.pfl-row:last-child {
+  border-bottom: none;
+}
+
+.pfl-row span {
+  font: var(--patient-text-supporting);
+  color: var(--patient-color-muted);
+}
+
+.pfl-row p {
+  font: var(--patient-text-body);
+  color: var(--patient-color-text);
+  text-align: end;
+}
+
+.pfl-row--note {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.pfl-row--note p {
+  text-align: start;
+  color: var(--patient-color-text);
+}
+
+/* ---------- Care Team ---------- */
+.pfl-care-team-row {
+  display: flex;
+  align-items: center;
+  gap: var(--patient-space-sm);
+  flex-wrap: wrap;
+}
+
+.pfl-care-team-avatar {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--patient-color-primary-soft);
+  color: var(--patient-color-primary);
+  font-size: 20px;
+}
+
+.pfl-care-team-body {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.pfl-care-team-name {
+  font: var(--patient-text-card-heading);
+  color: var(--patient-color-heading);
+}
+
+.pfl-care-team-specialty {
+  font: var(--patient-text-caption);
+  color: var(--patient-color-muted);
+}
+
+.pfl-care-team-appointment {
+  margin-top: var(--patient-space-3xs);
+  font: var(--patient-text-supporting);
+  color: var(--patient-color-text);
+}
+
+.pfl-care-team-appointment--muted {
+  color: var(--patient-color-faint);
+}
+
+/* ---------- Rehab exercise rows ---------- */
+.pfl-exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-2xs);
+}
+
+.pfl-exercise-row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1.4fr;
+  align-items: center;
+  gap: var(--patient-space-xs);
+  padding: var(--patient-space-2xs) var(--patient-space-xs);
+  background: var(--patient-surface-subtle);
+  border: 1px solid var(--patient-divider);
+  border-radius: var(--patient-radius-control);
+}
+
+.pfl-exercise-name {
+  font: var(--patient-text-card-heading);
+  color: var(--patient-color-heading);
+}
+
+.pfl-exercise-meta {
+  font: var(--patient-text-supporting);
+  color: var(--patient-color-text);
+}
+
+.pfl-exercise-target {
+  font: var(--patient-text-caption);
+  color: var(--patient-color-muted);
+  text-align: end;
+}
+
+/* ---------- Status pill (not color-only — see label text) ---------- */
+.pfl-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--patient-space-3xs);
+  padding: 2px 10px;
+  border-radius: var(--patient-radius-badge);
+  font: var(--patient-text-caption);
+  align-self: flex-end;
+  white-space: nowrap;
+}
+
+.pfl-status-pill svg {
+  width: 12px;
+  height: 12px;
+}
+
+.pfl-status-pill--positive {
+  background: var(--patient-color-success-soft);
+  color: var(--patient-color-success);
+  border: 1px solid var(--patient-color-success);
+}
+
+/* ---------- Devices ----------
+   One stable panel (`.pfl-device-panel`, fixed min-height) whose CONTENT
+   swaps between the centered empty/scanning block and the device-row list
+   — the panel itself never resizes dramatically between states, and
+   discovered/connecting/connected devices all render through the exact
+   same `.pfl-device-row` geometry (icon/name/metadata/action column
+   stay in the same place; only the action column's own content changes). */
+.pfl-device-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 208px;
+}
+
+.pfl-device-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--patient-space-2xs);
+  padding: var(--patient-space-lg) var(--patient-space-sm);
+}
+
+.pfl-device-empty-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--patient-surface-elevated);
+  color: var(--patient-color-muted);
+  font-size: 22px;
+  margin-bottom: var(--patient-space-2xs);
+}
+
+.pfl-device-empty-title {
+  font: var(--patient-text-card-heading);
+  color: var(--patient-color-heading);
+}
+
+.pfl-device-empty-copy {
+  font: var(--patient-text-supporting);
+  color: var(--patient-color-muted);
+  max-width: 40ch;
+}
+
+.pfl-device-spinner {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid var(--patient-border);
+  border-top-color: var(--patient-color-primary);
+  animation: pfl-spin 0.9s linear infinite;
+  margin-top: var(--patient-space-2xs);
+}
+
+@keyframes pfl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pfl-device-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-2xs);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* The shared row — same shape whether the device is merely discovered,
+   currently connecting, or already connected (see DeviceRow in
+   ProfileDevicesTab.jsx). Width is always the panel's full inner content
+   width (never a narrow floating card); only `--connected`'s left accent
+   border and icon color change, never a full-card color flood. */
+.pfl-device-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--patient-space-sm);
+  width: 100%;
+  padding: var(--patient-space-sm) var(--patient-space-xs);
+  background: var(--patient-surface-subtle);
+  border: 1px solid var(--patient-divider);
+  border-inline-start: 3px solid transparent;
+  border-radius: var(--patient-radius-control);
+  transition: border-color var(--patient-transition-normal), background-color var(--patient-transition-normal);
+}
+
+.pfl-device-row--connected {
+  border-inline-start-color: var(--patient-color-success);
+}
+
+.pfl-device-row-icon {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--patient-surface-elevated);
+  color: var(--patient-color-muted);
+  font-size: 18px;
+}
+
+.pfl-device-row--connected .pfl-device-row-icon {
+  background: var(--patient-color-success-soft);
+  color: var(--patient-color-success);
+}
+
+.pfl-device-row-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pfl-device-row-name {
+  font: var(--patient-text-card-heading);
+  color: var(--patient-color-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pfl-device-row-meta,
+.pfl-device-row-signal {
+  font: var(--patient-text-caption);
+  color: var(--patient-color-muted);
+}
+
+.pfl-device-row-action {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--patient-space-2xs);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .pfl-info-grid,
+  .pfl-metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pfl-metric-grid--summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pfl-exercise-row {
+    grid-template-columns: 1fr;
+    text-align: start;
+  }
+
+  .pfl-exercise-target {
+    text-align: start;
+  }
+
+  .pfl-care-team-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Device rows: keep icon + name/metadata on the first line, let the
+     action column (Connect/Connecting/Disconnect, and the Connected badge)
+     drop to its own full-width, right-aligned line instead of squeezing
+     into the row or overflowing horizontally. */
+  .pfl-device-row {
+    flex-wrap: wrap;
+  }
+
+  .pfl-device-row-action {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 380px) {
+  .pfl-info-grid,
+  .pfl-metric-grid,
+  .pfl-metric-grid--summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfl-device-spinner {
+    animation-duration: 1.6s;
+  }
+}

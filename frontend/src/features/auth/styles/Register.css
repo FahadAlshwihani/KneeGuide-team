@@ -1,0 +1,269 @@
+/* Register-specific content only — the card shell (AuthCard.css), the
+   shared field/label/input/alert styles (AuthForm.css), the Stepper's own
+   chrome (styles/Stepper.css), and the page chrome (AuthLayout.css) all
+   live elsewhere now that AuthLayout hosts AuthCard once for both Login
+   and Register. This file only owns what's unique to Register's own
+   content: the role picker, the two-column name row, the password hint,
+   and the final review box.
+
+   One rhythm, `gap`-driven: .register-content's own `--auth-space-lg`
+   (24px) gap is the single source of spacing between every top-level
+   block (title, alert, the Stepper, the auth-switch link) — the same
+   scale/mechanism Login.css uses, so both pages read as one coherent
+   card language rather than two independently-tuned layouts. That's also
+   what makes the conditionally-rendered AuthAlert (the general banner)
+   slot in with correct spacing on both sides whether it's showing or
+   not, with no manual bookkeeping. */
+.register-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--auth-space-lg);
+}
+
+.register-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-heading);
+  text-align: center;
+}
+
+/* The final, secondary action of the card — same rhythm as everything
+   above it (register-content's own gap), not a separate margin tuned to
+   sit "close to the buttons" or "far below" by accident. */
+.register-switch {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.register-stepper-box {
+  width: 100%;
+}
+
+.step-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-heading);
+  text-align: center;
+}
+
+/* Focus target for step-transition focus management (Stepper.jsx) —
+   outline suppressed since it's only ever focused programmatically, never
+   by a visible keyboard Tab landing directly on a heading. */
+.step-title:focus-visible {
+  outline: none;
+}
+
+/* ============================
+   ROLE PICKER (step 1)
+============================ */
+.role-picker {
+  display: flex;
+  gap: var(--auth-space-xs);
+}
+
+/* Real <button>s (Register.jsx), not clickable divs — keyboard-reachable,
+   `aria-pressed` exposes the selected state. Same glass/border language
+   as the auth inputs, not a separate card style. */
+.role-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--auth-space-2xs);
+  padding: 20px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.role-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.role-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.role-card-selected,
+.role-card-selected:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.role-card-icon {
+  width: 26px;
+  height: 26px;
+  color: var(--color-primary-hover);
+}
+
+.role-card h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-heading);
+}
+
+.role-card p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+/* ============================
+   NAME ROW (step 2)
+============================ */
+.form-two-column {
+  display: flex;
+  gap: var(--auth-space-xs);
+}
+
+.form-two-column .auth-field {
+  flex: 1;
+}
+
+/* ============================
+   PASSWORD CHECKLIST (step 4)
+============================ */
+
+/* Ties each PasswordField to its own feedback (the live checklist, the
+   match status) with a tighter internal gap than the step's own rhythm
+   between unrelated blocks (.step-default's 20px) — same "small group,
+   tight internal gap" pattern Login.css's .login-header already
+   established for title+subtitle. */
+.password-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--auth-space-2xs);
+}
+
+.password-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px var(--auth-space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 420px) {
+  .password-checklist {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Visually secondary to the actual form fields — small type, muted by
+   default, no per-item box/background/glow. Color is the only thing that
+   changes state (met/unmet), backed by the icon swap (RequirementIcon in
+   PasswordChecklist.jsx) so state is never color-only. */
+.password-requirement {
+  display: flex;
+  align-items: center;
+  gap: var(--auth-space-3xs);
+  font-size: 0.78rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  transition: color 150ms ease;
+}
+
+.password-requirement--met {
+  color: var(--color-success);
+}
+
+/* Same light red AuthAlert uses (AuthForm.css) — not the full-saturation
+   --color-danger token, which reads too aggressive at this size/weight
+   for a live-typing hint rather than a blocking error. */
+.password-requirement--unmet {
+  color: #f87171;
+}
+
+.password-requirement-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.password-requirement-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.password-match-status {
+  display: flex;
+  align-items: center;
+  gap: var(--auth-space-3xs);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+.password-match-status--met {
+  color: var(--color-success);
+}
+
+.password-match-status--unmet {
+  color: #f87171;
+}
+
+/* ============================
+   REVIEW (step 5)
+============================ */
+.review-box {
+  padding: var(--auth-space-sm) 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--auth-space-2xs);
+}
+
+.review-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.review-box strong {
+  color: var(--color-heading);
+}
+
+/* Contextual role guidance (Register.jsx, Step 1) — same subtle
+   bordered-surface language as .review-box below, one step down in
+   presence since this is a supporting note, not a data summary. */
+.register-role-hint {
+  margin: 0;
+  padding: var(--auth-space-xs) var(--auth-space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .role-picker,
+  .form-two-column {
+    flex-direction: column;
+  }
+}

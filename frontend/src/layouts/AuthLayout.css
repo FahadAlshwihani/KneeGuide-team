@@ -1,0 +1,59 @@
+/* Classic sticky-footer flex column: Header (its own sticky positioning,
+   natural height) -> main (flex: 1, fills whatever's left and centers the
+   card both axes) -> AuthFooter (natural height, pinned to the bottom
+   when content is short). If the card ever needs more height than the
+   viewport has (small laptop + tall content, or heavy zoom), the column
+   simply grows past `min-height` and the page scrolls normally — nothing
+   here caps height, only floors it, so there's no clipping in either
+   direction.
+
+   `100svh` (small viewport height), not the `.public-root` rule's own
+   plain `100vh` this overrides — matching Hero.css's own established
+   reasoning elsewhere in this app: svh is the one reference that doesn't
+   shift as mobile browser chrome shows/hides mid-session, so the floor
+   never causes a layout jump while scrolling. */
+.auth-layout-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.auth-layout-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+/* AuthCard itself (AuthCard.css) owns the glass shell/padding and stays
+   mounted across /login <-> /register — see AuthLayout.jsx. React Router
+   renders the active route directly in this natural-height frame.
+
+   Deliberately NOT `overflow: hidden` and NOT a JS-measured `height` —
+   an earlier version animated this element's height via a runtime
+   measurement, which both produced the "empty card" bug on route changes
+   (see AuthLayout.jsx) and could clip real content (including the
+   Stepper's own Next/Back buttons) whenever that measurement landed below
+   the content's true height. Content now determines its own height
+   naturally; nothing here can ever cut it off.
+
+   320px min-height is a floor, not a target — comfortably below Login's
+   own natural content height (even after this pass's tighter rhythm,
+   Login's real height lands well above this), so it only ever catches a
+   genuinely degenerate short state without ever padding out real content
+   with visible dead space. Not tuned to match Register's own height at
+   any step — that would be exactly the "preserve dead space to keep
+   Login/Register identical" anti-pattern this pass was asked to remove.
+   Removed entirely on short/mobile viewports below, where a fixed floor
+   risks fighting the real content for space on a short phone. */
+.auth-content-frame {
+  width: 100%;
+  min-height: 320px;
+}
+
+@media (max-width: 480px) {
+  .auth-content-frame {
+    min-height: 0;
+  }
+}

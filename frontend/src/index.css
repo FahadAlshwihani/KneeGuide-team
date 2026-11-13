@@ -1,0 +1,514 @@
+/* =========================
+   Global Fonts & Reset
+   ========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "./styles/direction.css";
+/* The product (Auth/Dashboard) typeface — see --font-product below. 400
+   weight was already loaded but 600 wasn't (every product CSS file that
+   sets font-weight uses only 400/500/600/700; 300 was loaded but never
+   actually used anywhere in Auth/Dashboard, so it's dropped here). */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Typography */
+  --font-main: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Colors */
+  --color-bg: #070b12;
+  --color-bg-elevated: #0f172a;
+  --color-bg-soft: #0b1220;
+
+  --color-primary: #2563eb;
+  --color-primary-soft: rgba(37, 99, 235, 0.12);
+  --color-primary-strong: #1d4ed8;
+
+  --color-secondary: #10b981;
+  --color-secondary-soft: rgba(16, 185, 129, 0.12);
+
+  --color-border-subtle: rgba(148, 163, 184, 0.35);
+  --color-border-strong: rgba(148, 163, 184, 0.6);
+
+  --color-text-main: #e5e7eb;
+  --color-text-soft: #9ca3af;
+  --color-text-muted: #6b7280;
+  --color-text-invert: #0b1120;
+
+  --color-danger: #ef4444;
+  --color-danger-soft: rgba(239, 68, 68, 0.1);
+
+  /* Radius & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
+  --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.6);
+
+  /* Layout */
+  --max-width: 1200px;
+}
+/* English Default (LTR) */
+body.ltr {
+  --font-main: 'Montserrat', system-ui, sans-serif;
+}
+
+/* Arabic (RTL) */
+body.rtl {
+  --font-main: 'Tajawal', system-ui, sans-serif;
+}
+
+/* Global reset-ish */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* Reserves the scrollbar's track permanently (in supporting browsers)
+   instead of only when content actually overflows, so the page's content
+   width never changes when something temporarily sets `overflow: hidden`
+   on the document — e.g. the public Header's expanded-menu scroll lock.
+   Unsupported browsers (older Safari) silently ignore this and fall back
+   to that lock's own JS-measured compensation instead. */
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Default text selections */
+::selection {
+  background: rgba(37, 99, 235, 0.4);
+  color: var(--color-text-invert);
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Scrollbar (modern & subtle) — scoped away from `.doctor-shell` and its
+   descendants, which use the fully native, unstyled system scrollbar
+   (Doctor Dashboard visual-polish pass). The `:not()` guard means no
+   `::-webkit-scrollbar` rule ever matches inside the Doctor shell at all,
+   which is what actually restores true OS-native rendering there (once
+   ANY such rule matches an element, the browser treats its scrollbar as
+   "customized" — there's no CSS value that hands it back). Every other
+   surface (Patient, Public, Auth) is unaffected — same treatment as
+   before. */
+:not(.doctor-shell, .doctor-shell *)::-webkit-scrollbar {
+  width: 8px;
+}
+
+:not(.doctor-shell, .doctor-shell *)::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+:not(.doctor-shell, .doctor-shell *)::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #2563eb, #10b981);
+  border-radius: 999px;
+}
+
+/* Forms */
+input,
+select,
+textarea {
+  font-family: var(--font-main);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+  background: rgba(15, 23, 42, 0.85);
+  color: var(--color-text-main);
+  padding: 10px 12px;
+  outline: none;
+  transition: border 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.5);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* =====================================================
+   NEW DESIGN SYSTEM — public site foundation
+   =====================================================
+   Everything below is scoped so it cannot affect the
+   existing dashboard/auth pages (which keep their current
+   look untouched). Tokens and @font-face are global/inert
+   until referenced; the actual reset/typography/utilities
+   only apply inside ".public-root" (see PublicLayout.jsx).
+   ===================================================== */
+
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('./assets/fonts/IBM-Plex-Sans/IBMPlexSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('./assets/fonts/IBM-Plex-Sans/IBMPlexSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('./assets/fonts/IBM-Plex-Sans/IBMPlexSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('./assets/fonts/IBM-Plex-Sans/IBMPlexSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('./assets/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('./assets/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('./assets/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('./assets/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Typography */
+  --font-en: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-ar: 'IBM Plex Sans Arabic', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* The authenticated PRODUCT surface (Auth: Login/Register/future Forgot
+     Password/Reset/OTP, plus the Dashboard) intentionally has its own
+     typographic identity, separate from the public marketing site's EN/AR
+     split above — one consistent face for both languages, since this is
+     app UI, not localized marketing copy. Tajawal itself covers Arabic
+     and Latin script, so no separate --font-product-ar is needed. Applied
+     narrowly below (.auth-layout-root / .dashboard-root) — never globally
+     — so it can never leak into .public-root's own typography. */
+  --font-product: 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Colors — premium monochrome identity (Vercel/Linear/Notion-inspired):
+     near-black surfaces, white headings, neutral gray body/muted text.
+     Blue (--color-primary, already defined above) is kept strictly as an
+     ACCENT — never a background or section tint. Dashboard card internals
+     are untouched (their own hardcoded near-blacks already sit close to
+     this same neutral-dark family, so nothing clashes). */
+  --color-text: #c9c9c9;
+  --color-heading: #ffffff;
+  --color-muted: #8a8a8a;
+  --color-background: #050505;
+  --color-surface: #0b0b0b;
+  --color-surface-soft: #111111;
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  /* Semantic status colors — named aliases for hues already used across the
+     dashboard (MetricCard status accents, progress bars, PainWheel states),
+     not new colors. --color-danger is already defined above and reused as-is. */
+  --color-primary-hover: #3b82f6;
+  --color-accent: #60a5fa;
+  --color-success: #22c55e;
+  --color-warning: #eab308;
+  --color-info: #6366f1;
+
+  /* Soft brand gradient + glass, used sparingly (hero glow, header) */
+  --gradient-brand: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --glass-bg: rgba(5, 5, 5, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(16px);
+
+  /* Neutral section tint — a quiet white glow, not a color tint. Sections
+     never get a large blue/green wash; only small accents (badges, icons,
+     buttons) use the brand hues. */
+  --gradient-tint-blue: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.035), transparent 60%), var(--color-surface-soft);
+  --gradient-tint-green: radial-gradient(circle at 80% 25%, rgba(255, 255, 255, 0.035), transparent 60%), var(--color-surface-soft);
+
+  /* Layout */
+  --container-width: var(--max-width);
+  --section-padding: clamp(48px, 8vw, 96px);
+
+  /* Sticky Header height (see Header.css: 12px top padding + 64px nav)
+     plus breathing room — used as scroll-margin-top on the homepage
+     sections that public navigation can land on, so a hash/anchor jump
+     never tucks a section's heading behind the fixed Header. */
+  --nav-scroll-offset: 96px;
+
+  /* Radius — --radius-sm/md/lg/xl are already defined above and reused as-is. */
+
+  /* Shadows — 3-tier scale reusing the dashboard's own dark-tuned shadows
+     (--shadow-soft / --shadow-subtle, defined above) rather than inventing
+     light-surface values. */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-md: var(--shadow-subtle);
+  --shadow-lg: var(--shadow-soft);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+
+  /* Z-index scale */
+  --z-header: 100;
+  --z-dropdown: 200;
+  --z-sticky: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+
+  /* Breakpoints (documented reference values — CSS vars can't drive @media
+     queries directly, so these must be mirrored as literal px in media rules) */
+  --bp-mobile: 480px;
+  --bp-tablet: 768px;
+  --bp-desktop: 1200px;
+}
+
+/* ---------- Public site reset + typography + utilities ---------- */
+/* Scoped to .public-root so the dashboard/auth pages are unaffected. */
+
+/* Every homepage section the public navigation (Header mega-menu,
+   Footer columns) can link to — see
+   src/features/public/navigation/publicNavigation.js for the canonical
+   list these ids must match. Centralized here instead of scattering a
+   scroll-offset calculation through Header/Footer navigation code. */
+#challenge,
+#approach,
+#platform,
+#technology,
+#how-it-works,
+#ai-assistant,
+#roadmap,
+#faq {
+  scroll-margin-top: var(--nav-scroll-offset);
+}
+
+body.rtl .public-root {
+  font-family: var(--font-ar);
+}
+
+body.ltr .public-root {
+  font-family: var(--font-en);
+}
+
+/* Product typography boundary. AuthLayout.jsx reuses `.public-root` for
+   its reset/tokens/Grainient-stacking-context (see that file) but not for
+   its font-family — these two rules override the two immediately above
+   for that one subtree. The compound `.public-root.auth-layout-root`
+   selector is deliberately MORE specific than `body.rtl/.ltr .public-root`
+   above (an extra class on the same element), so this wins outright on
+   specificity — not on !important, and not on accidentally being later
+   in the bundle. `.dashboard-root` needs no such fight: the dashboard was
+   never inside `.public-root` to begin with, so a single class already
+   beats the old global `body { font-family: var(--font-main) }` rule
+   (see the very first block of this file). */
+body.rtl .public-root.auth-layout-root,
+body.ltr .public-root.auth-layout-root {
+  font-family: var(--font-product);
+}
+
+.dashboard-root {
+  font-family: var(--font-product);
+}
+
+/* Form controls don't inherit font-family from an ancestor by default
+   (browser UA stylesheets give button/input/select/textarea their own
+   platform UI font) — this is the exact reason Patient/Doctor dashboard
+   buttons, chips, and inputs were silently falling back to the browser's
+   default font instead of Tajawal, even though `.dashboard-root` above
+   already correctly sets it for ordinary text. `.public-root` already
+   solves this same problem for itself a few rules below (`.public-root
+   button/input/select/textarea { font-family: inherit }`) — this mirrors
+   that exact, already-proven pattern for the dashboard scope instead of
+   inventing a new one. Deliberately `font-family` only (not the full
+   `font` shorthand, and not `color`, unlike `.public-root`'s version):
+   this must never touch font-size/weight/line-height or text color, which
+   are still owned per-component (e.g. Patient's own `--patient-text-*`
+   tokens) and are outside this task's scope. */
+.dashboard-root button,
+.dashboard-root input,
+.dashboard-root select,
+.dashboard-root textarea,
+.dashboard-root option {
+  font-family: inherit;
+}
+
+.public-root {
+  color: var(--color-text);
+  background: var(--color-background);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.public-root img,
+.public-root svg,
+.public-root video {
+  display: block;
+  max-width: 100%;
+}
+
+.public-root button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.public-root button,
+.public-root input,
+.public-root select,
+.public-root textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+.public-root ul,
+.public-root ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.public-root h1,
+.public-root h2,
+.public-root h3,
+.public-root h4,
+.public-root p {
+  margin: 0;
+  color: var(--color-heading);
+}
+
+.public-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Typography scale */
+.public-root h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.public-root h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.public-root h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.public-root h4 {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.public-root p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Utilities */
+.public-root .container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.public-root .section {
+  padding: var(--section-padding) 0;
+}
+
+.public-root .section-title {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.public-root .grid {
+  display: grid;
+  gap: 24px;
+}
+
+.public-root .hidden {
+  display: none;
+}
+
+.public-root .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive container padding */
+@media (max-width: 768px) {
+  .public-root .container {
+    padding: 0 16px;
+  }
+}

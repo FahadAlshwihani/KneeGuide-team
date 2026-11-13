@@ -1,0 +1,149 @@
+/* Public-website Primary Button — rebuilt from scratch to match the
+   supplied reference screenshot exactly: a sharp, unrounded rectangle,
+   wide and flat (generous horizontal padding, light vertical padding),
+   transparent with a white border and white text by default, fading to a
+   solid white background with black text on hover. Text is the visual
+   focus; the arrow is secondary typography, not an icon. See
+   SecondaryButton.css for the paired lower-emphasis style — sizes/shape
+   are mirrored 1:1 on purpose, so swapping <PrimaryButton> for
+   <SecondaryButton> never shifts layout. */
+
+.ui-primary-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, opacity 200ms ease;
+}
+
+.ui-primary-btn:hover:not(:disabled),
+.ui-primary-btn:focus-visible {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.ui-primary-btn:active:not(:disabled) {
+  opacity: 0.85;
+}
+
+.ui-primary-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
+.ui-primary-btn:disabled,
+.ui-primary-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ui-primary-btn--full {
+  width: 100%;
+}
+
+/* Sizes — wide and flat: generous horizontal padding, light vertical
+   padding, so the silhouette reads as a wide bar, not a tall pill. */
+.ui-primary-btn--sm {
+  gap: 10px;
+  padding: 8px 20px;
+  font-size: 0.82rem;
+}
+
+.ui-primary-btn--md {
+  gap: 12px;
+  padding: 10px 28px;
+  font-size: 0.92rem;
+}
+
+.ui-primary-btn--lg {
+  gap: 14px;
+  padding: 12px 36px;
+  font-size: 1rem;
+}
+
+/* The arrow SVG's wrapper — a plain centered flex item of the button's own
+   `align-items: center` row (above). No margin/align-self/translateY/
+   absolute-positioning: centering comes entirely from that one rule. */
+.ui-primary-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.ui-primary-btn-icon svg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* Explicit px per button size (not em) so the arrow stays visually
+   consistent across Arabic/English fonts instead of tracking font-size. */
+.ui-primary-btn--sm .ui-primary-btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ui-primary-btn--md .ui-primary-btn-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ui-primary-btn--lg .ui-primary-btn-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* RTL: mirror the SVG (↗ becomes ↖), a static flip — resolves
+   automatically from the ancestor `dir`, no separate component or JS
+   branch, and is never itself animated. Color (`stroke="currentColor"`)
+   rides the button's own `color` transition, so the arrow never animates
+   independently — no translate/rotate/scale on hover. */
+[dir="rtl"] .ui-primary-btn-icon svg {
+  transform: scaleX(-1);
+}
+
+.ui-primary-btn-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Loading — spinner replaces the icon slot; label stays put so the button
+   never changes width when a future async action wires `loading` in. */
+.ui-primary-btn--loading {
+  cursor: progress;
+}
+
+.ui-primary-btn-spinner {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  animation: ui-primary-btn-spin 700ms linear infinite;
+}
+
+@keyframes ui-primary-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-primary-btn {
+    transition-duration: 1ms;
+  }
+
+  .ui-primary-btn-spinner {
+    animation-duration: 1400ms;
+  }
+}

@@ -1,0 +1,270 @@
+/* Uses global design tokens from src/index.css for layout only — colors
+   are defined locally below rather than through the shared dark tokens
+   (--color-heading/--color-text/etc.), since this section is deliberately
+   the site's first light surface: those globals are the public site's
+   dark identity and stay untouched everywhere else.
+
+   No background of its own: this section sits on top of the shared,
+   page-wide Grainient canvas (mounted once in PublicLayout.jsx) plus the
+   dark→light CSS treatment rendered once by the HeroProblemScene wrapper
+   around both Hero and Problem — see HeroProblemScene.css. .problem-root
+   stays transparent so that shared background (already warm-white by the
+   time it reaches here) shows through instead of being covered by a
+   second, separate background.
+
+   Content order (see index.jsx): stats -> audience statement -> header ->
+   problem cards. Stats and the audience statement are deliberately
+   "printed directly on the page" — no container, no border, no
+   background, no shadow anywhere in those two blocks; whitespace alone
+   groups them. The problem cards are the *only* element in this section
+   allowed a card-style surface. */
+/* No min-height (there used to be one, 100svh) — found and removed as
+   part of tracing the Hero-tail gap bug: this was the exact same class of
+   bug already fixed in Hero.css (a near-full-viewport floor + `justify-
+   content: center`), just one section later. Whenever Problem's own real
+   content (stats + audience line + header + cards) rendered shorter than
+   100svh, centering split the leftover space above/below it, pushing
+   Problem's own visible content down inside its own box — compounding
+   with the Hero vignette bleed (see HeroProblemScene.css) into what read
+   as one large "Hero still going" region. Sizing purely to content, the
+   same fix already applied to Hero, removes that leading gap here too.
+   `--problem-real-h` (the ResizeObserver-measured height the light-
+   transition treatment layers anchor to) already reads Problem's real
+   rendered box either way, so this needs no change anywhere else. */
+.problem-root {
+  position: relative;
+  padding: var(--section-padding) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  --problem-heading: #141414;
+  --problem-text: #4b4b4b;
+  --problem-muted: #6b6b6b;
+  --problem-border: #e8edf5;
+  --problem-card-bg: #ffffff;
+}
+
+.problem-container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 1. Projected impact statistics — first element in the section. Pure
+   typography, no icons, no tiles, no dividers: a small centered eyebrow
+   that reads as the title for the whole row (the generous margin below
+   it is what keeps it from reading as attached to the middle number
+   specifically), then three large blue numbers with dark labels beneath,
+   separated by whitespace alone. Numbers count up from 0 once (see
+   AnimatedStatValue in index.jsx) — this file only styles the resting
+   state. */
+.problem-stats {
+  margin-bottom: clamp(48px, 7vw, 72px);
+}
+
+.problem-stats-eyebrow {
+  margin: 0 0 52px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--problem-muted);
+  text-align: center;
+}
+
+.problem-stats-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: clamp(40px, 7vw, 96px);
+}
+
+.problem-stat {
+  text-align: center;
+}
+
+.problem-stat-value {
+  display: block;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.problem-stat-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: var(--problem-heading);
+}
+
+/* 2. Designed-for audience statement — one centered line, printed
+   directly on the page (no card, no strip, no border). The fixed lead
+   ("Designed for" / "مصمم") is plain text; only the last word animates
+   via TextType (see index.jsx), colored per word from the existing
+   brand palette. Font size deliberately reuses the same clamp() family
+   already used elsewhere in this file, just at a size between the stat
+   values and the section title — large enough to read as a standalone
+   statement, not a fourth stat.
+
+   `.problem-audience` centers `.problem-audience-line` with flexbox
+   (`justify-content`), not `text-align` — text-align centers an inline
+   *text run*, which is exactly the kind of shared flow that let the
+   animated word's changing content nudge the prefix. Flex items are a
+   different layout model entirely: the prefix and the word-slot are two
+   independent boxes with their own fixed sizes (`flex: 0 0 auto` on
+   both), so nothing about what's typed/deleted *inside* the slot can
+   ever resize the slot itself or move its sibling. */
+.problem-audience {
+  margin-bottom: clamp(48px, 7vw, 72px);
+  display: flex;
+  justify-content: center;
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-weight: 600;
+  color: var(--problem-heading);
+}
+
+.problem-audience-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+}
+
+.problem-audience-lead {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  color: var(--problem-heading);
+}
+
+.problem-audience-word {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Fixed-width slot around the animated word (see wordSlotWidth in
+   index.jsx) — its width is set inline, sized to the widest of the three
+   words, and never collapses while TextType types/deletes inside it:
+   `flex: 0 0 auto` plus an explicit `width` means this box's size comes
+   from that inline style alone, never from its content. `overflow:
+   hidden` clips a mid-transition character or the cursor if either ever
+   nudges a pixel past that width; `text-align: start` keeps the word
+   growing outward from the edge nearest the lead text instead of
+   re-centering on every keystroke. */
+.problem-audience-word-slot {
+  flex: 0 0 auto;
+  display: inline-block;
+  text-align: start;
+  overflow: hidden;
+}
+
+/* Off-screen twin used only to measure real widths — never painted. */
+.problem-audience-measure {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.problem-audience-measure .problem-audience-word {
+  display: inline-block;
+}
+
+/* 3. Section header. */
+.problem-header {
+  max-width: 640px;
+  margin: 0 auto 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.problem-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--problem-heading);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--problem-border);
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+.public-root .problem-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  color: var(--problem-heading);
+  text-wrap: balance;
+}
+
+.public-root .problem-description {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--problem-text);
+}
+
+/* 4. Problem cards — the only card-style surfaces in this section:
+   white surface, thin border, no heavy shadow, centered content. */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.problem-card {
+  background: var(--problem-card-bg);
+  border: 1px solid var(--problem-border);
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.problem-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eff6ff;
+  color: var(--color-primary);
+  font-size: 1.35rem;
+}
+
+.public-root .problem-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--problem-heading);
+}
+
+.public-root .problem-card-description {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--problem-muted);
+}
+
+@media (max-width: 960px) {
+  .problem-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .problem-stats-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}

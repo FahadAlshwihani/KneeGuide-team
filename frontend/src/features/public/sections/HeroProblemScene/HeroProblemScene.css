@@ -1,0 +1,163 @@
+/* Hero + Problem + Solution as one continuous scene, sitting on top of
+   the single, page-wide Grainient canvas mounted once in PublicLayout.jsx
+   (behind the entire homepage, not just this scene) — this wrapper no
+   longer renders any background/canvas of its own at all. It previously
+   mounted its own separate Beams (Three.js) canvas here, positioned and
+   scrolling exactly like normal page content (no `position: sticky`/
+   `fixed` — that was tried for its performance benefit and reverted
+   because it read as a fixed/parallax background instead of one
+   continuous canvas moving with the page); that second engine has been
+   removed in favor of the one shared Grainient canvas, which eases its
+   own palette across `.scene-light-phase` below (see Grainient.jsx's
+   `regionBoundarySelector`). The layered, static CSS treatment overlay
+   below still does its own atmosphere journey on top of whatever's
+   rendered underneath, unchanged.
+
+   Stacking note: none of the elements below (or Hero's/Problem's/
+   Solution's own section roots) set an explicit z-index, and the only
+   positioned elements are the treatment divs (all absolute). Per the CSS
+   stacking spec, positioned descendants with z-index either 0 or auto
+   paint together in DOM order — so simply keeping treatment layers first
+   in markup and real content last is what guarantees the real content
+   always paints on top, with no z-index arithmetic needed. This same
+   rule is reapplied one level deeper inside .scene-light-phase (its own
+   treatment layers first, Problem/Solution last).
+
+   Section 4 (Technology) and everything after it is a plain sibling of
+   this wrapper in HomePage.jsx, entirely outside it — `overflow: hidden`
+   below is a deliberate hard boundary so nothing this scene renders can
+   ever visually bleed past its own real height into whatever comes next,
+   regardless of any sizing approximation inside it. */
+
+.hero-problem-scene {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: -76px;
+  padding-top: 76px;
+}
+
+/* Hero's own cinematic vignette. Confined to exactly Hero's own real
+   rendered height (`--hero-real-h`, measured by a ResizeObserver in
+   HeroProblemScene/index.jsx — the same pattern `--problem-real-h` below
+   already uses), plus the 76px this wrapper pulls Hero up by (see
+   margin-top/padding-top above) so the vignette also covers that
+   overlapped region, not just Hero's own visible box. `100svh` is only a
+   fallback for the brief moment before the first observation lands, not
+   a steady-state assumption — Hero's real height is content-driven now
+   (see Hero.css) and can be shorter than a full viewport, so a flat
+   guess here would keep this dark, Hero-only layer painting past Hero's
+   real bottom edge and visibly bleed into Problem's own top content. The
+   Hero/Problem boundary is intentionally left as a plain, visible section
+   break otherwise; nothing else bridges it. */
+.scene-hero-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--hero-real-h, 100svh) + 76px);
+  pointer-events: none;
+  background: radial-gradient(ellipse 75% 65% at 50% 42%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 55%, rgba(0, 0, 0, 0.85) 100%),
+    rgba(0, 0, 0, 0.25);
+}
+
+/* Wraps Problem + Solution only. Plain normal-flow block with no height
+   of its own — its real height is always exactly Problem's + Solution's
+   rendered height, whatever that is at any viewport/content size. Every
+   treatment layer below is sized against *this* real box (`inset: 0` /
+   `bottom: 0`), never against a flat svh guess, so they can never fall
+   short of or overshoot the two sections' actual combined height. */
+.scene-light-phase {
+  position: relative;
+}
+
+/* The atmosphere shift, and where the beams visually invert rather than
+   dim. A warm-white fill blended with `mix-blend-mode: exclusion`: where
+   the canvas underneath is near-black (empty space between beams),
+   exclusion against a near-white leaves the result near-white; where the
+   canvas is a bright beam, the same operation flips it dark — so the
+   beams don't fade away here, they swap from bright-on-black to
+   soft-gray-on-warm-white, still clearly moving, only recolored.
+
+   `inset: 0` matches .scene-light-phase's real combined height exactly.
+   The ramp itself is anchored to `--problem-real-h` — Problem's actual
+   measured height (see index.jsx's ResizeObserver), not a percentage or
+   an svh guess — so it always finishes precisely at Problem's real
+   bottom edge no matter how tall Problem or Solution actually render.
+   It finishes 16px early (a small, deliberate overlap, not a visible
+   band) so it's already fully applied slightly before the real
+   boundary, matching where .scene-beam-fadeout below picks up. */
+.scene-invert-lighten {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: #f9f4ea;
+  mix-blend-mode: exclusion;
+  opacity: 0.86;
+  mask-image: radial-gradient(ellipse 210% 150% at 38% 30%, black 0%, transparent 75%),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      rgba(0, 0, 0, 0.08) calc(var(--problem-real-h, 100svh) * 0.125),
+      rgba(0, 0, 0, 0.45) calc(var(--problem-real-h, 100svh) * 0.25),
+      rgba(0, 0, 0, 0.82) calc(var(--problem-real-h, 100svh) * 0.375),
+      black calc(var(--problem-real-h, 100svh) - 16px)
+    );
+  -webkit-mask-image: radial-gradient(ellipse 210% 150% at 38% 30%, black 0%, transparent 75%),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      rgba(0, 0, 0, 0.08) calc(var(--problem-real-h, 100svh) * 0.125),
+      rgba(0, 0, 0, 0.45) calc(var(--problem-real-h, 100svh) * 0.25),
+      rgba(0, 0, 0, 0.82) calc(var(--problem-real-h, 100svh) * 0.375),
+      black calc(var(--problem-real-h, 100svh) - 16px)
+    );
+}
+
+/* A plain (no blend mode) warm-white cover that progressively paints
+   over the canvas, fading the now-light-and-gray beams out entirely well
+   before Solution's bottom edge, leaving the same clean flat warm-white
+   the rest of the site already uses.
+
+   `bottom: 0` (relative to .scene-light-phase, whose own height always
+   matches the real combined content) means this layer's own bottom edge
+   is always exact. Its `top` starts 16px *before* Problem's real end
+   (`--problem-real-h`, the same measured value Layer above uses) — a
+   small, deliberate overlap so there is never a gap at the seam, landing
+   exactly where the invert-lighten layer above has already finished its
+   ramp. Its own gradient percentages are safe as plain percentages
+   because this element's own height is exact (`bottom: 0`), not
+   approximated.
+
+   Deliberately NOT a solid color plus `mask-image` (the previous
+   approach here) — that combination is a known WebKit/Safari rendering
+   bug: masked elements can rasterize onto their own GPU compositing
+   layer with a hairline sub-pixel seam at the mask's own edge, letting
+   whatever is painted underneath (this scene's WebGL canvas) show
+   through as a thin sliver, reproducing specifically on iPad and not on
+   desktop/mobile Safari or any Chromium/Firefox engine — exactly the
+   asymmetry reported. Painting the identical fade directly as
+   two stacked, alpha-varying `background` gradients (below) produces the
+   mathematically same result (browsers already composite stacked
+   background layers via the same over/add math a `mask-composite: add`
+   of two masks over a solid color would) without ever creating a masked
+   compositing layer in the first place — there's no Safari-specific
+   rasterization path left to have a seam in.
+
+   The linear gradient reaches fully-opaque warm-white at 76% (not 100%)
+   of this element's own height, deliberately leaving the last quarter of
+   Solution's own height solidly covered with no further ramp — a wide,
+   guaranteed-opaque margin rather than letting the transition finish
+   right at the true edge, absorbing any small mismatch between
+   Solution's own (viewport-unit-influenced) layout height and where the
+   next section's opaque background actually begins. */
+.scene-beam-fadeout {
+  position: absolute;
+  top: calc(var(--problem-real-h, 100svh) - 16px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 140% 85% at 55% 100%, #f9f4ea 0%, rgba(249, 244, 234, 0) 66%),
+    linear-gradient(to bottom, rgba(249, 244, 234, 0) 0%, rgba(249, 244, 234, 0) 10%, #f9f4ea 76%, #f9f4ea 100%);
+}

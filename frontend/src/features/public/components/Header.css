@@ -1,0 +1,455 @@
+/* Uses global design tokens from src/index.css.
+
+   Navigation philosophy rebuilt from scratch, React Bits' CardNav as the
+   interaction reference: a single floating card that expands in place to
+   reveal a grid of content cards, instead of a conventional link bar.
+   This is a from-scratch implementation of that same interaction (see
+   Header.jsx for the GSAP timeline, written independently) — no CardNav
+   CSS was copied, though the underlying technique for a smooth
+   auto-height reveal is the same for any implementation of this pattern:
+   the top bar is `position: absolute` so the nav's own `height` (GSAP-
+   driven, not CSS `height: auto`) can animate independently of it, and
+   the content panel stays permanently in the DOM at `visibility: hidden`
+   rather than being mounted/unmounted, so its height is always
+   measurable and its own reveal (opacity/y, staggered per card) can run
+   alongside the nav's height tween.
+
+   `.header-root` stays `position: sticky` and the collapsed nav height
+   (64px) plus its wrapper padding keeps the total close to Hero.css's
+   `calc(100svh - 72px)` assumption, so nothing there needs to change. */
+
+.header-root {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  padding: 12px 20px 0;
+  will-change: transform;
+}
+
+/* Fullscreen scrim behind the expanded menu — a sibling of .header-root
+   (see Header.jsx for why), so it's always positioned against the real
+   viewport regardless of the header's own scroll-hide transform. Opacity
+   is GSAP-driven (part of the same timeline as the panel/cards);
+   visibility/pointer-events flip instantly with the class, same pattern
+   as .header-menu-panel. Also the click target for "click outside closes
+   the menu" — it covers the whole viewport except the nav card itself,
+   which sits above it via z-index. */
+.header-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-header) - 1);
+  background: rgba(0, 0, 0, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.header-overlay-visible {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.header-nav {
+  position: relative;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  height: 64px;
+  overflow: hidden;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  will-change: height;
+}
+
+/* Absolutely positioned so it never reflows as `.header-nav`'s own height
+   is tweened — same reasoning CardNav uses for its top bar, and true of
+   any GSAP height-tween implementation of this pattern. */
+.header-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px 0 10px;
+  z-index: 2;
+}
+
+.header-menu-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.header-menu-toggle:hover .header-menu-toggle-line {
+  opacity: 0.75;
+}
+
+.header-menu-toggle-line {
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-heading);
+  transition: transform 250ms ease, opacity 200ms ease, margin 250ms ease;
+  transform-origin: 50% 50%;
+}
+
+.header-menu-toggle.open .header-menu-toggle-line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.header-menu-toggle.open .header-menu-toggle-line:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* Centered against the whole bar, like CardNav's logo — the hamburger and
+   actions group are pinned to the two ends via absolute positioning, not
+   flex, so the logo's own centering never has to account for their
+   widths. */
+/* `direction: ltr` — without it this flex row inherits `dir="rtl"` from
+   the document root in Arabic, and `flex-direction: row`'s start edge is
+   direction-relative: the same DOM order (BrandLogo, then "KneeGuide")
+   renders icon-left/text-right in LTR but flips to text-left/icon-right
+   in RTL, visually reversing the lockup even though nothing in the DOM
+   or flex-direction actually changed. Pinning this one wrapper to `ltr`
+   makes its row's start edge always the physical left, in both
+   languages, so the brand's internal order is fixed — a single
+   direction-independent rule, not a duplicated/conditional markup path.
+   Scoped to just this element: it doesn't affect `left: 50%` above
+   (already a physical property, not direction-relative) or anything
+   outside this flex row — the rest of the Header's RTL layout
+   (mega-menu cards, top-bar actions) is untouched. */
+.header-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  direction: ltr;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-heading);
+}
+
+/* 34px (up from the old generated "KG" mark's 30px) — the real artwork
+   carries its own internal padding within its square frame (it's a
+   Canva-export raster, not a tight vector bounding box), so at 30px it
+   read as smaller/weaker than the adjacent wordmark than the nominal box
+   size suggested. `.header-nav`'s own height (64px, GSAP-set, see
+   Header.jsx) and `.header-logo`'s absolute vertical centering
+   (top: 50%/translateY(-50%) above) both stay exactly as they are — this
+   only changes the mark's own box, never the bar around it. Mobile keeps
+   the previous 30px below (max-width: 768px) rather than growing too,
+   per "do not increase Header height, preferably not at all". */
+.header-logo-mark {
+  width: 34px;
+  height: 34px;
+}
+
+.header-actions {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.65);
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  transition: color 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.header-lang-toggle:hover {
+  color: var(--color-heading);
+}
+
+.header-lang-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Desktop shows the top-bar copy, mobile shows the in-panel copy — see
+   the "Mobile top bar" note below for why there are two instead of one
+   element that moves. */
+.header-lang-toggle--menu {
+  display: none;
+}
+
+/* .header-cta itself is a SecondaryButton (components/ui/SecondaryButton.css)
+   — border/hover/focus-visible/color/radius all come from there unchanged.
+   Icon-only now (user icon + arrow, no text — see Header.jsx), so the
+   shared `sm` variant's text-oriented padding (8px/20px) is overridden
+   here to a tighter, more compact-horizontal box instead of one sized for
+   a word — this is the same per-context override pattern every other
+   `.header-cta` rule in this file already uses, not a change to the
+   shared button component itself. Identical in EN/AR by construction:
+   nothing here is sized by translated text anymore. */
+.header-cta {
+  padding: 10px 16px;
+}
+
+/* The user icon now lives in SecondaryButton's "label" slot (normally
+   text) — that slot has never held an icon before, so nothing in
+   SecondaryButton.css sizes an svg placed there (only `.ui-secondary-
+   btn-icon svg`, the arrow's own slot, has a size rule). Matched to the
+   arrow's existing `sm` size (20px) so both icons read as the same
+   visual weight. This selector is deliberately narrower than `.ui-
+   secondary-btn-icon svg` — the RTL mirror rule in SecondaryButton.css
+   only ever targets that other slot, never this one, so the user icon
+   can never be mirrored no matter the direction. */
+.header-cta .ui-secondary-btn-label svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* The expanding content: always in the DOM (never conditionally mounted)
+   so its height is measurable and GSAP can animate it — hidden via
+   visibility/pointer-events, not display, exactly so that measurement
+   keeps working while it's closed. */
+.header-menu-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  padding: 8px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.header-nav-expanded .header-menu-panel {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Three equal columns (Product/Explore/Account) at every width this rule
+   applies to — checked against the narrowest non-mobile case, iPad
+   landscape (1024px): `.header-nav` is capped at `--container-width`
+   (1200px) minus its own padding, so a card is never narrower there than
+   roughly 300px, comfortably fitting the longest label ("KneeGuide
+   Approach") on one line with room to spare. Mobile (<=768px, which
+   already covers iPad portrait too) collapses to a single column below,
+   same as before. */
+.header-menu-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Each card's own soft solid identity — flat colors only, no gradients.
+   Foreground (label + link + arrow, the latter via `currentColor` on its
+   SVG stroke) is set per variant below rather than hardcoded once
+   globally, since these are light cards needing dark text, not the other
+   way around. */
+.header-menu-card {
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 128px;
+  user-select: none;
+  transition: background-color 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Editorial paper, not dashboard tiles — two warm-white/ivory neutrals
+   from the same family, deliberately close to each other rather than
+   distinct hues. */
+.header-menu-card--product {
+  background: #fffdf8;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  color: #172033;
+}
+
+.header-menu-card--product:hover {
+  background: #f5f3ee;
+}
+
+.header-menu-card--explore {
+  background: #f6efe4;
+  border: 1px solid rgba(45, 36, 26, 0.08);
+  color: #2d241a;
+}
+
+.header-menu-card--explore:hover {
+  background: #ece5db;
+}
+
+/* Third card, same "close warm-white/ivory neutrals" family as the two
+   above, not a new hue — background/hover/text/border are each the exact
+   numeric midpoint of Product's and Explore's own values, so Account
+   reads as a native sibling rather than an invented fourth color. */
+.header-menu-card--account {
+  background: #fbf6ee;
+  border: 1px solid rgba(34, 34, 39, 0.08);
+  color: #222227;
+}
+
+.header-menu-card--account:hover {
+  background: #f1ece5;
+}
+
+/* Icon + title sit together as one row — the icon is plain inline
+   typography (no background/border/shadow of its own), inheriting the
+   card's own color exactly like the label and links below it. */
+.header-menu-card-title {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.header-menu-card-icon {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 auto;
+  color: inherit;
+}
+
+.header-menu-card-label {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+
+.header-menu-card-links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header-menu-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: inherit;
+  opacity: 0.65;
+  text-decoration: none;
+  transition: opacity 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.header-menu-card-link:hover {
+  opacity: 1;
+}
+
+.header-menu-card-link svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+}
+
+/* Mobile top bar: only hamburger / logo / Login — the language switcher
+   moves into the panel (see .header-lang-toggle--menu) so the bar stays
+   just those three. Switched from the desktop's absolute-positioned logo
+   to a real grid: with two flanking columns sharing the remaining space,
+   the logo lands centered no matter how much wider Login is than the
+   hamburger button, which absolute-centering against the whole bar can't
+   guarantee on its own. The two flanking columns are deliberately uneven
+   (0.9fr / 1.1fr, not 1fr / 1fr) — Login is visually heavier than the
+   hamburger even at its smaller mobile size below, so giving its column a
+   little more share nudges the logo a few px toward the hamburger, which
+   is what actually reads as centered rather than mathematically centered. */
+@media (max-width: 768px) {
+  .header-root {
+    padding: 10px 16px 0;
+  }
+
+  .header-top {
+    display: grid;
+    grid-template-columns: 0.9fr auto 1.1fr;
+    align-items: center;
+    padding: 0 8px;
+  }
+
+  .header-menu-toggle {
+    justify-self: start;
+  }
+
+  .header-logo {
+    position: static;
+    transform: none;
+    justify-self: center;
+  }
+
+  /* Stays at the previous 30px rather than growing with desktop's 34px —
+     the mobile top bar is already tighter (grid layout above, smaller
+     Login button below), and "do not increase Header height" applies
+     here most directly. */
+  .header-logo-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header-actions {
+    margin-inline-start: 0;
+    justify-self: end;
+  }
+
+  /* Icon-only button, no text to size — `font-size` override dropped
+     (nothing left for it to affect; both icons are sized in fixed px).
+     Padding instead tuned for a real touch target: 20px icon + 12px
+     vertical padding each side + 2px border = 44px tall, meeting the
+     ~44x44px minimum recommended touch-target size. */
+  .header-actions .header-cta {
+    padding: 12px 14px;
+  }
+
+  .header-lang-toggle--topbar {
+    display: none;
+  }
+
+  /* Last item in the panel, not first — styled as a quiet footer action
+     (centered, generous top gap) rather than another nav entry. */
+  .header-lang-toggle--menu {
+    display: inline-flex;
+    align-self: center;
+    margin-top: 12px;
+  }
+
+  .header-menu-panel {
+    padding: 8px 12px 12px;
+  }
+
+  .header-menu-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .header-menu-card {
+    min-height: 0;
+  }
+}

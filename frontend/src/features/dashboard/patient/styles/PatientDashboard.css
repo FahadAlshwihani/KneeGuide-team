@@ -1,0 +1,106 @@
+/* Patient Home — entirely the KneeGuide Assistant experience
+   (PatientHomeAssistant.css owns Welcome/Conversation layout, chat turns,
+   composer, suggestions). This file only owns page-level chrome; every
+   color/spacing/radius value comes from patientTokens.css (--patient-*),
+   never a raw hex/px here. */
+
+/* min-height excludes the fixed PatientDock's own reserved clearance
+   (the same --patient-dock-clearance token PatientLayout.css already
+   spends as .patient-shell-content's padding-bottom), not a flat 100vh —
+   otherwise centering Welcome Mode's content (see .pd-page--welcome
+   .pd-inner below) within the FULL viewport height can place the
+   composer's bottom edge inside the Dock's fixed on-screen rectangle on
+   short mobile viewports, since the Dock covers the last ~104px of the
+   viewport regardless of how tall `.pd-page` itself claims to be. 100dvh
+   (not 100vh), matching `.pd-page--conversation` below, so this tracks
+   the actual visible viewport as mobile browser chrome shows/hides. */
+.pd-page {
+  min-height: calc(100dvh - var(--patient-dock-clearance) - env(safe-area-inset-bottom, 0px));
+  display: flex;
+  justify-content: center;
+  padding-inline: var(--patient-page-padding-inline);
+  padding-block: var(--patient-space-xl) var(--patient-space-lg);
+}
+
+.pd-inner {
+  width: 100%;
+  max-width: var(--patient-page-max-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Root cause of a viewport-dependent blank-space bug in Welcome Mode,
+   identical in shape to the one fixed on Doctor Home: `.pd-page` is a row
+   flex container with the default `align-items: stretch`, so its own
+   `min-height: 100vh` (intentional — a short Welcome screen should still
+   "fill the viewport naturally") was forcing `.pd-inner` to the FULL
+   available height. `.pd-inner` is itself a column with no
+   `justify-content`, so its content (the rail + `.patient-assistant`,
+   via `.patient-home-workspace`) only ever filled it from the top,
+   leaving a dead gap below on any viewport taller than the Welcome
+   content's natural height. Centering here makes the exact same "may
+   fill the viewport" slack read as an intentional centered composition:
+   short content centers with even space above/below; content tall
+   enough to need it still scrolls the document exactly as before
+   (`justify-content` only matters when there's slack to distribute).
+   Conversation Mode is unaffected — `.pd-page--conversation .pd-inner`
+   already sets `height: 100%; min-height: 0` with no slack left to
+   redistribute once `.patient-home-workspace` is stretched to fill it. */
+.pd-page--welcome .pd-inner {
+  justify-content: center;
+}
+
+/* Conversation Mode only (PatientDashboard.jsx mirrors
+   PatientHomeAssistant's own mode via onModeChange) — the page becomes a
+   height-BOUNDED shell instead of normal, unbounded document flow, so the
+   document itself never needs to scroll; only the transcript inside
+   PatientHomeAssistant does (see PatientHomeAssistant.css). The
+   subtracted amount is --patient-dock-clearance, the same real,
+   already-established token PatientLayout.css already uses to reserve
+   room for the fixed Dock — not a guessed pixel value. `100dvh` (not
+   `100vh`) so this tracks the ACTUAL visible viewport as mobile browser
+   chrome shows/hides, keeping the bound accurate instead of occasionally
+   taller than what's really visible.
+
+   Welcome Mode keeps `.pd-page`'s own normal, unbounded flow (only its
+   `min-height` accounts for the Dock clearance, per the comment above —
+   it isn't otherwise height-bound or overflow-clipped like Conversation
+   Mode is here), per "don't force Welcome into the same compact
+   layout". */
+.pd-page--conversation {
+  min-height: 0;
+  height: calc(100dvh - var(--patient-dock-clearance) - env(safe-area-inset-bottom, 0px));
+  padding-block: var(--patient-space-md) var(--patient-space-sm);
+  overflow: hidden;
+}
+
+.pd-page--conversation .pd-inner {
+  height: 100%;
+  min-height: 0;
+}
+
+/* `.pd-inner` is a flex COLUMN with one child now
+   (.patient-home-workspace, PatientHomeAssistant.jsx) — a flex-column
+   child doesn't stretch along the main (vertical) axis by default, so
+   without this it would only take its own content height instead of the
+   full bounded height `.pd-page--conversation` already established,
+   leaving the history rail and the chat shell both shorter than the
+   actual available space. Welcome Mode is untouched (`.pd-inner` alone
+   keeps its normal, unbounded flow), same as everywhere else in this
+   file. */
+.pd-page--conversation .patient-home-workspace {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+}
+
+@media (max-width: 480px) {
+  .pd-page {
+    padding-block: var(--patient-space-lg) var(--patient-space-md);
+  }
+
+  .pd-page--conversation {
+    padding-block: var(--patient-space-sm) var(--patient-space-xs);
+  }
+}

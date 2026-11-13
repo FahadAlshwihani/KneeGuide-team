@@ -1,0 +1,137 @@
+/* Public-website Secondary Button — rebuilt from scratch alongside
+   PrimaryButton.css to match the same reference: sharp unrounded
+   rectangle, wide and flat. Same resting look as PrimaryButton —
+   transparent, white border, white text — but hover stays a faint tint
+   (rgba(255,255,255,.12)) with text staying white; no color inversion,
+   no border change. That restraint is what keeps it reading as
+   secondary. Sizes/shape are mirrored 1:1 with PrimaryButton.css on
+   purpose. */
+
+.ui-secondary-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, opacity 200ms ease;
+}
+
+.ui-secondary-btn:hover:not(:disabled),
+.ui-secondary-btn:focus-visible {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.ui-secondary-btn:active:not(:disabled) {
+  opacity: 0.85;
+}
+
+.ui-secondary-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+.ui-secondary-btn:disabled,
+.ui-secondary-btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ui-secondary-btn--full {
+  width: 100%;
+}
+
+/* Sizes — mirrors PrimaryButton.css exactly */
+.ui-secondary-btn--sm {
+  gap: 10px;
+  padding: 8px 20px;
+  font-size: 0.82rem;
+}
+
+.ui-secondary-btn--md {
+  gap: 12px;
+  padding: 10px 28px;
+  font-size: 0.92rem;
+}
+
+.ui-secondary-btn--lg {
+  gap: 14px;
+  padding: 12px 36px;
+  font-size: 1rem;
+}
+
+/* The arrow SVG's wrapper — identical treatment to PrimaryButton.css, no
+   vertical-offset hacks; centering comes entirely from the button's own
+   `align-items: center` row above. */
+.ui-secondary-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.ui-secondary-btn-icon svg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.ui-secondary-btn--sm .ui-secondary-btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ui-secondary-btn--md .ui-secondary-btn-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ui-secondary-btn--lg .ui-secondary-btn-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+[dir="rtl"] .ui-secondary-btn-icon svg {
+  transform: scaleX(-1);
+}
+
+.ui-secondary-btn-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ui-secondary-btn--loading {
+  cursor: progress;
+}
+
+.ui-secondary-btn-spinner {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  animation: ui-secondary-btn-spin 700ms linear infinite;
+}
+
+@keyframes ui-secondary-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-secondary-btn {
+    transition-duration: 1ms;
+  }
+
+  .ui-secondary-btn-spinner {
+    animation-duration: 1400ms;
+  }
+}

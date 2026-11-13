@@ -1,0 +1,555 @@
+/* Uses global design tokens from src/index.css for layout only — colors
+   are defined locally below, same pattern as Problem.css, since this
+   section is also part of the shared light scene now (see
+   HeroProblemScene.css) rather than the public site's dark identity used
+   everywhere past it. .solution-root stays transparent (unchanged) so the
+   shared canvas's warm-white treatment keeps showing through — this file
+   never gives the section its own opaque background. */
+
+/* `min-height: 100svh` (desktop/laptop/tablet≥1024px — see the
+   max-width: 1023px override below) is what makes .solution-map's
+   `position: absolute; bottom: 0` (below) land near the very bottom of a
+   nearly-full-viewport box, well clear of the header above it. On
+   narrower screens that same combination produced a large empty gap
+   between the header and the map instead — this section's min-height was
+   dictating a full viewport's worth of space that the (shorter, on
+   mobile/tablet) header + map never actually needed to fill. See the
+   max-width: 1023px block for the mobile/tablet-only fix. */
+.solution-root {
+  position: relative;
+  padding-top: var(--section-padding);
+  min-height: 100svh;
+  background: transparent;
+  --solution-heading: #141414;
+  --solution-text: #4b4b4b;
+  --solution-muted: #6b6b6b;
+  --solution-border: rgba(20, 20, 20, 0.1);
+  --solution-card-bg: #fffdf9;
+}
+
+.solution-container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.solution-header {
+  max-width: 640px;
+  margin: 0 auto 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.solution-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--solution-heading);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--solution-border);
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+/* `.public-root` prefix (matching Problem.css's own `.public-root
+   .problem-title`/`.public-root .problem-description`) is not decorative
+   — it's what makes these selectors ((0,2,0), two classes) outrank
+   index.css's global `.public-root h2`/`.public-root p { color: var(
+   --color-heading) }` ((0,1,1), one class + one element), which otherwise
+   wins the cascade against a bare `.solution-title`/`.solution-description`
+   ((0,1,0), one class) and silently repaints this section's heading/
+   paragraph back to the site's white dark-theme heading color — invisible
+   on this section's light background. `.solution-badge` below needs no
+   such prefix: it's a <span>, which that global rule never targets, so
+   its own single-class rule already wins outright. */
+.public-root .solution-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  color: var(--solution-heading);
+  text-wrap: balance;
+}
+
+.public-root .solution-description {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--solution-text);
+}
+
+/* Interactive platform map — a radar/control-tower composition that is
+   the section's visual foundation, not an illustration boxed inside it.
+   No max-width: it's a sibling of .solution-container (see index.jsx),
+   so it spans the section's full width edge to edge instead of being
+   constrained to the header's readable column.
+
+   `position: absolute; bottom: 0` (desktop/laptop/tablet≥1024px — see the
+   max-width: 1023px override below for mobile/tablet<1024px) is what
+   pins this box's bottom edge exactly to .solution-root's bottom edge —
+   i.e. exactly the top edge of whatever section renders next
+   (Technology) — regardless of the header's height above it. Height is a
+   fixed/clamp() value per width tier below (a deliberately modest "large
+   background visualization" size, not a viewport-proportional one that
+   balloons on wide screens); index.jsx then *measures* this element's
+   real rendered box via ResizeObserver and derives the SVG viewBox from
+   that measurement directly, so a node's computed (x, y) and the arc it
+   sits on can never drift apart — there's only one number (the DOM's own
+   rendered size), never two independently-declared ones to keep in sync.
+
+   This element's own child, `.platform-radar-clip`, is what actually
+   clips the radar to this bottom edge, via its own `overflow: hidden`.
+   The hub is NOT rendered here at all — it's portaled straight to
+   document.body (see index.jsx) so an ancestor several levels up
+   (HeroProblemScene's own `overflow: hidden`, wrapping this box too)
+   never gets a chance to crop it either. Nodes are plain positioned
+   elements (not foreignObject-in-SVG) so real text, hover and focus
+   behave normally; only the rings, highlights and connectors are real
+   SVG paths. */
+.solution-map {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(320px, 66vw, 440px);
+}
+
+@media (min-width: 641px) {
+  .solution-map {
+    height: clamp(340px, 40vw, 460px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .solution-map {
+    height: clamp(380px, 34vw, 500px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .solution-map {
+    height: clamp(420px, 30vw, 560px);
+  }
+}
+
+/* Mobile/tablet-only (<1024px, matching the JS tier boundary) vertical
+   rebalance — desktop/laptop are completely untouched by this block.
+   Switches .solution-map from `position: absolute; bottom: 0` (pinned to
+   a min-height: 100svh box's bottom edge, which is what produced the
+   large empty gap between the header and the map on shorter content) to
+   a normal, in-flow block — its own `left`/`right`/`bottom` no longer
+   apply, so it simply renders immediately after .solution-container,
+   directly under the header, at its own `height` (still set above,
+   unaffected). `position: relative` is kept (not `static`) because this
+   element is still the positioning context every one of its own children
+   (.platform-radar-clip, `inset: 0`) resolves against — only how *this*
+   element itself is placed within .solution-root changes, nothing below
+   it. Pairing this with .solution-root's own `min-height: auto` here
+   means .solution-root's real height becomes exactly
+   padding-top + header height + map height — no leftover slack — so the
+   map's bottom edge is still exactly .solution-root's own bottom edge
+   (still exactly where Technology begins, still the same clipping
+   boundary every ring/node/the sweep/the pulse/the hub all rely on),
+   it's just a much shorter distance from the header to get there. */
+@media (max-width: 1023px) {
+  .solution-root {
+    min-height: auto;
+  }
+
+  .solution-map {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+}
+
+/* Owns the actual clipping now (see .solution-map's own comment above):
+   rings, nodes, the sweep and the pulse all live inside this wrapper
+   (see index.jsx) and are cropped exactly at its edge — i.e. exactly at
+   .solution-map's own edge, since this is `inset: 0` inside it. The hub
+   isn't rendered anywhere inside this subtree at all (see index.jsx's
+   portal), so it's never a question of exempting it from this rule. */
+.platform-radar-clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* The mask is what turns "clipped by the container's edge" into
+   "dissolves into the page": everything painted inside this wrapper —
+   real rings, decorative arcs, highlights, connectors, AND the sweep
+   beam (see .platform-sweep below, also a child of this element) — fades
+   to fully transparent over the top ~26% of the box instead of being
+   hard-cut by `.platform-radar-clip`'s `overflow: hidden` the instant it
+   crosses that edge. The real, node-bearing rings never reach that zone
+   (TOP_MARGIN_UNITS in index.jsx already keeps them well clear of it),
+   so only the decorative arcs and the sweep are ever actually affected;
+   everything else stays exactly as opaque as it already was. The pulse
+   deliberately lives in its own separate, unmasked SVG
+   (.platform-pulse-layer, below) rather than in here — sharing this mask
+   made it fade away almost immediately on short/wide containers, since
+   its radius grows well past this mask's fade zone long before it's
+   actually done traveling. Nodes are also outside this wrapper (they're
+   real UI, never meant to fade). */
+.platform-fade-layer {
+  position: absolute;
+  inset: 0;
+  /* Keep the hard boundary on the same compositing layer as the mask and
+     the transformed sweep. iPad WebKit promotes both independently and
+     can otherwise let the sweep bypass the identical clip on the parent. */
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 26%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 26%);
+}
+
+.platform-radar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Same coordinate space as .platform-radar (identical viewBox, identical
+   box), just without its mask — see the comment on .platform-fade-layer
+   for why the pulse needs that. Still clipped at the true edge by the
+   shared .platform-radar-clip parent, same as everything else. */
+.platform-pulse-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The shared radar rings — always visible, always subtle. Never the
+   thing that highlights on hover; see platform-arc-highlight below. */
+.platform-ring {
+  fill: none;
+  stroke: var(--solution-border);
+  stroke-width: 0.4;
+  stroke-linecap: round;
+}
+
+/* A short arc segment centered on one node's own angle, on the same
+   ring radius — invisible at rest, brand-blue on hover. This is what
+   makes "only that node's stretch of track lights up" possible without
+   touching the shared ring underneath it. */
+.platform-arc-highlight {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.platform-arc-highlight.is-active {
+  opacity: 0.9;
+}
+
+/* Purely decorative background arcs beyond the last real (node-bearing)
+   ring — a hair thinner than .platform-ring so they read as receding
+   into the distance. Their fainter opacity (0.45 vs the real rings' 1)
+   is set as their own Motion `animate` target in index.jsx instead of
+   here, since Motion owns `opacity` on an element once it's animating it
+   at all — a CSS opacity rule here would just get silently overridden.
+   How many of these arcs exist and how far out they go is entirely
+   computed in index.jsx (buildDecorativeArcs), never here. */
+.platform-ring--decorative {
+  stroke-width: 0.3;
+}
+
+/* Subtle straight connector from the hub to a node — only ever visible
+   while that node is hovered. */
+.platform-connector {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 0.35;
+  stroke-dasharray: 1.4 1.4;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.platform-connector.is-active {
+  opacity: 0.55;
+}
+
+/* The rotating radar beam (see the rotation effect in index.jsx) — a
+   plain HTML div, not SVG, sized and rotated entirely from JS
+   (width/height/rotate are set inline there; rotate is bound to a Motion
+   value so the spin itself is a compositor-only transform, never a
+   React re-render). This rule only ever paints the *static*, un-rotated
+   look: a circular disc (border-radius: 50%, matching its own square
+   width/height) carrying one soft conic-gradient wedge — transparent for
+   most of the circle, ramping up to a low-opacity brand-blue only in the
+   final --sweep-trail-deg before the 0deg/360deg seam. Rotating that
+   whole disc is indistinguishable from rotating just the wedge, but
+   needs no masking/clipping of its own beyond what its ancestors already
+   provide: `.platform-radar-clip` crops it at the true edge, and
+   `.platform-fade-layer` (its direct parent, see index.jsx) fades it
+   near the top exactly like the decorative arcs, so it dissolves into
+   the page rather than ending in a hard line. */
+.platform-sweep {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    rgba(37, 99, 235, 0) 0deg,
+    rgba(37, 99, 235, 0) calc(360deg - var(--sweep-trail-deg, 30deg)),
+    rgba(37, 99, 235, 0.16) 360deg
+  );
+}
+
+/* The once-per-revolution radar echo (see pulseCount in index.jsx) — a
+   single soft, stroke-only wave traveling from the hub out through every
+   arc, never a filled disc, so it reads as a faint atmospheric wavefront
+   rather than a flash or a burst. Its radius, opacity AND stroke-width
+   are all animated together from index.jsx (thinning as much as fading
+   as it travels) rather than fixed here, since Motion owns every
+   property it's given an animate target for — a fixed stroke-width here
+   would just get silently overridden the moment the animation starts. */
+.platform-pulse {
+  fill: none;
+  stroke: var(--color-primary);
+}
+
+/* The brief "the beam just crossed this node" reaction — a soft blue
+   halo via box-shadow rather than a transform/scale change, since Motion
+   already owns this element's `transform` for its mount reveal (see
+   .platform-node-circle above) and a second, CSS-only transform on the
+   same property would just be silently overridden the same way an
+   opacity override would be (see .platform-ring--decorative above).
+   box-shadow has no such conflict, animates just as cheaply, and reads
+   as exactly the "short blue glow" this is meant to be. */
+.platform-node-circle.is-swept {
+  transition: box-shadow 280ms ease;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.16), 0 1px 4px rgba(20, 20, 20, 0.05);
+}
+
+/* The positioning anchor. Deliberately a plain element (see index.jsx) —
+   `top`/`left`/`transform` are declared once, here, and never touched
+   again by anything else, so nothing can ever override or fight this
+   translate. Its own rendered box is exactly `.platform-node-circle`'s
+   box: the label is `position: absolute` (out of flow, see below), so
+   `translate(-50%, -50%)` centers the CIRCLE's own center — not some
+   circle+label combined box — precisely on (--node-x, --node-y), the
+   same point the arc itself passes through. */
+.platform-node {
+  position: absolute;
+  top: var(--node-y);
+  left: var(--node-x);
+  transform: translate(-50%, -50%);
+}
+
+.platform-node-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--solution-border);
+  box-shadow: 0 1px 4px rgba(20, 20, 20, 0.05);
+  color: var(--color-primary);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Positioned relative to .platform-node (its offset parent), which is
+   sized to exactly the circle above — `top: 100%` therefore always means
+   "right at the circle's own bottom edge", at any breakpoint's circle
+   size, with no separate hand-typed pixel offset to keep in sync. */
+.platform-node-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  width: 88px;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--solution-text);
+  line-height: 1.3;
+}
+
+/* The hub — larger, brighter, and the strongest element in the map.
+   Rendered through a React portal straight onto document.body (see
+   index.jsx), not as a descendant of .solution-map, so it sits precisely
+   at the radar's true origin (same point every ring/node/the sweep/the
+   pulse are built from) while being structurally exempt from every
+   ancestor's `overflow: hidden` — both .platform-radar-clip's and, more
+   importantly, HeroProblemScene's own further up. `--node-x`/`--node-y`
+   still drive `top`/`left` exactly like every other node's, just as real
+   document-relative pixel values (hubPortalPos in index.jsx) instead of
+   percentages of a local container, since this element's offset parent
+   is now the document itself. `z-index` only has to beat ordinary,
+   non-positioned page content now that this is a body-level sibling of
+   the whole app (#root has no position/z-index of its own) — comfortably
+   below the site's real chrome (--z-header and up, src/index.css). */
+.platform-hub {
+  position: absolute;
+  top: var(--node-y);
+  left: var(--node-x);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.platform-hub-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.16);
+}
+
+/* A restrained, solid dark-navy backdrop (--color-bg-elevated, an
+   existing token — not a new color) rather than the previous
+   --gradient-brand blue-to-teal gradient: the logo's own real artwork is
+   itself a fixed blue-to-teal gradient (confirmed by extracting its
+   actual embedded content layer, not the mask-generation source a prior
+   pass mistook for the real output), so a same-family colored gradient
+   disc behind a `brand-logo-light`-whitened mark competed with the
+   radar's own blue/teal palette and made the mark read as low-contrast/
+   "teal" rather than a clean white focal point. Solid dark navy against
+   .platform-hub-circle's white outer ring gives the white mark the
+   highest, simplest contrast available from existing tokens, with no
+   gradient to compete with the surrounding rings/nodes. `display: grid;
+   place-items: center` is a more direct centering statement than the
+   equivalent flex pair it replaces — same math, not a fix for a
+   previously-broken value (.platform-hub-mark-icon below already used
+   explicit square dimensions on the mark's own <img>, see BrandLogo.css
+   — there was no manual offset anywhere in this chain to remove). */
+.platform-hub-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-bg-elevated);
+}
+
+/* 42px within the 46px disc (46-42=4, halved evenly by `place-items:
+   center` with no fractional remainder — see the two responsive
+   overrides below for the same even-difference reasoning at their own
+   disc sizes). Sized against the NEW KneeGuideLogo1024.png specifically
+   (not carried over from the old SVG's numbers): its own visible-pixel
+   bounds were measured directly (decoding the PNG and finding the
+   farthest opaque pixel from the image's own canvas center, not
+   eyeballed) at ~98% of the image's own half-width. At 42px that places
+   the artwork's own farthest point ~2.4px inside the 23px disc radius —
+   close enough to read as filling the hub (~89-90% visual occupancy)
+   without ever touching the circle's edge. */
+.platform-hub-mark-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.platform-hub-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--solution-heading);
+}
+
+/* Hover — desktop/pointer devices only, so touch never gets a stuck
+   hover state. The corresponding arc highlight/connector are driven by
+   React state (hoveredNode), gated the same way here so neither shows on
+   touch. Mouse events are bound to `.platform-node` (see index.jsx), so
+   hovering anywhere in the node — including its label — reaches the
+   circle via the descendant selector below; `.is-hovered` is the same
+   state applied directly by React, for parity with touch/keyboard
+   interactions that set hoveredNode without a real `:hover`. */
+@media (hover: hover) and (pointer: fine) {
+  .platform-node:hover .platform-node-circle,
+  .platform-node-circle.is-hovered {
+    transform: scale(1.1);
+    border-color: var(--color-primary);
+    color: var(--color-primary-hover);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.18);
+  }
+}
+
+/* Node/hub chrome sizing only (never the map's own geometry — that's
+   entirely driven by RADAR_TIERS + the measured container size in
+   index.jsx). Breakpoints match the JS tiers there (1024px, 640px) so
+   the visual chrome and the geometry scale down together. */
+@media (max-width: 1023px) {
+  .platform-node-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+
+  .platform-hub-circle {
+    width: 58px;
+    height: 58px;
+  }
+
+  .platform-hub-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Same even-difference reasoning as the base rule, retuned for the new
+     PNG's measured ~98% own-canvas extent: 40-36=4px, halved evenly, no
+     fractional centering offset. Artwork's farthest point sits ~2.4px
+     inside the 20px disc radius. */
+  .platform-hub-mark-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* A further step down from the 38px the 1023px block above already
+     set, specifically to give 9 nodes' worth of circles+labels enough
+     breathing room on a narrow screen (paired with tighter ring spacing
+     for this tier, see RADAR_TIERS' mobile entry in index.jsx) without
+     dropping any node. */
+  .platform-node-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .platform-node-label {
+    width: 54px;
+    font-size: 0.62rem;
+    line-height: 1.2;
+  }
+
+  .platform-hub-circle {
+    width: 52px;
+    height: 52px;
+  }
+
+  .platform-hub-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Same even-difference reasoning as the base rule, retuned for the new
+     PNG's measured ~98% own-canvas extent: 36-32=4px, halved evenly, no
+     fractional centering offset. Artwork's farthest point sits ~2.3px
+     inside the 18px disc radius. */
+  .platform-hub-mark-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

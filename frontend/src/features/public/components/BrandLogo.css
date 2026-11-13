@@ -1,0 +1,26 @@
+/* KneeGuideLogo1024.png is a clean, dedicated 1000x1000 RGBA export (see
+   BrandLogo.jsx) — a real <img>, so sizing/scaling is the browser's normal
+   raster image pipeline, not a CSS background-image. Sizing is
+   intentionally NOT set here — each call site owns its own footprint via
+   its own className (Header.css/Footer.css/Solution.css), applied
+   directly to this same <img> element. `object-fit: contain` guards
+   against distortion if a call site's box ever isn't perfectly square
+   (the source itself is square, so this is normally a no-op). */
+.brand-logo {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* White reading of the mark for Header/Footer/Radar — the source PNG's
+   own artwork is a fixed blue-to-teal gradient, not `currentColor`.
+   Previously this went through `mask-image` on the old Canva SVG
+   specifically to avoid a `filter` compositing risk that came from that
+   SVG's own embedded-raster/mask/transform chain; that whole chain is
+   retired along with the asset it existed for. Applied directly to a
+   plain <img> of a clean opaque-canvas PNG, `filter` no longer carries
+   the same risk — there's no intermediate mask compositing step for it to
+   interact with. */
+.brand-logo-light {
+  filter: brightness(0) invert(1);
+}

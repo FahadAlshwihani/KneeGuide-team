@@ -1,0 +1,145 @@
+/* Retheme onto the same --patient-* token system the rest of the
+   redesigned Patient product uses (Section 30) — this page previously
+   used raw hex, predating that design system. Structure/behavior below
+   follows Section 28's suggested hierarchy: title -> filters+summary ->
+   KneeGuide Recovery Insight -> milestones -> trends -> session history.
+   Reports keeps the WIDER page max-width (unlike the focused single-
+   column Exercise Session page) — Section 28 explicitly wants to use the
+   extra horizontal space here. */
+
+.reports-page {
+  min-height: 100vh;
+  background: var(--patient-surface-page);
+  padding: var(--patient-space-xl) var(--patient-space-sm);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: var(--patient-color-text);
+}
+
+.reports-wrapper {
+  width: 100%;
+  max-width: var(--patient-page-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--patient-space-md);
+}
+
+/* ---------- Header ---------- */
+.reports-header h1 {
+  margin: 0;
+  font: var(--patient-text-page-heading);
+  color: var(--patient-color-heading);
+}
+
+.reports-header p {
+  margin: 6px 0 0;
+  font: var(--patient-text-supporting);
+  color: var(--patient-color-muted);
+}
+
+/* ---------- Filters + summary metrics ---------- */
+.reports-top-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+  gap: var(--patient-space-md);
+}
+
+@media (max-width: 900px) {
+  .reports-top-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.reports-filters {
+  padding: var(--patient-space-sm);
+  border-radius: var(--patient-radius-card);
+  background: var(--patient-surface-card);
+  border: 1px solid var(--patient-border);
+  display: flex;
+  gap: var(--patient-space-sm);
+}
+
+.filter-group {
+  flex: 1 1 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-group label {
+  font: var(--patient-text-caption);
+  color: var(--patient-color-faint);
+}
+
+.filter-group select {
+  background: var(--patient-surface-elevated);
+  color: var(--patient-color-text);
+  border-radius: var(--patient-radius-control);
+  border: 1px solid var(--patient-border);
+  padding: 8px var(--patient-space-2xs);
+  font: var(--patient-text-caption);
+}
+
+.filter-group select:focus-visible {
+  outline: 2px solid var(--patient-color-focus);
+  outline-offset: 2px;
+}
+
+.reports-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--patient-space-2xs);
+}
+
+@media (max-width: 640px) {
+  .reports-summary {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+.summary-card {
+  padding: var(--patient-space-sm);
+  border-radius: var(--patient-radius-card);
+  background: var(--patient-surface-card);
+  border: 1px solid var(--patient-border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-card .label {
+  margin: 0;
+  font: var(--patient-text-caption);
+  color: var(--patient-color-faint);
+}
+
+.summary-card h3 {
+  margin: 0;
+  font: var(--patient-text-page-heading);
+  color: var(--patient-color-heading);
+}
+
+.summary-card .hint {
+  font: var(--patient-text-caption);
+  color: var(--patient-color-muted);
+}
+
+/* ---------- Empty / single-report states ---------- */
+.reports-empty {
+  margin: var(--patient-space-xl) 0;
+  text-align: center;
+  font: var(--patient-text-body);
+  color: var(--patient-color-faint);
+}
+
+.reports-single-report-note {
+  margin: 0;
+  padding: var(--patient-space-sm) var(--patient-space-lg);
+  border-radius: var(--patient-radius-card);
+  background: var(--patient-surface-card);
+  border: 1px dashed var(--patient-border);
+  font: var(--patient-text-supporting);
+  color: var(--patient-color-faint);
+  text-align: center;
+}
